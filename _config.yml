@@ -7,8 +7,7 @@
 # dc: Data Carpentry
 # lc: Library Carpentry
 # cp: Carpentries (to use for instructor traning for instance)
-#carpentry: "incubator"
-carpentry: "swc"
+carpentry: "incubator"
 
 # Overall title for pages.
 title: "DUNE Computing Training May 2021 edition" # FIXME
@@ -16,7 +15,7 @@ title: "DUNE Computing Training May 2021 edition" # FIXME
 # Life cycle stage of the lesson
 # See this page for more details: https://cdh.carpentries.org/the-lesson-life-cycle.html
 # Possible values: "pre-alpha", "alpha", "beta", "stable"
-life_cycle: "pre-alpha"
+life_cycle: "alpha"
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
