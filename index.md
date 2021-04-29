@@ -13,7 +13,7 @@ humantime: "8:00 am - 12:30 pm"
 startdate: "2021-05-12"
 enddate: "2021-05-14"
 instructor: ["Claire David", "Michael Kirby"]
-helper: ["mentor1",, "mentor2"]
+helper: ["mentor1", "mentor2"]
 email: ["claire.david@cern.ch","mkirby@fnal.gov"]
 collaborative_notes:
 eventbrite:
