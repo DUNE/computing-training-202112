@@ -2,6 +2,21 @@
 layout: lesson
 root: .  # Is the only page that doesn't follow the pattern /:path/index.html
 permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
+venue: "Fermi National Accelerator Laboratory"
+address: "online"
+country: "us"
+language: "en"
+latitude: "45"
+longitude: "-1"
+humandate: "May 12-14, 2021"
+humantime: "8:00 am - 12:30 pm"
+startdate: 2021-05-12
+enddate: 2021-05-14
+instructor: ["Claire David", "Michael Kirby"]
+helper: ["mentor1",, "mentor2"]
+email: ["claire.david@cern.ch","mkirby@fnal.gov"]
+collaborative_notes:
+eventbrite:
 ---
 This tutorial will teach you the basics of DUNE Computing. It is split into four parts that you can attend independently (we advise newcomers to follow the whole event though).
 
