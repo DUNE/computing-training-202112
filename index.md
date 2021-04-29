@@ -10,14 +10,15 @@ latitude: "45"
 longitude: "-1"
 humandate: "May 12-14, 2021"
 humantime: "8:00 am - 12:30 pm"
-startdate: 2021-05-12
-enddate: 2021-05-14
+startdate: "2021-05-12"
+enddate: "2021-05-14"
 instructor: ["Claire David", "Michael Kirby"]
 helper: ["mentor1",, "mentor2"]
 email: ["claire.david@cern.ch","mkirby@fnal.gov"]
 collaborative_notes:
 eventbrite:
 ---
+
 This tutorial will teach you the basics of DUNE Computing. It is split into four parts that you can attend independently (we advise newcomers to follow the whole event though).
 
 Each part will have a little introduction followed by hands-on sessions in breakout rooms. Here mentors will answer your questions and provide technical support.
