@@ -7,7 +7,8 @@
 # dc: Data Carpentry
 # lc: Library Carpentry
 # cp: Carpentries (to use for instructor traning for instance)
-carpentry: "incubator"
+#carpentry: "incubator"
+carpentry: "swc"
 
 # Overall title for pages.
 title: "DUNE Computing Training May 2021 edition" # FIXME
