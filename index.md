@@ -15,7 +15,7 @@ enddate: "2021-05-14"
 instructor: ["Claire David", "Michael Kirby"]
 helper: ["mentor1", "mentor2"]
 email: ["claire.david@cern.ch","mkirby@fnal.gov"]
-collaborative_notes:
+collaborative_notes: "2021-04-12-dune"
 eventbrite:
 ---
 
@@ -51,5 +51,11 @@ By the end of this workshop, participants will know how to:
 {: .callout}
 
 You will need a valid FNAL or CERN account to be able to do the tutorial and be on the DUNE Collaboration member list. If you do not, contact your team leader.
+
+
+<h2 id="schedule">Schedule Custom</h2>"
+
+{% include custom_schedule3.html %}
+
 
 {% include links.md %}
