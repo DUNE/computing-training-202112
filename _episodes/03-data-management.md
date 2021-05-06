@@ -36,9 +36,20 @@ export SAM_EXPERIMENT=dune
 ~~~
 
 ### What is Rucio?
-Rucio is the next-generation Distributed Data Management (DDM) system. It benefits from recent advances in cloud and "Big Data" computing to address HEP experiments scaling requirements.
+Rucio is the next-generation Data Replica service and is part of DUNE's new Distributed Data Management (DDM) system that is currently in deployment. 
+Rucio has two functions:  (1) A rule-based system to get files to Rucio Storage Elements around the world and keep them there and (2) To return the
+"nearest" replica of any data file for use either in interactive or batch file use.  It is expected that most DUNE users will not be regularly using
+direct Rucio commands, but other wrapper scripts that calls them indirectly.  
+As of the date of this May 2021 tutorial (a) the Rucio client is not installed as a part of the standard DUNE client software
+and (b) most DUNE users are not yet enabled to use it.  But when we do, some of the commands will look like this:
 
-[Todo! Some Rucio specific commands here?]
+~~~
+rucio list-file-replicas protodune-sp:np04_raw_run005801_0001_dl1.root
+
+rucio download protodune-sp:np04_raw_run005801_0001_dl1.root
+
+rucio list-rses
+~~~
 
 ## Finding data
 
@@ -116,7 +127,7 @@ root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune
 {: .output}
 
 **Resource**: [Using the SAM Data Catalog][sam-data-control].
-> ## Excercise 1
+> ## Exercise 1
 > * Use the `--location` argument to show the path of the file above on either `enstore`, `castor` or `cern-eos`.
 > * Use `get-metadata` to get SAM metadata for this file. Note that `--json` gives the output in json format.
 {: .challenge}
@@ -124,7 +135,7 @@ root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune
 
 When we are analyzing large numbers of files in a group of batch jobs, we use a SAM snapshot to describe the full set of files that we are going to analyze and create a SAM Project based on that. Each job will then come up and ask SAM to give it the next file in the list. SAM has some capability to grab the nearest copy of the file. For instance if you are running at CERN and analyzing this file it will automatically take it from the CERN storage space EOS.
 
-> ## Excercise 2
+> ## Exercise 2
 > todo!
 {: .challenge}
 
@@ -158,7 +169,7 @@ Another specifier of a product install is the "flavor". This refers to the opera
 
 Setting up a UPS product defines many environment variables. Most products have an environment variable of the form `<productname>_DIR`, where `<productname>` is the name of the UPS product in all capital letters. This is the top-level directory and can be used when searching for installed source code or fcl files for example. `<productname>_FQ_DIR` is the one that specifies a particular qualifier and flavor.
 
-> ## Excercise 3
+> ## Exercise 3
 > todo!
 {: .challenge}
 
@@ -211,7 +222,7 @@ Ideally, we would like to only have to recompile a fraction of the software stac
 
 Link to the [mrb reference guide](https://cdcvs.fnal.gov/redmine/projects/mrb/wiki/MrbRefereceGuide)
 
-> ## Excercise 5
+> ## Exercise 5
 > todo!
 {: .challenge}
 
@@ -232,7 +243,7 @@ When a file is accessed in `/cvmfs`, a daemon on the target computer wakes up an
 
 More information on CVMFS is available [here](https://wiki.dunescience.org/wiki/DUNE_Computing/Access_files_in_CVMFS)
 
-> ## Excercise 6
+> ## Exercise 6
 > todo!
 {: .challenge}
 

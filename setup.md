@@ -30,7 +30,7 @@ You must be on the DUNE Collaboration member list and have a valid FNAL or CERN 
 
 
 > ## Note
-> The instructions below are for FNAL accounts. If you do not have a valid FNAL account but a CERN one, go at the bottom of this page to the [Setup on CERN machines](#setup-on-cern-machines).
+> The instructions below are for FNAL accounts. If you do not have a valid FNAL account but a CERN one, go at the bottom of this page to the [Setup on CERN machines](##setup-on-cern-machines).
 {: .challenge}
 
 ## 1. Kerberos business
@@ -68,7 +68,7 @@ kinit -f username@FNAL.GOV
 ~~~
 {: .language-bash}
 
-The -f option means your ticket is forwardable. Careful: you need to write FNAL.GOV in uppercase.
+The -f option means your ticket is forwardable. A forwardable ticket is one that originated on computer A, but can be forwarded to computer B and will remain valide on computer B. Careful: you need to write FNAL.GOV in uppercase.
 
 To know if you have a valid ticket, type:
 
@@ -114,16 +114,16 @@ which kinit
 to report the path of the kinit that's first in your $PATH search list. If you have another, non-working one, a suggestion is to make an alias like this one:
 
 ~~~
-alias mykinit="/usr/bin/kinit myusername@FNAL.GOV"
+alias mykinit="/usr/bin/kinit -A -f myusername@FNAL.GOV"
 ~~~
 {: .language-bash}
 
-Then use:
+Then you can simply use:
 
 ~~~
-mykinit -A -f
+mykinit
 ~~~
-{: .language-bash}
+
 
 ## 2. ssh-in
 **What is it?** SSH stands for Secure SHell. It is a safe protocol used for connecting to remote machines. The configuration is done in your local file in your home directory:
@@ -145,21 +145,22 @@ GSSAPIDelegateCredentials yes
 ~~~
 {: .output}
 
-Now you can try to log into a machine at Fermilab. There are now 15 different machines you can login to: from dunegpvm01 to dunegpvm15 (gp stands for 'general purpose', others nodes are dedicated for building code). The dunegpvm machines run Scientific Linux Fermi 7 (SLF7). To know the load on the machines, use this monitoring link: dunegpvm status.
+Now you can try to log into a machine at Fermilab. There are now 15 different machines you can login to: from dunegpvm01 to dunegpvm15 (gpvm stands for 'general purpose virtual machine' because these servers run on virtual machines and not dedicated hardware, others nodes which are indented for building code run on dedicated hardware). The dunegpvm machines run Scientific Linux Fermi 7 (SLF7). To know the load on the machines, use this monitoring link: dunegpvm status.
 
 **How to connect?** The ssh command does the job. The -Y option turns on the xwindow protocol so that you can have graphical display and keyboard/mouse handling (quite useful). But if you have the line "ForwardX11Trusted yes" in your ssh config file, this will do the -Y option. For connecting to e.g. dunegpvm07, the command is:
 
 ~~~
-ssh username@dunegpvm07.fnal.gov
+ssh username@dunegpvmXX.fnal.gov
 ~~~
 {: .language-bash}
 
-If your experience long delays in loading programs or graphical output, you can try connecting with VNC. More info: Using VNC Connections on the dunegpvms.
+where XX is a number from 01 to 15. 
+If you experience long delays in loading programs or graphical output, you can try connecting with VNC. More info: Using VNC Connections on the dunegpvms.
 
 ## 3. Get a clean shell
 To run DUNE software, it is necessary to have a 'clean login'. What is meant by clean here? If you work on other experiment(s), you may have some environment variables defined (for NOvA, MINERvA, MicroBooNE). Theses may conflict with the DUNE environment ones.
 
-Two ways to clean your shell:
+Two ways to clean your shell once on a DUNE machine:
 
 **Cleanup option 1:** Manual check and cleanup of your custom environment variables
 To list all of your environment variables:
@@ -178,29 +179,17 @@ env | grep -i nova
 
 Here you can tweak your .bashrc/.profile file(s) to temporarily comment out those (the "export" commands that are setting custom environment variables).
 
-**Cleanup option 2:** Backup your login scripts and go minimal at login.
+**Cleanup option 2:** Backup your login scripts and go minimal at login (recommended)
 
-A simpler solution would be to rename your login scripts (for instance .bashrc as .bashrc_save and/or .profile as .profile_bkp) so that your setup at login will be minimal and you will get the cleanest shell. For this to take into effect, you will need to exit and reconnect through ssh:
-
-~~~
-exit
-~~~
-{: .language-bash}
-
-Then:
-
-~~~
-ssh username@dunegpvm07.fnal.gov
-~~~
-{: .language-bash}
+A simpler solution would be to rename your login scripts (for instance .bashrc as .bashrc_save and/or .profile as .profile_bkp) so that your setup at login will be minimal and you will get the cleanest shell. For this to take into effect, you will need to exit and reconnect through ssh.
 
 ## 4. Setting up the DUNE software
-To set up your environment with DUNE, type:
-
+To set up your environment with DUNE, the command is:
 ~~~
 source /cvmfs/dune.opensciencegrid.org/products/dune/setup_dune.sh
 ~~~
 {: .language-bash}
+You should see in your terminal the following output:
 ~~~
 Setting up larsoft UPS area... /cvmfs/larsoft.opensciencegrid.org/products/
 Setting up DUNE UPS area... /cvmfs/dune.opensciencegrid.org/products/dune/
@@ -209,7 +198,9 @@ Setting up DUNE UPS area... /cvmfs/dune.opensciencegrid.org/products/dune/
 
 
 > ## How to make custom setup command with aliases
-> You may want to define a custom command for convenience. To create unix custom commands for yourself, we use:
+> Not familiar with aliases? Read below.
+> 
+> To create unix custom commands for yourself, we use 'aliases':
 > ~~~
 > alias my_custom_commmand='the_long_command_you_want_to_alias_in_a_shorter_custom_name'
 > ~~~
@@ -225,31 +216,37 @@ Setting up DUNE UPS area... /cvmfs/dune.opensciencegrid.org/products/dune/
 > dune_setup
 > ~~~
 > {: .source}
-> Your terminal will execute the long command. This will work for your current session (if you disconnect, the alias won't exist anymore). You can store this in your (minimal) .bashrc or .profile if you want this alias to be available in all sessions.
+> Your terminal will execute the long command. This will work for your current session (if you disconnect, the alias won't exist anymore). You can store this in your (minimal) .bashrc or .profile if you want this alias to be available in all sessions. The alias will be defined but not executed. Only if you type the command `dune_setup` yourself.
 {: .solution}
 
 ## 5. Exercise! (it's easy)
 This exercise will help organizers see if you reached this step or need help.
 
-1) Store useful variables either in your bashrc profile or in a custom file (e.g. ```dune_var_May_training.sh```).
+1) Start in your home area `cd ~` and create the file ```.dune_presetup_202105.sh```. Write in it the following:
 ~~~
-export DUNETPC_VERSION=v09_22_01
+export DUNETPC_VERSION=v09_22_02
+alias dune_setup='source /cvmfs/dune.opensciencegrid.org/products/dune/setup_dune.sh'
+~~~
+{: .source}
+When you start the training, you will have to source this file:
+~~~
+source ~/.dune_presetup_202105.sh
 ~~~
 {: .language-bash}
 
-2) Create a working directory in "dune/app" area and "pnfs" area (these will be explained during the training):
+2) Create a working directory in the `dune/app` and `pnfs/dune` areas (these will be explained during the training):
 ~~~
-mkdir /dune/app/users/${USER}
-mkdir /pnfs/dune/scratch/${USER}
+mkdir -p /dune/app/users/${USER}
+mkdir -p /pnfs/dune/scratch/users/${USER}
 ~~~
 {: .language-bash}
 
-3) Print the date and add the output to a file:
+3) Print the date and add the output to a file named `my_first_login.txt`:
 ~~~
 date >& /dune/app/users/${USER}/my_first_login.txt
 ~~~
 {: .language-bash}
-4) With the above, we will check if you reach this point. However we want to tailor this tutorial to your preferences as much as possible. We will let you decide which animals you would like to see in future material, between: "puppy", "cat", "squirrel", "sloth", "unicorn pegasus llama". Write your desired option on the second line of the file you just created above.
+4) With the above, we will check if you reach this point. However we want to tailor this tutorial to your preferences as much as possible. We will let you decide which animals you would like to see in future material, between: "puppy", "cat", "squirrel", "sloth", "unicorn pegasus llama" (or "prefer not to say" of course). Write your desired option on the second line of the file you just created above.
 
 > ## Note
 > If you experience difficulties, refer to the support options mentioned on Indico. Precise in your message this is about the Setup step 5. Thanks!
@@ -290,16 +287,25 @@ Creating proxy .................................... Done
 Your proxy is valid until Mon Jan 25 18:09:25 2021
 ~~~
 {: .output}
-
-> ## Success
-> If you obtain a message similar to what is written above: congratulations! You are ready to go!
-{: .keypoints}
+Report this by appending the output of `voms-proxy-info` to your first login file:
+~~~
+voms-proxy-info >> /dune/app/users/${USER}/my_first_login.txt
+~~~
+{: .language-bash}
 
 > ## Issues
 > If you have issues here, please refer to the [Indico event page](https://indico.fnal.gov/event/48756/) to get support. Precise it is the Step 6 of the setup. Thanks!
 {: .challenge}
 
+> ## Success
+> If you obtain the message starting with `Your proxy is valid until`... Congratulations! You are ready to go!
+{: .keypoints}
+
+
 ## Set up on CERN machines
+
+Caution: the following instructions are for those of you who do not have a valid FNAL account but have access to CERN machines. 
+
 ### 1. Source the DUNE environment
 CERN access is mainly for ProtoDUNE collaborators. If you have a valid CERN ID and access to lxplus via ssh, you can setup your environment for this tutorial as follow:
 ~~~
