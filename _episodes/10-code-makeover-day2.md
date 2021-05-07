@@ -7,7 +7,7 @@ questions:
 objectives:
 - "Discuss code improvements for better efficiency."
 keypoints:
-- “CPU, memory, and build time optimizations are possible when good code practices."
+- “CPU, memory, and build time optimizations are possible when good code practices are followed."
 ---
 
 ## DUNE Computing Training May 2021
@@ -65,7 +65,7 @@ The example above also takes advantage of the fact that floating-point multiplie
 
 <div style="background-color: #EFEAF4; border: 1px solid #000000;text-align: center; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;color: #280071;">Code Example (GOOD)</div>
 <div style="background-color: #EBEBEB; border: 1px solid #000000;text-align: left; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px; border-left-width: thick; border-left-color: #280071;border-radius: 5px;">
-double r = TMath::Power(  TMath::Power(x,2) + TMath::Power(y,2) );
+double r = TMath::Power(  TMath::Power(x,2) + TMath::Power(y,2), 0.5);
 </div>
 
 <div style="background-color: #EBEBEB; border: 1px solid #000000;text-align: left; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;">
@@ -73,9 +73,10 @@ double r = TMath::Sqrt( x*x + y*y );
 </div>
 </div>
 
-If the things you are squaring are complicated expressions, use `TMath::Sq()` to eliminate the need for typing them out twice or creating temporary variables: `double r = TMath::Sqrt( TMath::Sq(slow_function_calculating_x()) + TMath::Sq(slow_function_calculating_y()));`
+The reason is that `TMath::Power` (or the C math library’s `pow()`) function must take the logarithm of one of its arguments, multiply it by the other argument, and exponentiate the result.  Modern CPUs have a built-in `SQRT` instruction.  Modern versions of `pow()` or `Power` may check the power argument for 2 and 0.5 and instead perform multiplies and `SQRT`, but don’t count on it.
 
-**But:** Don't call `sqrt()` if you don’t have to.
+If the things you are squaring above are complicated expressions, use `TMath::Sq()` to eliminate the need for typing them out twice or creating temporary variables.  Or worse, evaluating slow functions twice.  The optimizer cannot optimize the second call to that function because it may have side effects like printing something out to the screen or updating some internal variable and you may have intended for it to be called twice.
+
 
 <div style="display: grid;grid-template-columns: repeat(2,460px);grip-gap: 5px;width:1120px;border: 2px solid #ffffff;font-family:Courier, monospace;color: #000000;font-size: 10pt;">
 <div style="background-color: #EFEAF4; border: 1px solid #000000;text-align: center; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;color: #280071;border-left-width: thick; border-left-color: #280071;border-radius: 5px;">Code Example (BAD)</div>
@@ -83,10 +84,28 @@ If the things you are squaring are complicated expressions, use `TMath::Sq()` to
 <div style="background-color: #EFEAF4; border: 1px solid #000000;text-align: center; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;color: #280071;">Code Example (GOOD)</div>
 
 <div style="background-color: #EBEBEB; border: 1px solid #000000;text-align: left; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px; border-left-width: thick; border-left-color: #280071;border-radius: 5px;">
-if ( TMath::Sqrt( x*x + y*y ) < rcut)<br>
-{<br>
-  do_something();<br>
-}<br>
+double r = TMath::Sqrt( slow_function_calculating_x()*slow_function_calculating_x() +  slow_function_calculating_y()*slow_function_calculating_y()  );
+</div>
+
+<div style="background-color: #EBEBEB; border: 1px solid #000000;text-align: left; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;">
+double r = TMath::Sqrt( TMath::Sq(slow_function_calculating_x()) + TMath::Sq(slow_function_calculating_y()));
+</div>
+</div>
+
+
+**Don't call `sqrt()` if you don’t have to.**
+
+<div style="display: grid;grid-template-columns: repeat(2,460px);grip-gap: 5px;width:1120px;border: 2px solid #ffffff;font-family:Courier, monospace;color: #000000;font-size: 10pt;">
+<div style="background-color: #EFEAF4; border: 1px solid #000000;text-align: center; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;color: #280071;border-left-width: thick; border-left-color: #280071;border-radius: 5px;">Code Example (BAD)</div>
+
+<div style="background-color: #EFEAF4; border: 1px solid #000000;text-align: center; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;color: #280071;">Code Example (GOOD)</div>
+
+<div style="background-color: #EBEBEB; border: 1px solid #000000;text-align: left; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px; border-left-width: thick; border-left-color: #280071;border-radius: 5px;">
+double r = TMath::Sqrt( slow_function_calculating_x()*slow_function_calculating_x() +  slow_function_calculating_y()*slow_function_calculating_y()  );
+if (TMath::Sqrt( x*x + y*y ) < rcut )  
+{  
+  do_something();
+}  
 </div>
 
 <div style="background-color: #EBEBEB; border: 1px solid #000000;text-align: left; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;">
@@ -94,15 +113,23 @@ double r = TMath::Sqrt( x*x + y*y );
 </div>
 </div>
 
-Try not ot use a line such as this: `double rcutsq = rcut*rcut;`, instead execute:
+hopefully factor out of loops this line:
 
 ~~~
-if ( x*x y*y < rcutsq)
-{
-  do_something();
-}
+double rcutsq = rcut*rcut;
 ~~~
 {: .source}
+
+and then execute:
+
+~~~
+if ( x*x + y*y < rcutsq)  
+{  
+  do_something();  
+}  
+~~~
+{: .source}
+
 
 **Use binary search features in the STL rather than a step-by-step lookup.**
 
@@ -124,7 +151,7 @@ for (size_t i=0; i<my_vector.size(); ++i)
 {: .source}
 
 If you have to search through a list of items many times, it is best to sort it and use std::lower_bound; see the example [here][cpp-lower-bound].
-`std::map` is sorted, and `std::unordered_map` uses a quicker hash table.  Generally looking things up in maps is `O(n*log(n))` and in a `std::unordered_map` is `O(1)` in CPU time, while searching for it from the beginning is `O(n)`.  The bad example above can be sped up by an average factor of 2 by putting a break statement after `found=true;` if you want to find the first instance of an object.  If you want to find the last instance, just count backwards and stop at the first one you find; or use `std::upper_bound`.
+`std::map` is sorted, and `std::unordered_map` uses a quicker hash table.  Generally looking things up in maps is `O(log(n))` and in a `std::unordered_map` is `O(1)` in CPU time, while searching for it from the beginning is `O(n)`.  The bad example above can be sped up by an average factor of 2 by putting a break statement after `found=true;` if you want to find the first instance of an object.  If you want to find the last instance, just count backwards and stop at the first one you find; or use `std::upper_bound`.
 
 **Don’t needlessly mix floats and doubles.**
 

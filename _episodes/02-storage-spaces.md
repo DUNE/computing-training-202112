@@ -90,7 +90,7 @@ df -h
 ~~~
 {: .language-bash}
 
-> ## Excercise 1
+> ## Exercise 1
 > From the output of the `df -h` command, identy:
 * the home area
 * the NAS storage spaces
@@ -113,7 +113,7 @@ ifdh cp root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/p
 
 **Resource:** [idfh commands](https://cdcvs.fnal.gov/redmine/projects/ifdhc/wiki/Ifdh_commands)
 
-> ## Excercise 2
+> ## Exercise 2
 > todo!
 {: .challenge}
 
@@ -123,7 +123,7 @@ The eXtended ROOT daemon is software framework designed for accessing data from 
 XRootD is most suitable for read-only data access.
 [XRootD Man pages](https://xrootd.slac.stanford.edu/docs.html)
 
-> ## Excercise 3
+> ## Exercise 3
 > What are the following commands doing?
 > ~~~
 > xrdfs root://fndca1.fnal.gov:1094/ ls /pnfs/fnal.gov/usr/dune/scratch/users
@@ -133,11 +133,11 @@ XRootD is most suitable for read-only data access.
 
 ## Let's practice
 
-> ## Excercise 4
+> ## Exercise 4
 > todo!
 {: .challenge}
 
-> ## Excercise 5
+> ## Exercise 5
 > todo!
 {: .challenge}
 
