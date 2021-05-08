@@ -48,8 +48,11 @@ Maintainers of this GitHub space are:
 
 A list of contributors to the lesson can be found in [AUTHORS](AUTHORS)
 
+The lesson framework utilizes the the [Software Carpentry's styles template][carpentry-source].
+
 ## Citation
 
 To cite this lesson, please consult with [CITATION](CITATION)
 
 [indico-event]: https://indico.fnal.gov/event/48756/
+[carpentry-source]: https://github.com/carpentries/lesson-example
