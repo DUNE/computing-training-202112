@@ -3,7 +3,7 @@ title: Quiz on Best Programming Practices
 teaching: 30
 exercises: 0
 questions:
-- “Do you know your stuff?"
+- “Is programming your forte?"
 objectives:
 - "Validate your understanding by working through some examples."
 keypoints:

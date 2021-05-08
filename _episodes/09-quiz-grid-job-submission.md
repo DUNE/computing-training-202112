@@ -3,9 +3,10 @@ title: Quiz on Grid Job Submission
 teaching: 30
 exercises: 0
 questions:
-- “Do you know your stuff?"
+questions:
+- “Do you understand grid job submission protocols?"
 objectives:
-- "Validate your understanding by working through some examples."
+- "Validate your understanding by working through and discussing answers to several questions."
 keypoints:
 - “Practice makes perfect."
 ---
