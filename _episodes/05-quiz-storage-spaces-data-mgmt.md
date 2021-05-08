@@ -1,13 +1,13 @@
 ---
-title: Quiz on Storage Spaces and DM
-teaching: 30
-exercises: 0
-questions:
-- “Do you understand the storage spaces and data management principles?"
-objectives:
-- "Validate your understanding by working through and discussing answers to several questions."
+title: Quiz on Storage Spaces and Data Mgmt  
+teaching: 30  
+exercises: 0  
+questions:  
+- Do you understand the storage spaces and data management principles?  
+objectives:  
+- Validate your understanding by working through and discussing answers to several questions.  
 keypoints:
-- “Practice makes perfect."
+- Practice makes perfect.  
 ---
 
 ## Quiz Time

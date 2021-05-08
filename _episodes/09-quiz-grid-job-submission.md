@@ -4,11 +4,11 @@ teaching: 30
 exercises: 0
 questions:
 questions:
-- “Do you understand grid job submission protocols?"
+- Do you understand grid job submission protocols?
 objectives:
-- "Validate your understanding by working through and discussing answers to several questions."
+- Validate your understanding by working through and discussing answers to several questions.
 keypoints:
-- “Practice makes perfect."
+- Practice makes perfect.
 ---
 
 ## Quiz Time

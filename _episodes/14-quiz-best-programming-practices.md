@@ -3,11 +3,11 @@ title: Quiz on Best Programming Practices
 teaching: 30
 exercises: 0
 questions:
-- “Is programming your forte?"
+- Is programming your forte?
 objectives:
-- "Validate your understanding by working through some examples."
+- Validate your understanding by working through some examples.
 keypoints:
-- “Practice makes perfect."
+- Practice makes perfect.
 ---
 
 ## Quiz Time
