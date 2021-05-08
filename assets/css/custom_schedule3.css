@@ -52,10 +52,10 @@
 
 #wrapper {
   display: grid;                             /* 1 */
-  grid-template-columns: repeat(4, 240px);   /* 4 columns wide, 240px total fixed width */
-  grid-auto-rows: 60px;                      /* default cell height */
+  grid-template-columns: repeat(4, 250px);   /* 4 columns wide, 240px total fixed width */
+  grid-auto-rows: 70px;                      /* default cell height */
   grid-gap: 5px;                             /* cell spacing */
-  width: 975px;                              /* 4x240+3x5 */
+  width: 1015px;                             /* 4x250+3x5 */
   border: 2px solid #ffffff;                 /* hide it white */
   font-family: Helvetica, Sans-Serif;
   color: #000000;
@@ -111,4 +111,10 @@
   padding-right: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
-}
+  }
+
+  span.instructors {
+      font-size:12px;
+      font-family:'Times New Roman';
+      color:#000000;
+  }
