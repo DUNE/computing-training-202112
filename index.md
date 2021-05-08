@@ -53,7 +53,7 @@ By the end of this workshop, participants will know how to:
 You will need a valid FNAL or CERN account to be able to do the tutorial and be on the DUNE Collaboration member list. If you do not, contact your team leader.
 
 
-<h2 id="schedule">Schedule Custom</h2>
+<h2 id="schedule">Schedule by Day</h2>
 
 
 {% include custom_schedule3.html %}
