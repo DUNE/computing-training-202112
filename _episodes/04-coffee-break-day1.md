@@ -23,5 +23,6 @@ Breakout Room 2: Michael Kirby and Steven Timm
 Breakout Room 3: Kenneth Herner and Tom Junk  
 Breakout Room 4:   
 
+Both the main room and breakout rooms will be available during the coffee breaks.
 
 {%include links.md%} 

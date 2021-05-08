@@ -8,7 +8,7 @@ objectives:
 - Clarify a vague point.
 - Network with a few others to add perspective.
 keypoints:
-- Coffee is good, expressos delicious.
+- Coffee is good, expresso delicious.
 - Networking with colleagues is essential.
 ---
 
