@@ -1,13 +1,13 @@
 ---
-title: Code-makeover
+title: Code-makeover Code Efficiency
 teaching: 90
 exercises: 0
 questions:
-- “Can CPU efficiencies be improved via code?"
+- Can CPU efficiencies be improved via code?
 objectives:
-- "Discuss code improvements for better efficiency."
+- Discuss code improvements for better efficiency.
 keypoints:
-- “CPU, memory, and build time optimizations are possible when good code practices are followed."
+- CPU, memory, and build time optimizations are possible when good code practices are followed.
 ---
 
 ## DUNE Computing Training May 2021
