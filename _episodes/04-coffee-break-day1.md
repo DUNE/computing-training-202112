@@ -3,7 +3,7 @@ title: Coffee Break
 teaching: 30
 exercises: 0
 questions:
-- Are you glad to have joined?
+- Keep working, take a break, or network with colleagues?
 objectives:  
 - Clarify a vague point.
 - Network with a few others to add perspective.
