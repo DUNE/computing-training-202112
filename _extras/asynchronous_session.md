@@ -1,13 +1,6 @@
 ---
 title: Asychronous Session
-teaching: 60
-exercises: 0
-questions:
-- What is the question
-objectives:  
-- Objectives here
-keypoints:
-- Keypoints here
+
 ---
 ## Objectives
 

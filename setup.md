@@ -3,18 +3,18 @@ title: Mission Setup
 teaching: 60
 exercises: 0
 questions:
-- “How do I prepare for the DUNE computing tutorial”
+- How do I prepare for the DUNE computing tutorial?
 objectives:  
-- “Get ready to do the tutorial”
-- “Understand the authentication process”
-- “Set up your computing environment for DUNE”
-- “Set up grid access and job submission”
+- Get ready to do the tutorial
+- Understand the authentication process
+- Set up your computing environment for DUNE
+- Set up grid access and job submission
 keypoints:
-- “Kerberos is FNAL’s method for ensuring strong authentication to its computing resources”
-- “Computing resources at FNAL are accessed using the Secure SHell protocol”
-- “Specific computer nodes are accessed by DUNE users”
-- “Access is streamlined using configuration files”
-- “CERN users configure and access CERN resources instead”
+- Kerberos is FNAL’s method for ensuring strong authentication to its computing resources
+- Computing resources at FNAL are accessed using the Secure SHell protocol
+- Specific computer nodes are accessed by DUNE users
+- Access is streamlined using configuration files
+- CERN users configure and access CERN resources instead
 ---
 ## Objectives
 

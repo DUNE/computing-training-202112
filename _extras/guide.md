@@ -12,7 +12,7 @@ Zoom, you will "Share Screen" then select your "Full Desktop" followed by the bl
 
 Instructors are encouraged to rehearse their presentation on a Zoom link in advance of their presentations, recording the rehearsal, and in playback verify the audio track is sufficent, and that the terminal settings are adequate for a laptop user, for example.
 
-An example screenshot follows:
+An [example screenshot]({{site.baseurl}}/fig/zoom-window-example.png) follows:  <!--placeholder for link reference-->
 
 {%include figure.html url="" max-width="50%"
    file="/fig/zoom-window-example.png"

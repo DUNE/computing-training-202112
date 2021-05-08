@@ -55,9 +55,8 @@ You will need a valid FNAL or CERN account to be able to do the tutorial and be 
 
 <h2 id="schedule">Schedule by Day</h2>
 
-
 {% include custom_schedule3.html %}
 
-
+An [asynchronous session]({{site.baseurl}}/asynchronous.md) (FIXME) is designed as later day acivities for the first two days of the workshop.
 
 {% include links.md %}
