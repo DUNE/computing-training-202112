@@ -2,9 +2,7 @@
 DUNE Computing Training May 2021 edition
 ========================================
 
-* THIS SITE IS A WORK IN PROGRESS
-
-This repository holds the source code of the webpage that is rendered [here](https://dune.github.io/computing-training/). 
+This repository holds the source code of the webpage that is rendered [here](https://dune.github.io/computing-training-202105/). 
 
 This training module is part of an initiative of the [DUNE Computing Consortium](https://dunescience.org/).
 
@@ -12,7 +10,7 @@ This edition of the computing training extends from the [January 2021 training](
 
 When:
 
-May 12-13-14, Wednesday to Friday, from 8:00 AM - 12:30 PM CST
+2021 May 12-13-14, Wednesday to Friday, from 8:00 AM - 12:30 PM CST
 
 What:
 
@@ -23,7 +21,7 @@ New! There will be quizzes and special sessions “expert in the room” to answ
 
 How to attend?
 
-Registration on Indico. Participants must have a valid FNAL or CERN account. 
+Participants must have a valid FNAL or CERN account. The Indico site is [https://indico.fnal.gov/event/48756/][indico-event]
 
 Apply immediately if you do not yet have accounts at either lab (info).
 
@@ -44,7 +42,6 @@ New slack channel: #computing_training_may2021
 Maintainers of this GitHub space are:
 
 * Claire David
-* Anne Heavey
 * David DeMuth
 
 ## Authors
@@ -54,3 +51,5 @@ A list of contributors to the lesson can be found in [AUTHORS](AUTHORS)
 ## Citation
 
 To cite this lesson, please consult with [CITATION](CITATION)
+
+[indico-event]: https://indico.fnal.gov/event/48756/
