@@ -20,12 +20,15 @@ DUNE simulation, reconstruction and analysis jobs take a lot of memory and CPU t
 
 ### CPU optimization:
 
-**Run  with the prof build when launching big jobs.**  The “debug” builds are generally much slower, by a factor of four or more.  Often this difference is so stark that the time spent repeatedly waiting for a slow program to chug through the first trigger record in an interactive debugging session is more costly than the inconvenience of not being able to see some of the variables in the debugger.  If you are not debugging, then there really is (almost) no reason to use the “debug” builds.  If your program produces a different result when run with the debug build and the prof build (and it’s not just the random seed, then there is a bug to be investigated.
+**Run  with the “prof” build when launching big jobs.**  While both the "debug" and "prof" builds have debugging and profiling information included in the executables and shared libraries, the "prof" build has a high level of compiler optimization turned on while "debug" has optimizations disabled.  Debugging with the "prof" build can be done, but it is more difficult because operations can be reordered and variables put in CPU registers instead of inspectable memory. The “debug” builds are generally much slower, by a factor of four or more.  Often this difference is so stark that the time spent repeatedly waiting for a slow program to chug through the first trigger record in an interactive debugging session is more costly than the inconvenience of not being able to see some of the variables in the debugger.  If you are not debugging, then there really is (almost) no reason to use the “debug” builds.  If your program produces a different result when run with the debug build and the prof build (and it’s not just the random seed), then there is a bug to be investigated.
 
 **Run gprof:**   You might be surprised at what is actually taking all the time in your program.  There is abundant documentation on the [web][gnu-manuals-gprof].
 `Mrb` compiles code to be compatible with `gprof` (even the debug builds.  But there is no reason to profile a debug build and there is no need to hand-optimize something the compiler will optimize anyway, and which may even hurt the optimality of the compiler-optimized version.
 
-**The Debugger can be used as a simple profiler:** If your program is horrendously slow (and/or it used to be fast), pausing it at any time is likely to pause it while it is doing its slow thing.  Run your program in the debugger, pause it when you think it is doing its slow thing (i.e. after initialization), and look at the call stack.  This technique can be handy because you can then inspect the values of variables that might give a clue if there’s a bug making your program slow.  (e.g. looping over 10<sup>15</sup> wires in the Far Detector, which would indicate a bug.).
+**The Debugger can be used as a simple profiler:** If your program is horrendously slow (and/or it used to be fast), pausing it at any time is likely to pause it while it is doing its slow thing.  Run your program in the debugger, pause it when you think it is doing its slow thing (i.e. after initialization), and look at the call stack.  This technique can be handy because you can then inspect the values of variables that might give a clue if there’s a bug making your program slow.  (e.g. looping over 10<sup>15</sup> wires in the Far Detector, which would indicate a bug.**.
+
+**Don't perform calculations or do file i/o that will only later  be ignored.**  It's just a waste of time.  If you need to pre-write some code because in future versions of your program the calculation is not ignored, comment it out, or put a test around it so it doesn't get executed when it is not needed.
+
 
 **Extract constant calculations out of loops.**
 
@@ -92,7 +95,6 @@ double r = TMath::Sqrt( TMath::Sq(slow_function_calculating_x()) + TMath::Sq(slo
 </div>
 </div>
 
-
 **Don't call `sqrt()` if you don’t have to.**
 
 <div style="display: grid;grid-template-columns: repeat(2,460px);grip-gap: 5px;width:1120px;border: 2px solid #ffffff;font-family:Courier, monospace;color: #000000;font-size: 10pt;">
@@ -101,18 +103,22 @@ double r = TMath::Sqrt( TMath::Sq(slow_function_calculating_x()) + TMath::Sq(slo
 <div style="background-color: #EFEAF4; border: 1px solid #000000;text-align: center; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;color: #280071;">Code Example (GOOD)</div>
 
 <div style="background-color: #EBEBEB; border: 1px solid #000000;text-align: left; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px; border-left-width: thick; border-left-color: #280071;border-radius: 5px;">
-double r = TMath::Sqrt( slow_function_calculating_x()*slow_function_calculating_x() +  slow_function_calculating_y()*slow_function_calculating_y()  );
-if (TMath::Sqrt( x*x + y*y ) < rcut )  
-{  
-  do_something();
-}  
+if (TMath::Sqrt( x*x + y*y ) < rcut )<br>
+{<br>
+  do_something();<br>
+}
 </div>
 
 <div style="background-color: #EBEBEB; border: 1px solid #000000;text-align: left; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;">
-double r = TMath::Sqrt( x*x + y*y );
+double rcutsq = rcut*rcut;<br>
+if (x*x + y*y < rcutsq)<br>
+{<br>
+  do_something();<br>
+}
 </div>
 </div>
 
+<!--
 hopefully factor out of loops this line:
 
 ~~~
@@ -129,7 +135,7 @@ if ( x*x + y*y < rcutsq)
 }  
 ~~~
 {: .source}
-
+-->
 
 **Use binary search features in the STL rather than a step-by-step lookup.**
 
@@ -183,9 +189,7 @@ for (size_t i=0; i<results.size(); ++i)<br>
 </div>
 </div>
 
-
-
-**Check for NaN and Inf.**  While your program will still function if an intermediate result is `NaN` or `Inf` (and it may even produce valid output, especially if the `NaN` or `Inf` is irrelevant), processing `NaN`s and `Inf`s is slower than processing valid numbers.  Letting a `NaN` or an `Inf` propagate through your calculations is almost never the right thing to do - check functions for domain validity (square roots of negative numbers, logarithms of zero or negative numbers, divide by zero, etc. when you execute them and decide at that point what to do.  If you have a lengthy computation and the end result is `NaN`, it is often ambiguous at what stage the computation failed.
+**Check for NaN and Inf.**  While your program will still function if an intermediate result is `NaN` or `Inf` (and it may even produce valid output, especially if the `NaN` or `Inf` is irrelevant), processing `NaN`s and `Inf`s is slower than processing valid numbers.  Letting a `NaN` or an `Inf` propagate through your calculations is almost never the right thing to do - check functions for domain validity (square roots of negative numbers, logarithms of zero or negative numbers, divide by zero, etc.) when you execute them and decide at that point what to do.  If you have a lengthy computation and the end result is `NaN`, it is often ambiguous at what stage the computation failed.
 
 **Minimize cloning TH1’s.**  It is really slow.
 

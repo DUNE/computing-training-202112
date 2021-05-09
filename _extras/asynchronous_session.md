@@ -1,5 +1,7 @@
 ---
+layout: page
 title: Asychronous Session
+permalink: /asynchronous/
 
 ---
 ## Objectives
