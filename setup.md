@@ -155,7 +155,7 @@ ssh username@dunegpvmXX.fnal.gov
 {: .language-bash}
 
 where XX is a number from 01 to 15. 
-If you experience long delays in loading programs or graphical output, you can try connecting with VNC. More info: Using VNC Connections on the dunegpvms.
+If you experience long delays in loading programs or graphical output, you can try connecting with VNC. More info: [Using VNC Connections on the dunegpvms][dunegpvm-vnc].
 
 ## 3. Get a clean shell
 To run DUNE software, it is necessary to have a 'clean login'. What is meant by clean here? If you work on other experiment(s), you may have some environment variables defined (for NOvA, MINERvA, MicroBooNE). Theses may conflict with the DUNE environment ones.
@@ -222,7 +222,7 @@ Setting up DUNE UPS area... /cvmfs/dune.opensciencegrid.org/products/dune/
 ## 5. Exercise! (it's easy)
 This exercise will help organizers see if you reached this step or need help.
 
-1) Start in your home area `cd ~` and create the file ```.dune_presetup_202105.sh```. Write in it the following:
+1) Start in your home area `cd ~` and create the file ```.dune_presetup_202105.sh```. Files starting with a dot are hidden files and can be seen with the command `ls -la` (**a** for **a**ll files). Write in it the following:
 ~~~
 export DUNETPC_VERSION=v09_22_02
 alias dune_setup='source /cvmfs/dune.opensciencegrid.org/products/dune/setup_dune.sh'
@@ -344,7 +344,7 @@ If however you are experiencing issues, please contact us as soon as possible. P
 {: .checklist}
 
 > ## Issues
-> If you have issues here, please refer to the [Indico event page](https://indico.fnal.gov/event/48756/) to get support. Precise you are connecting to a CERN machine. Thanks!
+> If you have issues here, please refer to the [Indico event page](https://indico.fnal.gov/event/48756/) to get support. Please note that you are on a CERN machine in your message. Thanks!
 {: .discussion}
 
 
