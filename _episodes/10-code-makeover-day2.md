@@ -25,7 +25,10 @@ DUNE simulation, reconstruction and analysis jobs take a lot of memory and CPU t
 **Run gprof:**   You might be surprised at what is actually taking all the time in your program.  There is abundant documentation on the [web][gnu-manuals-gprof].
 `Mrb` compiles code to be compatible with `gprof` (even the debug builds.  But there is no reason to profile a debug build and there is no need to hand-optimize something the compiler will optimize anyway, and which may even hurt the optimality of the compiler-optimized version.
 
-**The Debugger can be used as a simple profiler:** If your program is horrendously slow (and/or it used to be fast), pausing it at any time is likely to pause it while it is doing its slow thing.  Run your program in the debugger, pause it when you think it is doing its slow thing (i.e. after initialization), and look at the call stack.  This technique can be handy because you can then inspect the values of variables that might give a clue if there’s a bug making your program slow.  (e.g. looping over 10<sup>15</sup> wires in the Far Detector, which would indicate a bug.).
+**The Debugger can be used as a simple profiler:** If your program is horrendously slow (and/or it used to be fast), pausing it at any time is likely to pause it while it is doing its slow thing.  Run your program in the debugger, pause it when you think it is doing its slow thing (i.e. after initialization), and look at the call stack.  This technique can be handy because you can then inspect the values of variables that might give a clue if there’s a bug making your program slow.  (e.g. looping over 10<sup>15</sup> wires in the Far Detector, which would indicate a bug.**.
+
+**Don't perform calculations or do file i/o that will only later  be ignored.**  It's just a waste of time.  If you need to pre-write some code because in future versions of your program the calculation is not ignored, comment it out, or put a test around it so it doesn't get executed when it is not needed.
+
 
 **Extract constant calculations out of loops.**
 
@@ -186,9 +189,7 @@ for (size_t i=0; i<results.size(); ++i)<br>
 </div>
 </div>
 
-
-
-**Check for NaN and Inf.**  While your program will still function if an intermediate result is `NaN` or `Inf` (and it may even produce valid output, especially if the `NaN` or `Inf` is irrelevant), processing `NaN`s and `Inf`s is slower than processing valid numbers.  Letting a `NaN` or an `Inf` propagate through your calculations is almost never the right thing to do - check functions for domain validity (square roots of negative numbers, logarithms of zero or negative numbers, divide by zero), etc. when you execute them and decide at that point what to do.  If you have a lengthy computation and the end result is `NaN`, it is often ambiguous at what stage the computation failed.
+**Check for NaN and Inf.**  While your program will still function if an intermediate result is `NaN` or `Inf` (and it may even produce valid output, especially if the `NaN` or `Inf` is irrelevant), processing `NaN`s and `Inf`s is slower than processing valid numbers.  Letting a `NaN` or an `Inf` propagate through your calculations is almost never the right thing to do - check functions for domain validity (square roots of negative numbers, logarithms of zero or negative numbers, divide by zero, etc.) when you execute them and decide at that point what to do.  If you have a lengthy computation and the end result is `NaN`, it is often ambiguous at what stage the computation failed.
 
 **Minimize cloning TH1’s.**  It is really slow.
 
