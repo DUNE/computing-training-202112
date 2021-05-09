@@ -35,7 +35,7 @@ Coordinator: Heidi Schellman (Oregon State University)
 The workshop spans three days.
 
 {%include figure.html url="" max-width="75%"
-   file="/fig/202105_computing_training_May.png"
+   file="/fig/Schedule_computing_training_202105.png"
    alt="May 2021 Workshop Schedule" caption="May 2021 Workshop Schedule" %}
 
 ## Mentors
