@@ -92,7 +92,6 @@ double r = TMath::Sqrt( TMath::Sq(slow_function_calculating_x()) + TMath::Sq(slo
 </div>
 </div>
 
-
 **Don't call `sqrt()` if you don’t have to.**
 
 <div style="display: grid;grid-template-columns: repeat(2,460px);grip-gap: 5px;width:1120px;border: 2px solid #ffffff;font-family:Courier, monospace;color: #000000;font-size: 10pt;">
@@ -101,18 +100,22 @@ double r = TMath::Sqrt( TMath::Sq(slow_function_calculating_x()) + TMath::Sq(slo
 <div style="background-color: #EFEAF4; border: 1px solid #000000;text-align: center; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;color: #280071;">Code Example (GOOD)</div>
 
 <div style="background-color: #EBEBEB; border: 1px solid #000000;text-align: left; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px; border-left-width: thick; border-left-color: #280071;border-radius: 5px;">
-double r = TMath::Sqrt( slow_function_calculating_x()*slow_function_calculating_x() +  slow_function_calculating_y()*slow_function_calculating_y()  );
-if (TMath::Sqrt( x*x + y*y ) < rcut )  
-{  
-  do_something();
-}  
+if (TMath::Sqrt( x*x + y*y ) < rcut )<br>
+{<br>
+  do_something();<br>
+}
 </div>
 
 <div style="background-color: #EBEBEB; border: 1px solid #000000;text-align: left; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;">
-double r = TMath::Sqrt( x*x + y*y );
+double rcutsq = rcut*rcut;<br>
+if (x*x + y*y < rcutsq)<br>
+{<br>
+  do_something();<br>
+}
 </div>
 </div>
 
+<!--
 hopefully factor out of loops this line:
 
 ~~~
@@ -129,7 +132,7 @@ if ( x*x + y*y < rcutsq)
 }  
 ~~~
 {: .source}
-
+-->
 
 **Use binary search features in the STL rather than a step-by-step lookup.**
 
