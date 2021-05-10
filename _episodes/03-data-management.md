@@ -138,7 +138,9 @@ root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune
 When we are analyzing large numbers of files in a group of batch jobs, we use a SAM snapshot to describe the full set of files that we are going to analyze and create a SAM Project based on that. Each job will then come up and ask SAM to give it the next file in the list. SAM has some capability to grab the nearest copy of the file. For instance if you are running at CERN and analyzing this file it will automatically take it from the CERN storage space EOS.
 
 > ## Exercise 2
-> Coming soon!
+> * use the samweb describe-definition command to see the dimensions of data set PDSPProd4_MC_1GeV_reco1_sce_datadriven_v1
+> * use the samweb list-definition-files command with the --summary option to see the total size of PDSPProd4_MC_1GeV_reco1_sce_datadriven_v1
+> * use the samweb take-snapshot command to make a snapshot of PDSPProd4_MC_1GeV_reco1_sce_datadriven_v1
 {: .challenge}
 
 ## What is UPS and why do we need it?
