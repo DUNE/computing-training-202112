@@ -125,21 +125,17 @@ XRootD is most suitable for read-only data access.
 
 > ## Exercise 3
 > What are the following commands doing?
-> ~~~
+>~~~
 > xrdfs root://fndca1.fnal.gov:1094/ ls /pnfs/fnal.gov/usr/dune/scratch/users
 > pnfs2xrootd /pnfs/dune/scratch/users/ 
+>~~~
 > {: .language-bash}
 {: .challenge}
 
 ## Let's practice
 
-> ## Exercise 4
-> Coming soon!
-{: .challenge}
-
-> ## Exercise 5
-> Coming soon!
-{: .challenge}
+The following sessions of this training will give you the opportunity to understand more while using these tools yourself. This takes some time to learn.  
+Any questions so far?
 
 ## Useful links to bookmark
 
