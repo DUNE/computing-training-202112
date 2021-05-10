@@ -37,11 +37,13 @@ export SAM_EXPERIMENT=dune
 
 ### What is Rucio?
 Rucio is the next-generation Data Replica service and is part of DUNE's new Distributed Data Management (DDM) system that is currently in deployment. 
-Rucio has two functions:  (1) A rule-based system to get files to Rucio Storage Elements around the world and keep them there and (2) To return the
-"nearest" replica of any data file for use either in interactive or batch file use.  It is expected that most DUNE users will not be regularly using
-direct Rucio commands, but other wrapper scripts that calls them indirectly.  
-As of the date of this May 2021 tutorial (a) the Rucio client is not installed as a part of the standard DUNE client software
-and (b) most DUNE users are not yet enabled to use it.  But when we do, some of the commands will look like this:
+Rucio has two functions:
+1. A rule-based system to get files to Rucio Storage Elements around the world and keep them there.
+2. To return the "nearest" replica of any data file for use either in interactive or batch file use.  It is expected that most DUNE users will not be regularly using direct Rucio commands, but other wrapper scripts that calls them indirectly.
+
+As of the date of this May 2021 tutorial:
+- The Rucio client is not installed as a part of the standard DUNE client software
+- Most DUNE users are not yet enabled to use it.  But when we do, some of the commands will look like this:
 
 ~~~
 rucio list-file-replicas protodune-sp:np04_raw_run005801_0001_dl1.root

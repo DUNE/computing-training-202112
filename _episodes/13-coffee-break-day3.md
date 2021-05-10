@@ -3,24 +3,22 @@ title: Coffee Break
 teaching: 30
 exercises: 0
 questions:
-- Keep working, take a break, or network with colleagues?
+- How to take a good break?
 objectives:  
-- Clarify a vague point.
-- Network with a few others to add perspective.
+- Relax
+- Clarify a vague point if it can't wait until the next session.
+- Socialize with other participants to add perspective.
 keypoints:
-- Coffee is good, expresso delicious, and tea terrific.
+- Coffee is good.
 - Networking with colleagues is essential.
 ---
 
 ## Coffee Time
 
-We hope that you will utilize the coffee break time to wrap on the project at hand, but to reach out to colleagues with any additional questions.
+We hope that you will utilize the coffee break time to relax. Of course if you want to wrap on the project at hand, use this extra time. Feel free to ask questions in the live documents.
 
-Several breakout rooms are created for this time, each hosted by a DUNE Computing Consortium member, and could perhaps respond to questions related to your analysis, or of the progress being made by the Consorium.
+We want to offer the possibility to exchange with the other participants. To this end, several breakout rooms will be opened during the breaks. Enjoy some social time and meet your new colleagues!
 
-Breakout Room 1: Heidi Schellman and Spokesperson?  
-Breakout Room 2: Michael Kirby and Steven Timm  
-Breakout Room 3: Kenneth Herner and Tom Junk  
-Breakout Room 4:   
+Both the main room and breakout rooms will be available during the coffee breaks.
 
 {%include links.md%} 

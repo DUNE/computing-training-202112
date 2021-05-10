@@ -38,9 +38,11 @@ The workshop spans three days.
    file="/fig/Schedule_computing_training_202105.png"
    alt="May 2021 Workshop Schedule" caption="May 2021 Workshop Schedule" %}
 
-## Mentors
+## Support
+There will be live documents linked from Indico for each session. You can write questions there, anonymously or not, and experts will reply. The chat on Zoom can quickly saturate so this is a more convenient solution and proved very successful at the previous training. We will collect all questions and release a Q&A after the event.
 
-## Getting help afterwards
+You can join DUNE's Slack: `dunescience.slack.com`. We created a special channel `#computing_training_may2021` for technical support.
+
 
 {%include links.md%} 
 

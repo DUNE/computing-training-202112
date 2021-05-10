@@ -249,7 +249,7 @@ date >& /dune/app/users/${USER}/my_first_login.txt
 4) With the above, we will check if you reach this point. However we want to tailor this tutorial to your preferences as much as possible. We will let you decide which animals you would like to see in future material, between: "puppy", "cat", "squirrel", "sloth", "unicorn pegasus llama" (or "prefer not to say" of course). Write your desired option on the second line of the file you just created above.
 
 > ## Note
-> If you experience difficulties, refer to the support options mentioned on Indico. Precise in your message this is about the Setup step 5. Thanks!
+> If you experience difficulties, refer to the support options mentioned on Indico. Please mention in your message this is about the Setup step 5. Thanks!
 {: .challenge}
 
 ## 6. Getting setup for streaming and grid access
@@ -294,7 +294,7 @@ voms-proxy-info >> /dune/app/users/${USER}/my_first_login.txt
 {: .language-bash}
 
 > ## Issues
-> If you have issues here, please refer to the [Indico event page](https://indico.fnal.gov/event/48756/) to get support. Precise it is the Step 6 of the setup. Thanks!
+> If you have issues here, please refer to the [Indico event page](https://indico.fnal.gov/event/48756/) to get support. Please mention in your message it is the Step 6 of the setup. Thanks!
 {: .challenge}
 
 > ## Success
@@ -333,7 +333,7 @@ PDSPProd2_protoDUNE_sp_reco_35ms_sce_off_23473772_0_452d9f89-a2a1-4680-ab72-853a
 
 ### 3. Notify us
 You should be good to go, but to inform us you reached this step, please notify us at the mailing list we provided on the [Indico event page](https://indico.fnal.gov/event/48756/).
-If however you are experiencing issues, please contact us as soon as possible. Precise it is about the "Setup on CERN machine" and we will assist you.
+If however you are experiencing issues, please contact us as soon as possible. Please mention it is about the "Setup on CERN machines" and we will assist you.
 
 > ## Success
 > If you can list the files above, you should be able to do most of the tutorial on LArSoft.

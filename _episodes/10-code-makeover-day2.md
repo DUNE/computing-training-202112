@@ -1,11 +1,11 @@
 ---
-title: Code-makeover Code Efficiency
+title: Code-makeover on how to code for better efficiency
 teaching: 90
 exercises: 0
 questions:
-- Can CPU efficiencies be improved via code?
+- How to write the most efficient code?
 objectives:
-- Discuss code improvements for better efficiency.
+- Learn good tips and tools to improve your code.
 keypoints:
 - CPU, memory, and build time optimizations are possible when good code practices are followed.
 ---

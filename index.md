@@ -29,7 +29,7 @@ Each part will have a little introduction followed by hands-on sessions in break
 
 > ## Prerequisites
 >
-> Command line experience is necessary for this lesson. We recommend the
+> Command line experience is necessary for this training. We recommend the
 > participants to go through
 > [The Unix Shell](https://swcarpentry.github.io/shell-novice/), if new to the
 > command line (also known as terminal or shell).  
@@ -45,9 +45,9 @@ By the end of this workshop, participants will know how to:
 
 > ## Getting Started
 >
-> To get started, follow the directions in the "[Setup](
-> {{ page.root }}/setup.html)" tab to download data to your computer and follow
-> any installation instructions.
+> First step: follow the directions in the "[Setup](
+> {{ page.root }}/setup.html)" to arrived prepared for this event. Follow the instructions; we give you an easy exercise 
+> to make sure you are good to go.
 {: .callout}
 
 You will need a valid FNAL or CERN account to be able to do the tutorial and be on the DUNE Collaboration member list. If you do not, contact your team leader.

@@ -38,16 +38,22 @@ The configuration storage is particularly useful if you receive a data file from
 
 ### Getting set up to try the tools
 
-If you haven't already, log in to a `dunegpvm*.fnal.gov` machine and set up your environment:
+Log in to a `dunegpvm*.fnal.gov` machine and set up your environment:
 
 ```bash
- source /cvmfs/dune.opensciencegrid.org/products/dune/setup_dune.sh
- setup dunetpc v09_22_02 -q e19:prof
- setup_fnal_security
+source ~/.dune_presetup_202105.sh
+dune_setup
+setup dunetpc $DUNETPC_VERSION -q e19:prof
+setup_fnal_security
 ```
 
 
-The examples below will refer to files in `dCache` at Fermilab which can best be accessed via `xrootd`. Copies are stored in `/afs/cern.ch/work/t/tjunk/public/may2021tutorialfiles/` at CERN in case you have a CERN account and no access to Fermilab computing resources. The next tutorial provides help on how to find data and MC files in storage.
+The examples below will refer to files in `dCache` at Fermilab which can best be accessed via `xrootd`. 
+
+**For those with no access to Fermilab computing resources but with a CERN account:**  
+Copies are stored in `/afs/cern.ch/work/t/tjunk/public/may2021tutorialfiles/`.
+
+The follow-up of this tutorial provides help on how to find data and MC files in storage.
 
 You can list available versions of `dunetpc` installed in `CVMFS` with this command:
 
@@ -85,24 +91,30 @@ for example, to see what version of geant4 you have set up.
 
 ### *Art* command-line tools
 
-All of these command-line tools have online help. Invoke the help feature with the --help command-line option. Example:
+All of these command-line tools have online help. Invoke the help feature with the `--help` command-line option. Example:
 
 ```bash
-config_dumper -P <artrootfile>
+config_dumper --help
  ```
 
-Docmentation on art command-line tools is available on the [art wiki page][art-wiki.
+Docmentation on art command-line tools is available on the [art wiki page][art-wiki].
 
 #### config_dumper
 
-Configuration information for a file can be printed with config_dumper. Try it out:
+Configuration information for a file can be printed with config_dumper. 
 
+```bash
+config_dumper -P <artrootfile>
+```
+
+Try it out:
 ```bash
 config_dumper -P root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root
 ```
 
 The output is an executable `fcl` file, sent to stdout. We recommend redirecting the output to a file that you can look at in a text editor:
 
+Try it out:
 ```bash
 config_dumper -P root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root > tmp.fcl
 ```
@@ -126,33 +138,30 @@ The `-P` option to `config_dumper` is needed to tell `config_dumper` to print ou
  
 #### fhicl-dump
 
-You can parse a `FCL` file with `fhicl-dump`. Try it out:
+You can parse a `FCL` file with `fhicl-dump`. 
 
-~~~
+Try it out:
+```bash
 fhicl-dump protoDUNE_refactored_g4_stage2.fcl
-~~~
-{: .source}
-
+```
 
 See the section below on `FCL` files for more information on what you're looking at.
 
 #### count_events
 
-> ## Try it out:
->
->
->```bash
+Try it out:
+```bash
 >count_events root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root
->```
-{: .callout}
+```
 
 #### product_sizes_dumper
 
-You can get a peek at what's inside an artroot file with `product_sizes_dumper`. Try it out:
+You can get a peek at what's inside an artroot file with `product_sizes_dumper`.
 
+Try it out:
 ```bash
-product_sizes_dumper -f 0 root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root
- ```
+product_sizes_dumper -f 0 root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root
+```
 
 It is also useful to redirect the output of this command to a file so you can look at it with a text editor and search for items of interest. This command lists the sizes of the `TBranches` in the `Events TTree` in the `artroot` file. There is one `TBranch` per data product, and the name of the `TBranch` is the data product name, an "s" is appended (even if the plural of the data product name doesn't make sense with just an "s" on the end), an underscore, then the module label that made the data product, an underscore, the instance name, an underscore, and the process name and a period.
 
@@ -168,14 +177,13 @@ Quiz questions, looking at the output from above.
 > 5.  How many different modules produced recob::Hit data products?  What are their module labels?
 {: .solution}
 
-You can open up an artoot file with `ROOT` and browse the `TTrees` in it with a `TBrowser`. Not all `TBranches` and leaves can be inspected easily this way, but enough can that it can save a lot of time programming if you just want to know something simple about a file such as whether it contains a particular data product and how many there are. Try it out
+You can open up an artoot file with `ROOT` and browse the `TTrees` in it with a `TBrowser`. Not all `TBranches` and leaves can be inspected easily this way, but enough can that it can save a lot of time programming if you just want to know something simple about a file such as whether it contains a particular data product and how many there are. 
 
+Try it out
 ```bash
 root root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root
 ```
-
-then at the `root` prompt, type
-
+then at the `root` prompt, type:
 ```bash
 new TBrowser
 ``` 
@@ -233,12 +241,10 @@ which is equivalent to `fhicl-dump` with the --annotate option and piping the ou
 Entire blocks of parameters can be substituted in using `@local` and `@table` idioms. See the examples and documentation for guidance on how to use these. Generally they are defined in the PROLOG sections of fcl files. PROLOGs must precede all non-PROLOG definitions and if their symbols are not subsequently used they do not get put in the final job configuration document (that gets stored with the data and thus may bloat it). This is useful if there are many alternate configurations for some module and only one is chosen at a time.
 
 
-> ## Try it out:
->
->```bash
->fhicl-dump protoDUNE_refactored_g4_stage2.fcl > tmp.txt
->``` 
-{: .callout}
+Try it out:
+```bash
+fhicl-dump protoDUNE_refactored_g4_stage2.fcl > tmp.txt
+``` 
 
 Look for the parameter `ModBoxA`. It is one of the Modified Box Model ionization parameters. See what block it is in. Here are the contents of a modified g4 stage 2 fcl file that modifies just that parameter:
 
@@ -257,15 +263,20 @@ services.LArG4Parameters.ModBoxA: 7.7E-1
 
 Plug-ins each have their own .so library which gets dynamically loaded by art when referenced by name in the fcl configuration.
 
-Producer Modules A producer module is a software component that writes data products to the event memory. It is characterized by produces<> and consumes<> statements in the class constructor, and `art::Event::put()` calls in the `produces()` method. A producer must produce the data product collection it says it produces, even if it is empty, or art will throw an exception. `art::Event::put()` transfers ownership of memory (use std::move so as not to copy the data) from the module to the art event memory. Data in the art event memory will be written to the output file unless output commands in the fcl file tell art not to do that. Documentation on output commands can be found in the LArSoft wiki here: [https://cdcvs.fnal.gov/redmine/projects/larsoft/wiki/Rerun_part_of_all_a_job_on_an_output_file_of_that_job][larsoft-rerun-part-job] Producer modules have methods that are called on begin job, begin run, begin subrun, and on each event, as well as at the end of processing, so you can initialize counters or histograms, and finish up summaries at the end. Source code must be in files of the form: <modulename>_module.cc, where modulename does not have any underscores in it.
+**Producer Modules**  
+A producer module is a software component that writes data products to the event memory. It is characterized by produces<> and consumes<> statements in the class constructor, and `art::Event::put()` calls in the `produces()` method. A producer must produce the data product collection it says it produces, even if it is empty, or art will throw an exception. `art::Event::put()` transfers ownership of memory (use std::move so as not to copy the data) from the module to the art event memory. Data in the art event memory will be written to the output file unless output commands in the fcl file tell art not to do that. Documentation on output commands can be found in the LArSoft wiki here: [https://cdcvs.fnal.gov/redmine/projects/larsoft/wiki/Rerun_part_of_all_a_job_on_an_output_file_of_that_job][larsoft-rerun-part-job] Producer modules have methods that are called on begin job, begin run, begin subrun, and on each event, as well as at the end of processing, so you can initialize counters or histograms, and finish up summaries at the end. Source code must be in files of the form: <modulename>_module.cc, where modulename does not have any underscores in it.
 
-Analyzer Modules Analyzer modules read data product from the event memory and produce histograms or TTrees, or other output. They are typically scheduled after the producer modules have been run. Producer modules have methods that are called on begin job, begin run, begin subrun, and on each event, as well as at the end of processing, so you can initialize counters or histograms, and finish up summaries at the end. Source code must be in files of the form: <modulename>_module.cc, where modulename does not have any underscores in it.
+**Analyzer Modules**  
+Analyzer modules read data product from the event memory and produce histograms or TTrees, or other output. They are typically scheduled after the producer modules have been run. Producer modules have methods that are called on begin job, begin run, begin subrun, and on each event, as well as at the end of processing, so you can initialize counters or histograms, and finish up summaries at the end. Source code must be in files of the form: <modulename>_module.cc, where modulename does not have any underscores in it.
 
-Source Modules Source modules read data from input files and reformat it as need be, in order to put the data in art event data store. Most jobs use the art-provided RootInput source module which reads in art-formatted ROOT files. RootInput interacts well with the rest of the framework in that it provides lazy reading of TTree branches. Only when GetByLabel or GetValidHandle or other product get methods are called is the data actually fetched from the input file. This is useful for art jobs that only read a subset of the TBranches in an input file. Source code must be in files of the form: <modulename>_source.cc, where modulename does not have any underscores in it.
+**Source Modules**  
+Source modules read data from input files and reformat it as need be, in order to put the data in art event data store. Most jobs use the art-provided RootInput source module which reads in art-formatted ROOT files. RootInput interacts well with the rest of the framework in that it provides lazy reading of TTree branches. Only when GetByLabel or GetValidHandle or other product get methods are called is the data actually fetched from the input file. This is useful for art jobs that only read a subset of the TBranches in an input file. Source code must be in files of the form: <modulename>_source.cc, where modulename does not have any underscores in it.
 
-Services These are singleton classes that are globally visible within an art job. They can be FHiCL configured like modules, and they can schedule methods to be called on begin job, begin run, begin event, etc. They are meant to help supply configuration parameters like the drift velocity, or more complicated things like geometry functions, to modules that need them. Please do not use services as a back door for storing event data outside of the art event store. Source code must be in files of the form: `<modulename>_service.cc`, where servicename does not have any underscores in it.
+**Services**  
+These are singleton classes that are globally visible within an art job. They can be FHiCL configured like modules, and they can schedule methods to be called on begin job, begin run, begin event, etc. They are meant to help supply configuration parameters like the drift velocity, or more complicated things like geometry functions, to modules that need them. Please do not use services as a back door for storing event data outside of the art event store. Source code must be in files of the form: `<modulename>_service.cc`, where servicename does not have any underscores in it.
 
-Tools Tools are FHiCL-configurable software components that are not singletons, like services. They are meant to be swappable by FHiCL parameters which tell art which .so libraries to load up, configure, and call from user code. See the [Art Wiki Page][art-wiki-redmine] for more information on tools and other plug-ins.
+**Tools**  
+Tools are FHiCL-configurable software components that are not singletons, like services. They are meant to be swappable by FHiCL parameters which tell art which .so libraries to load up, configure, and call from user code. See the [Art Wiki Page][art-wiki-redmine] for more information on tools and other plug-ins.
 
 You can use cetskelgen to make empty skeletons of art plug-ins. See the art wiki for documentation, or use
 
@@ -422,7 +433,7 @@ This wiki page provides a lot of information on how to check out, build, and con
 
 [https://cdcvs.fnal.gov/redmine/projects/dunetpc/wiki][dunetpc-wiki]
 
-The third part of the tutorial gives hands-on exercises for doing these things.
+The follow-up part of this tutorial gives hands-on exercises for doing these things.
 
 ### Contributing to LArSoft
 
