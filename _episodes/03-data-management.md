@@ -138,7 +138,7 @@ root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune
 When we are analyzing large numbers of files in a group of batch jobs, we use a SAM snapshot to describe the full set of files that we are going to analyze and create a SAM Project based on that. Each job will then come up and ask SAM to give it the next file in the list. SAM has some capability to grab the nearest copy of the file. For instance if you are running at CERN and analyzing this file it will automatically take it from the CERN storage space EOS.
 
 > ## Exercise 2
-> todo!
+> Coming soon!
 {: .challenge}
 
 ## What is UPS and why do we need it?
@@ -172,7 +172,7 @@ Another specifier of a product install is the "flavor". This refers to the opera
 Setting up a UPS product defines many environment variables. Most products have an environment variable of the form `<productname>_DIR`, where `<productname>` is the name of the UPS product in all capital letters. This is the top-level directory and can be used when searching for installed source code or fcl files for example. `<productname>_FQ_DIR` is the one that specifies a particular qualifier and flavor.
 
 > ## Exercise 3
-> todo!
+> Coming soon!
 {: .challenge}
 
 Many products modify the following search path variables, prepending their pieces when set up. These search paths are needed by _art_ jobs.
@@ -198,7 +198,7 @@ The other paths are needed by _art_ for finding plug-in libraries, fcl files, an
 | `ups depend dunetpc v08_57_00 -q e19:prof:py2` | Displays the dependencies for this version of dunetpc            |
 
 > ## Excercise 4
-> todo!
+> Coming soon!
 {: .challenge}
 
 ## mrb
@@ -225,7 +225,7 @@ Ideally, we would like to only have to recompile a fraction of the software stac
 Link to the [mrb reference guide](https://cdcvs.fnal.gov/redmine/projects/mrb/wiki/MrbRefereceGuide)
 
 > ## Exercise 5
-> todo!
+> Coming soon!
 {: .challenge}
 
 
@@ -246,7 +246,7 @@ When a file is accessed in `/cvmfs`, a daemon on the target computer wakes up an
 More information on CVMFS is available [here](https://wiki.dunescience.org/wiki/DUNE_Computing/Access_files_in_CVMFS)
 
 > ## Exercise 6
-> todo!
+> Coming soon!
 {: .challenge}
 
 ## Useful links to bookmark

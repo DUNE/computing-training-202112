@@ -5,9 +5,8 @@ exercises: 0
 questions:
 - What should I expect in participating in this workshop?
 objectives:  
-- Introduce instructors.
+- Introduce instructors and mentors.
 - Provide overview of the three schedule.
-- Introduce mentors.
 - Spotlight helpful network provided by Slack channel.
 keypoints:
 - This workshop is brought to you by the DUNE Computing Consortium.
@@ -29,6 +28,9 @@ Coordinator: Heidi Schellman (Oregon State University)
 - Steven Timm (FNAL): data management 
 - Tom Junk (FNAL): LArSoft
 - Kenneth Herner (FNAL): grid and batch job submission
+
+**Mentors**
+- Amit Bashyal (ANL)
 
 ## Schedule
 

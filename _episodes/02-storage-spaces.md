@@ -114,7 +114,7 @@ ifdh cp root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/p
 **Resource:** [idfh commands](https://cdcvs.fnal.gov/redmine/projects/ifdhc/wiki/Ifdh_commands)
 
 > ## Exercise 2
-> todo!
+> Coming soon!
 {: .challenge}
 
 ### xrootd 
@@ -134,11 +134,11 @@ XRootD is most suitable for read-only data access.
 ## Let's practice
 
 > ## Exercise 4
-> todo!
+> Coming soon!
 {: .challenge}
 
 > ## Exercise 5
-> todo!
+> Coming soon!
 {: .challenge}
 
 ## Useful links to bookmark
