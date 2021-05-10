@@ -10,8 +10,11 @@ objectives:
 - Review best practices for submitting jobs (including what NOT to do)
 - Extension; submit a small job with POMS
 keypoints:
-- “keypoint 1"
-- "keypoint 2"
+- When in doubt, ask! Understand that policies and procedures that seem annoying, overly complicated, or unnecessary (especially when compared to running an interactive test) are there to ensure efficient operation and scalability. They are also often the result of someone breaking something in the past, or of simpler approaches not scaling well.
+- Send test jobs after creating new workflows or making changes to existing ones. If things don't work, don't blindly resubmit and expect things to magically work the next time.
+- Only copy what you need in input tar files. In particular, avoid copying log files, .git directories, temporary files, etc. from interactive areas.
+- Take care to follow best practices when setting up input and output file locations.
+- Always, always, always prestage input datasets. No exceptions.
 ---
 
 ## Submit a job
