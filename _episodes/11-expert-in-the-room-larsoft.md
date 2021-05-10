@@ -14,8 +14,11 @@ objectives:
 - Test the modified module
 - Stretch goal -- run the debugger
 keypoints:
-- “keypoint 1"
-- "keypoint 2"
+- DUNE's software stack is built out of a tree of UPS products.
+- You don't have to build all of the software to make modifications -- you can check out and build one or more products to achieve your goals.
+- You can set up pre-built CVMFS versions of products you aren't developing, and UPS will check version consistency, though it is up to you to request the right versions.
+- mrb is the tool DUNE uses to check out software from multiple repositories and build it in a single test release.
+- mrb uses git and cmake, though aspects of both are exposed to the user.
 ---
 
 
@@ -23,9 +26,10 @@ keypoints:
 
 You may need to check your login scripts:  .bashrc, .shrc, .profile, .login, etc. for experiment-specific setups for other experiments and even DUNE.  This tutorial assumes you have a "clean" login with minimal or no environment set up.  You can do simple checks to see 
 
-```bash
+~~~
   env | grep -i nova
-``` 
+~~~
+{: .language-bash}
 
 for example to see if you have any NOvA setups in your environment. Other common conflicting environments come from MINERvA and MicroBooNE, but you could have just about anything. You may have to adjust your login scripts to do experiment-specific setup only when logged in to a particular experiment's computers.  Or you can define aliases that run specific setups when requested, but not automatically on login.
 
@@ -73,6 +77,7 @@ cd ${MRB_BUILDDIR}
 mrbsetenv
 mrb i -j16
 ~~~
+{: .language-bash}
 
 and `setupMay2021Tutorial.sh` should have these contents:
 
@@ -91,20 +96,23 @@ source localProducts*/setup
 cd work
 mrbslp
 ~~~
+{: .language-bash}
 
 Execute this command to make the first script executable.
 
-```bash 
+~~~
   chmod +x newDevMay2021Tutorial.sh
-```
+~~~
+{: .language-bash}
 
 It is not necessary to chmod the setup script.  Problems writing
 to your home directory?  Check to see if your Kerberos ticket
 has been forwarded. 
 
-```bash
+~~~
   klist
-``` 
+~~~
+{: .language-bash}
 
 Start up session #2 by logging in to one of the build nodes,
 dunebuild01.fnal.gov or dunebuild02.fnal.gov.  They have 16 cores
@@ -119,9 +127,10 @@ to run programs (people need them to build code!)
 
 On the build node, execute the newDev script:
 
-```bash
+~~~
   ./newDevMay2021Tutorial.sh
-``` 
+~~~
+{: .language-bash}
 
 Note that this script will *delete* the directory planned to store
 the source code and built code, and make a new directory, in order
@@ -139,15 +148,17 @@ cdcvs.fnal.gov's ssh key to your known_hosts file -- answer "yes".
 
 Some comments on the build command
 
-```bash
+~~~
   mrb i -j16
-``` 
+~~~
+{: .language-bash}
 
 The -j16 says how many concurrent processes to run.  Set the number to no more than the number of cores on the computer you're running it on.  A dunegpvm machine has four cores, and the two build nodes each have 16.  You can find the number of cores a machine has with
 
-```bash
+~~~
   cat /proc/cpuinfo
-```
+~~~
+{: .language-bash}
 
 The mrb system builds code in a directory distinct from the source code.  Source code is in $MRB_SOURCE and built code is in $MRB_BUILDDIR.  If the build succeeds (no error messages, and compiler warnings are treated as errors, and these will stop the build, forcing you to fix the problem), then the built artifacts are put in $MRB_TOP/localProducts*.  mrbslp directs ups to search in $MRB_TOP/localProducts* first for software and necessary components like fcl files.  It is good to separate the build directory from the install directory as a failed build will not prevent you from running the program from the last successful build.  But you have to look at the error messages from the build step before running a program.  If you edited source code, made a mistake, built it unsuccessfully, then running the program may run successfully with the last version which compiled.  You may be wondering why your code changes are having no effect.  You can look in $MRB_TOP/localProducts* to see if new code has been added (look for the "lib" directory under the architecture-specific directory of your product).
 
@@ -161,6 +172,7 @@ that setup script.  In session #2, type this:
   cd $MRB_BUILDDIR
   mrbsetenv
 ~~~
+{: .language-bash}
 
 The shell command "source" instructs the command interpreter (bash) to read commands from the file setupMay2021Tutorial.sh as if they were typed at the terminal.  This way, environment variables set up by the script stay set up.
 Do the following in session #1, the source editing session:
@@ -170,6 +182,7 @@ source setupMay2021Tutorial.sh
   cd $MRB_SOURCE
   mrbslp
 ~~~
+{: .language-bash}
 
 ## Run your program
 
@@ -181,6 +194,7 @@ computer for session #3
   mrbslp
   setup_fnal_security
 ~~~
+{: .language-bash}
 
 We need to locate an input file.  Here are some tips for finding input data:
 
@@ -190,7 +204,7 @@ Data and MC files are typically on tape, but can be cached on disk so you don't 
 file to be staged in. Check to see if a sample file is in dCache or only on tape:
 
 ~~~
-cache_state.py PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root`
+cache_state.py PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root
 ~~~
 
 Get the `xrootd` URL:
@@ -202,14 +216,14 @@ samweb get-file-access-url --schema=root PDSPProd4_protoDUNE_sp_reco_stage1_p1Ge
 which should print the following URL:
 
 ~~~
-  root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root
+root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root
 ~~~
   
 Now run the program with the input file accessed by that URL:
 
-```bash
-  lar -c analyzer_job.fcl root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root
-```
+~~~
+lar -c analyzer_job.fcl root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root
+~~~
 
 CERN Users without access to Fermilab's dCache: -- example input files for this tutorial have been copied to /afs/cern.ch/work/t/tjunk/public/may2021tutorialfiles/.
 
@@ -218,7 +232,10 @@ store large rootfiles in /dune/app!  The disk is rather small, and we'd like to
 save it for applications, not data.  But this file ought to be quite small.
 Open it in root
 
+~~~
   root tutorial_hist.root
+~~~
+{: .language-bash}
 
 and look at the histograms and trees with a TBrowser.  It is empty!
 
@@ -226,9 +243,10 @@ and look at the histograms and trees with a TBrowser.  It is empty!
 
 In Session #1, the code editing session, 
 
-```bash 
+~~~
   cd ${MRB_SOURCE}/protoduneana/protoduneana/TutorialExamples/
-```
+~~~
+{: .language-bash}
 
 See that analyzer_job.fcl includes clustercounter.fcl.  The module_type
 line in that fcl file defines the name of the module to run, and 
@@ -256,6 +274,7 @@ some output.  In Session #3 (the running session),
 ~~~
   fhicl-dump analyzer_job.fcl > tmp.txt
 ~~~
+{: .language-bash}
 
 and open tmp.txt in a text editor.   You will see what blocks in there
 contain the fcl parameters you need to adjust.
@@ -267,12 +286,15 @@ called "myana.fcl"  with these contents:
 
 physics.analyzers.clusterana.module_type: "ClusterCounter3"
 ~~~
+{: .language-bash}
 
 Try running it:
 
-```bash
+~~~
   lar -c myana.fcl root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root 
-``` 
+~~~
+{: .language-bash}
+
 
 but you will get error messages about "product not found".
 Inspection of ClusterCounter3_module.cc in Session #1 shows that it is
@@ -293,14 +315,16 @@ There are clusters with module label "pandora" but not
 
 physics.analyzers.clusterana.module_type: "ClusterCounter3"
 physics.analyzers.clusterana.ClusterModuleLabel: "pandora"
-
 ~~~
+{: .language-bash}
 
 and run it again:
 
 ~~~
   lar -c myana.fcl root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root
 ~~~
+{: .language-bash}
+
 
 Lots of information on job configuration via FHiCL is available at this link:  https://cdcvs.fnal.gov/redmine/documents/327
 
@@ -311,7 +335,7 @@ Now in session #1, edit `${MRB_SOURCE}/protoduneana/protoduneana/TutorialExample
 Add
 
 ~~~
-  #include "TH1F.h"
+#include "TH1F.h"
 ~~~
 
 to the section with includes.
@@ -319,33 +343,34 @@ to the section with includes.
 Add a private data member
 
 ~~~
-  TH1F *fTutorialHisto;
+TH1F *fTutorialHisto;
 ~~~
 
 to the class.  Create the histogram in the beginJob() method:
 
 ~~~
-  fTutorialHisto = tfs->make<TH1F>("TutorialHisto","NClus",100,0,500);
+fTutorialHisto = tfs->make<TH1F>("TutorialHisto","NClus",100,0,500);
 ~~~
 
 Fill the histo in the analyze() method, after the loop over clusters:
 
 ~~~
-  fTutorialHisto->Fill(fNClusters);
+fTutorialHisto->Fill(fNClusters);
 ~~~
 
 Go to session #2 and build it.  The current working directory should be the build directory:
 
 ~~~
-  make install -j16
+make install -j16
 ~~~
 
 Note -- this is the quicker way to re-build a product.  The -j16 says to use 16 parallel processes,
 which matches the number of cores on a build node. The command
 
 ~~~
-  mrb i -j16
+mrb i -j16
 ~~~
+{: .language-bash}
 
 first does a cmake step -- it looks through all the CMakeLists.txt files and processes them,
 making makefiles.  If you didn't edit a CMakeLists.txt file or add new modules or fcl files
@@ -356,18 +381,21 @@ Rerun your program in session #3 (the run session)
 ~~~
   lar -c myana.fcl root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root 
 ~~~
+{: .language-bash}
 
 Open the output file in a TBrowser:
 
 ~~~
   root tutorial_hist.root
 ~~~
+{: .language-bash}
 
 and browse it to see your new histogram.  You can also run on some data.
 
 ~~~
   lar -c myana.fcl -T dataoutputfile.root root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2020/detector/physics/PDSPProd4/00/00/53/87/np04_raw_run005387_0041_dl7_reco1_13832298_0_20201109T215042Z.root
 ~~~
+{: .language-bash}
 
 The `-T dataoutputfile.root` changes the output filename for the `TTrees` and
 histograms to `dataoutputfile.root` so it doesn't clobber the one you made
@@ -388,6 +416,7 @@ In session #3 (the running session)
 
   ddt `which lar` -c myana.fcl root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root 
 ~~~
+{: .language-bash}
 
 Click the "Run" button in the window that pops up.  The `which lar` is needed because ddt cannot find
 executables in your path -- you have to specify their locations explicitly.
@@ -445,6 +474,7 @@ When you perform an mrbsetenv or a mrbslp, sometimes you get a version mismatch.
 ~~~
   mrb g -t <tag> repository
 ~~~
+{: .language-bash}
 
 Alternatively, if you have already checked out some code, you can switch to a different tag using your local clone of the git repository.
 
@@ -452,6 +482,7 @@ Alternatively, if you have already checked out some code, you can switch to a di
   cd $MRB_SOURCE/<product>
   git checkout <tag>
 ~~~
+{: .language-bash}
 
 Try `mrbsetenv` again after checking out a consistent version.
 
@@ -466,30 +497,34 @@ Sometimes you may want to know what the version number is of a product way down 
   setup <product> -q <quals>
   ups active
 ~~~
+{: .language-bash}
 
 It usually is a good idea to pipe the output through grep to find a particular product version.  You can get dependency information with
 
 ~~~
   ups depend <product> -q <quals>
 ~~~
+{: .language-bash}
 
 Note: not all dependencies of dependent products are listed by this command.  If a product is already listed, it sometimes is not listed a second time, even if two products in the tree depend on it.  Some products are listed multiple times.
 
 There is a script in duneutil called dependency_tree.sh which makes graphical displays of dependency trees.
 
-#### Inconsistent build directory===
+#### Inconsistent build directory
 
 The directory $MRB_BUILD contains copies of built code before it gets installed to localProducts.  If you change versions of the source or delete things, sometimes the build directory will have clutter in it that has to be removed.
 
 ~~~
   mrb z
 ~~~
+{: .language-bash}
 
 will delete the contents of $MRB_BUILDDIR and you will have to type mrbsetenv again.
 
 ~~~
   mrb zd
 ~~~
+{: .language-bash}
 
 will also delete the contents of localProducts.  This can be useful if you are removing code and want to make sure the installed version also has it gone.
 
@@ -504,6 +539,7 @@ If you have not sourced the DUNE software setup script
 ~~~
   source /cvmfs/dune.opensciencegrid.org/products/dune/setup_dune.sh
 ~~~
+{: .language-bash}
 
 you will find that the setup command that is used instead is one provided by the operating system and it requires root privilege to execute and setup will ask you for the root password.  Rather than typing that if you get in this situation, ctrl-c, source the setup_dune.sh script and try again.
 
@@ -534,6 +570,7 @@ You will almost always need to have a valid Kerberos ticket in your session.  Ac
 ~~~
   klist
 ~~~
+{: .language-bash}
 
 By default, they last for 25 hours or so (a bit more than a day).  You can refresh them for another 25 hours (up to
 one week's worth of refreshes are allowed) with
@@ -541,12 +578,14 @@ one week's worth of refreshes are allowed) with
 ~~~
   kinit -R
 ~~~
+{: .language-bash}
 
 If you have a valid ticket on one machine and want to refresh tickets on another, you can 
 
 ~~~
 k5push <nodename>
 ~~~
+{: .language-bash}
 
 The safest way to get a new ticket to a machine is to kinit on your local computer (like your laptop) and log in again,
 making sure to forward all tickets.  In a pinch, you can run kinit on a dunegpvm and enter your Kerberos password, but this is discouraged as bad actors can (and have!) installed keyloggers on shared systems, and have stolen passwords.  DO NOT KEEP PRIVATE, PERSONAL INFORMATION ON FERMILAB COMPUTERS!  Things like bank account numbers, passwords, and social security numbers are definitely not to be stored on public, shared computers.  Running kinit -R on a shared machine is fine.
@@ -556,6 +595,7 @@ You will need a grid proxy to submit jobs and access data in dCache via xrootd o
 ~~~
   setup_fnal_security
 ~~~
+{: .language-bash}
 
 will use your valid Kerberos ticket to generate the necessary certificates and proxies.
 
