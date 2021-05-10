@@ -135,7 +135,7 @@ XRootD is most suitable for read-only data access.
 ## Let's practice
 
 The following sessions of this training will give you the opportunity to understand more while using these tools yourself. This takes some time to learn.  
-Any questions so far?
+Any questions so far? Feel free to ask!
 
 ## Useful links to bookmark
 
