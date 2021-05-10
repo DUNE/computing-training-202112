@@ -174,7 +174,8 @@ Another specifier of a product install is the "flavor". This refers to the opera
 Setting up a UPS product defines many environment variables. Most products have an environment variable of the form `<productname>_DIR`, where `<productname>` is the name of the UPS product in all capital letters. This is the top-level directory and can be used when searching for installed source code or fcl files for example. `<productname>_FQ_DIR` is the one that specifies a particular qualifier and flavor.
 
 > ## Exercise 3
-> Coming soon!
+> * show all the versions of dunetpc that are currently available by using the "ups list -aK+ dunetpc" command
+> * pick one version and substitute that for DUNETPC_VERSION above and set up dunetpc
 {: .challenge}
 
 Many products modify the following search path variables, prepending their pieces when set up. These search paths are needed by _art_ jobs.
@@ -191,6 +192,8 @@ The other paths are needed by _art_ for finding plug-in libraries, fcl files, an
 `FHICL_FILE_PATH`  
 `FW_SEARCH_PATH`  
 
+Also the PYTHONPATH describes where Python modules will be loaded from.
+
 ### UPS basic commands
 
 | Command                                        | Action                                                           |
@@ -199,8 +202,8 @@ The other paths are needed by _art_ for finding plug-in libraries, fcl files, an
 | `ups active`                                   | Displays what has been setup                                     |
 | `ups depend dunetpc v08_57_00 -q e19:prof:py2` | Displays the dependencies for this version of dunetpc            |
 
-> ## Excercise 4
-> Coming soon!
+> ## Exercise 4
+> * show all the dependencies of dunetpc by using "ups depend dunetpc $DUNETPC_VERSION -q e19:prof"
 {: .challenge}
 
 ## mrb
@@ -241,14 +244,23 @@ DUNE has a need to distribute precompiled code to many different computers that 
 
 Results must be reproducible, so identical code and associated files must be distributed everywhere. DUNE does not own any batch resources -- we use CPU time on computers that participating institutions donate to the Open Science Grid. We are not allowed to install our software on these computers and must return them to their original state when our programs finish running so they are ready for the next job from another collaboration.
 
-CVMFS is a perfect tool for distributing software and related files. It stands for CernVM File System (VM is Virtual Machine). Local caches are provided on each target computer, and files are accessed via the `/cvmfs` mount point. DUNE software is in the directory `/cvmfs/dune.opensciencegrid.org`, and LArSoft code is in `/cvmfs/larsoft.opensciencegrid.org`. These directories are auto-mounted and need to be visible when one executes `ls /cvmfs` for the first time.
+CVMFS is a perfect tool for distributing software and related files. It stands for CernVM File System (VM is Virtual Machine). Local caches are provided on each target computer, and files are accessed via the `/cvmfs` mount point. DUNE software is in the directory `/cvmfs/dune.opensciencegrid.org`, and LArSoft code is in `/cvmfs/larsoft.opensciencegrid.org`. These directories are auto-mounted and need to be visible when one executes `ls /cvmfs` for the first time.  Some software is also in /cvmfs/fermilab.opensciencegrid.org.
+
+CVMFS also provides a de-duplication feature.  If a given file is the same in all 100 releases of dunetpc, it is only cached and transmitted once, not independently for every release.  So it considerably decreases the size of code that has to be transferred.
 
 When a file is accessed in `/cvmfs`, a daemon on the target computer wakes up and determines if the file is in the local cache, and delivers it if it is. If not, the daemon contacts the CVMFS repository server responsible for the directory, and fetches the file into local cache. In this sense, it works a lot like AFS. But it is a read-only filesystem on the target computers, and files must be published on special CVMFS publishing servers. Files may also be cached in a layer between the CVMFS host and the target node in a squid server, which helps facilities with many batch workers reduce the network load in fetching many copies of the same file, possibly over an international connection.
+
+CVMFS also has a feature known as "Stashcache" or "xCache".  Files that are in /cvmfs/dune.osgstorage.org are not actually transmitted 
+in their entirety, only pointers to them are, and then they are fetched from one of several regional cache servers or in the case of DUNE from Fermilab dCache directly.  DUNE uses this to distribute photon library files, for instance.  
+
+CVMFS is by its nature read-all so code is readable by anyone in the world with a CVMFS client.  CVMFS clients are available for download to desktops or laptops.  Sensitive code can not be stored in CVMFS.
 
 More information on CVMFS is available [here](https://wiki.dunescience.org/wiki/DUNE_Computing/Access_files_in_CVMFS)
 
 > ## Exercise 6
-> Coming soon!
+> * cd /cvmfs and do an ls at top level
+> * What do you see--do you see the four subdirectories (dune.opensciencegrid.org, larsoft.opensciencegrid.org, fermilab.opensciencegrid.org, and dune.osgstorage.org)
+> * cd dune.osgstorage.org/pnfs/fnal.gov/usr/dune/persistent/stash/PhotonPropagation/LibraryData
 {: .challenge}
 
 ## Useful links to bookmark
