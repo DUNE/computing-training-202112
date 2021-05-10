@@ -10,7 +10,7 @@ objectives:
 - Displaying volume information (total size, available size, mount point, device location)
 - Differentiating the commands to handle data between grid accessible and interactive volumes
 keypoints:
-- Local hard drives are centrally managed by Computing Division and meant to store setup scripts or certificate.
+- Homes directories are centrally managed by Computing Division and meant to store setup scripts or certificates.
 - Network attached storage (NAS) /dune/app is primarily for code development.
 - The NAS /dune/data is for store ntuples and small datasets.
 - dCache volumes (tape, resilient, scratch, persistent) offer large storage with various retention lifetime.
@@ -22,7 +22,7 @@ There are three types of storage volumes that you will encounter at Fermilab: lo
 
 ## Vocabulary
 
-**What is immutable?** A file is immutable means that once it is written to the volume it cannot be modified, only read, moved, or deleted.
+**What is immutable?** A file is immutable means that once it is written to the volume it cannot be modified, only read, moved, or deleted. Not a good choice for code or other files you want to change.
 
 **What is interactive or POSIX?** Interactive volumens, or volume with POSIX access (Portable Operating System Interface [Wikipedia](https://en.wikipedia.org/wiki/POSIX)) allow users to directly read, write and modify using standard commands, e.g. using bash language.
 
@@ -33,7 +33,7 @@ There are three types of storage volumes that you will encounter at Fermilab: lo
 **Home area**  is the equivalent to the user's local hard drive
 * access speed to the volume very high, on top of full POSIX access
 * safe to store certificate and tickets
-* not accessibly as an output location from grid worker nodes
+* not accessible as an output location from grid worker nodes
 * not for code developement (size of less than 10 GB) 
 
 **Network Attached Storage (NAS)** element behaves identically to a locally mounted volume.
