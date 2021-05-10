@@ -230,7 +230,7 @@ Ideally, we would like to only have to recompile a fraction of the software stac
 Link to the [mrb reference guide](https://cdcvs.fnal.gov/redmine/projects/mrb/wiki/MrbRefereceGuide)
 
 > ## Exercise 5
-> Coming soon!
+> There is no exercise 5. mrb example exercises will be covered in Friday morning's session as any useful exercise with mrb takes more than 30 minutes on its own. Everyone gets 100% credit for this exercise!
 {: .challenge}
 
 
