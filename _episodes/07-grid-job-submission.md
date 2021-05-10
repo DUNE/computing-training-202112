@@ -79,7 +79,92 @@ TARGET.HAS_CVMFS_fifeuser4_opensciencegrid_org==true)' file:///dune/app/users/kh
 
 You'll see this is very similar to the previous case, but there are some new options: 
 
+* `--tar_file_name=dropbox://` automatically copies and untars the given tarball into a directory on the worker node, accessed via the _CONDOR_DIR_INPUT environment variable in the job. As of now, only one such tarball can be specified. If you need to copy additional files into your job that are not in the main tarball you can use the -f option (see the jobsub manual for details).
+* `--use-cvmfs-dropbox` stages that tarball through the RCDS (really a collection of special CVMFS repositories). As of April 2021, it is now the default method for tarball transfer and the --use-cvmfs-dropbox option is not needed (though it will not hurt to keep if it your submission for now).
+* Notice that the `--append_condor_requirements` line is longer now, because we also check for the fifeuser[1-4].opensciencegrid.org CVMFS repositories.
 
+Now, there's a very small gotcha when using the RCDS, and that is when your job runs, the files in the unzipped tarball are actually placed in your work area as symlinks from the CVMFS version of the file (which is what you want since the whole point is not to have N different copies of everything). The catch is that if your job script expected to be able to edit one or more of those files within the job, it won't work because the link is to a read-only area. Fortunately there's a very simple trick you can do in your script before trying to edit any such files: 
+
+~~~
+cp ${CONDOR_DIR_INPUT}/file_I_want_to_edit mytmpfile  # do a cp, not mv
+rm ${CONDOR_DIR_INPUT}file_I_want_to_edit # This really just removes the link
+mv mytmpfile file_I_want_to_edit # now it's available as an editable regular file.
+~~~
+{: .source}
+
+You certainly don't want to do this for every file, but for a handful of small text files this is perfectly acceptable and the overall benefits of copying in code via the RCDS far outweigh this small cost. This can get a little complicated when trying to do it for things several directories down, so it's easiest to have such files in the top level of your tar file. 
+
+## Monitor your jobs
+For all links below, log in with your FNAL Services credentials (FNAL email, not Kerberos password).
+
+* What DUNE is doing overall:  
+[https://fifemon.fnal.gov/monitor/d/000000053/experiment-batch-details?orgId=1&var-experiment=dune](https://fifemon.fnal.gov/monitor/d/000000053/experiment-batch-details?orgId=1&var-experiment=dune)
+
+
+* What's going on with only your jobs:   
+Remember to change the url with your own username and adjust the time range to cover the region of interest.
+[https://fifemon.fnal.gov/monitor/d/000000116/user-batch-details?orgId=1&var-cluster=fifebatch&var-user=kherner](https://fifemon.fnal.gov/monitor/d/000000116/user-batch-details?orgId=1&var-cluster=fifebatch&var-user=kherner)
+
+* Why your jobs are held:  
+Remember to choose your username in the upper left.  
+[https://fifemon.fnal.gov/monitor/d/000000146/why-are-my-jobs-held?orgId=1](https://fifemon.fnal.gov/monitor/d/000000146/why-are-my-jobs-held?orgId=1)
+
+## View the stdout/stderr of our jobs
+Here's the link for the history page of the example job: [link](https://fifemon.fnal.gov/monitor/d/000000115/job-cluster-summary?orgId=1&var-cluster=40351757&var-schedd=jobsub01.fnal.gov&from=1611098894726&to=1611271694726). 
+
+Feel free to sub in the link for your own jobs.
+
+Once there, click "View Sandbox files (job logs)". In general you want the .out and .err files for stdout and stderr. The .cmd file can sometimes be useful to see exactly what got passed in to your job.
+
+[Kibana][kibana] can also provide a lot of information.
+
+You can also download the job logs from the command line with jobsub_fetchlog: 
+
+```bash
+jobsub_fetchlog --jobid=12345678.0@jobsub0N.fnal.gov --unzipdir=some_appropriately_named_directory
+```
+
+That will download them as a tarball and unzip it into the directory specified by the --unzipdir option. Of course replace 12345678.0@jobsub0N.fnal.gov with your own job ID. 
+
+## Brief review of best practices in grid jobs (and a bit on the interactive machines)
+
+* When creating a new workflow or making changes to an existing one, <span style="color:red">**ALWAYS test with a single job first**</span>. Then go up to 10, etc. Don't submit thousands of jobs immediately and expect things to work.  
+* **ALWAYS** be sure to prestage your input datasets before launching large sets of jobs.  
+* **Use RCDS**; do not copy tarballs from places like scratch dCache. There's a finite amount of transfer bandwidth available from each dCache pool. If you absolutely cannot use RCDS for a given file, it's better to put it in resilient (but be sure to remove it when you're done!). The same goes for copying files from within your own job script: if you have a large number of jobs looking for a same file, get it from resilient. Remove the copy when no longer needed. Files in resilient dCache that go unaccessed for 45 days are automatically removed.  
+* Be careful about placing your output files. **NEVER** place more than a few thousand files into any one directory inside dCache. That goes for all type of dCache (scratch, persistent, resilient, etc).  
+* **Avoid** commands like `ifdh ls /path/with/wildcards/*/` inside grid jobs. That is a VERY expensive operation and can cause a lot of pain for many users.  
+* Use xrootd when opening files interactively; this is much more stable than simply doing `root /pnfs/dune/...`
+* **NEVER** copy job outputs to a directory in resilient dCache. Remember that they are replicated by a factor of 20! **Any such files are subject to deletion without warning**.  
+* **NEVER** do hadd on files in `/pnfs` areas unless you're using `xrootd`. I.e. do NOT do hadd out.root `/pnfs/dune/file1 /pnfs/dune/file2 ...` This can cause severe performance degradations.  
+
+## (Time permitting) submit with POMS
+
+POMS is the recommended way of submitting large workflows. It offers several advantages over other systems, such as 
+
+* Fully configurable. Any executables can be run, not necessarily only lar or art
+* Automatic monitoring and campaign management options
+* Multi-stage workflow dependencies, automatic dataset creation between stages
+* Automated recovery options
+
+At its core, in POMS one makes a "campaign", which has one or more "stages". In our example there is only a single stage.  
+
+For analysis use: [main POMS page][poms-page-ana]  
+An [example campaign](https://pomsgpvm01.fnal.gov/poms/campaign_stage_info/dune/analysis?campaign_stage_id=9017).
+
+Typical POMS use centers around a configuration file (often more like a template which can be reused for many campaigns) and various campaign-specific settings for overriding the defaults in the config file. An example config file designed to do more or less what we did in the previous submission is here: `/dune/app/users/kherner/May2021tutorial/work/pomsdemo.cfg`
+
+You can find more about POMS here: [POMS User Documentation][poms-user-doc]  
+Helpful ideas for structuring your config files are here: [Fife launch Reference][fife-launch-ref]  
+
+When you start using POMS you must upload an x509 proxy to the sever before submitting (you can just scp your proxy file from a dunegpvm machine) and it must be named x509up_voms_dune_Analysis_yourusername when you upload it.
+
+Finally, here is an example of a campaign that does the same thing as the previous one, using our usual MC reco file from Prod2, but does it via making a SAM dataset using that as the input: [POMS campaign stage information][poms-campaign-stage-info].
+
+If you are used to using other programs for your work such as project.py, there is a helpful tool called [Project-py][project-py-guide] that you can use to convert existing xml into POMS configs, so you don't need to start from scratch! Then you can just switch to using POMS from that point forward. 
+
+## Further Reading
+Some more background material on these topics (including some examples of why certain things are bad) are on this PDF:  
+[DUNE Computing Tutorial:Advanced topics and best practices][DUNE_computing_tutorial_advanced_topics_20210129]
 
 [job-autorelease]: https://cdcvs.fnal.gov/redmine/projects/fife/wiki/Job_autorelease
 [dune-openscience-grid-org]: dune.opensciencegrid.org
@@ -87,5 +172,15 @@ You'll see this is very similar to the previous case, but there are some new opt
 [redmine-wiki-jobsub]: https://cdcvs.fnal.gov/redmine/projects/jobsub/wiki
 [redmine-wiki-using-the-client]: https://cdcvs.fnal.gov/redmine/projects/jobsub/wiki/Using_the_Client
 
+[fifemon-dune]: https://fifemon.fnal.gov/monitor/d/000000053/experiment-batch-details?orgId=1&var-experiment=dune
+[fifemon-myjobs]: https://fifemon.fnal.gov/monitor/d/000000116/user-batch-details?orgId=1&var-cluster=fifebatch&var-user=kherner
+[fifemon-whyheld]: https://fifemon.fnal.gov/monitor/d/000000146/why-are-my-jobs-held?orgId=1
+[kibana]: https://fifemon.fnal.gov/kibana/goto/8f432d2e4a40cbf81d3072d9c9d688a6
+[poms-page-ana]: https://pomsgpvm01.fnal.gov/poms/index/dune/analysis/
+[poms-user-doc]: https://cdcvs.fnal.gov/redmine/projects/prod_mgmt_db/wiki/POMS_User_Documentation
+[fife-launch-ref]: https://cdcvs.fnal.gov/redmine/projects/fife_utils/wiki/Fife_launch_Reference 
+[poms-campaign-stage-info]: https://pomsgpvm01.fnal.gov/poms/campaign_stage_info/dune/analysis?campaign_stage_id=9023
+[project-py-guide]: https://cdcvs.fnal.gov/redmine/projects/project-py/wiki/Project-py_guide
+[DUNE_computing_tutorial_advanced_topics_20210129]: https://indico.fnal.gov/event/20144/contributions/55932/attachments/34945/42690/DUNE_computing_tutorial_advanced_topics_and_best_practices_20200129.pdf
 
 {%include links.md%}
