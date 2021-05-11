@@ -30,27 +30,33 @@ There are three types of storage volumes that you will encounter at Fermilab: lo
 
 ## Interactive storage volumes
 
-**Home area**  is the equivalent to the user's local hard drive
+**Home area**  is similar to the user's local hard drive but network mounted
 * access speed to the volume very high, on top of full POSIX access
-* safe to store certificate and tickets
+* they NOT safe to store certificate and tickets 
 * not accessible as an output location from grid worker nodes
-* not for code developement (size of less than 10 GB) 
+* not for code developement (size of less than 2 GB)
 
-**Network Attached Storage (NAS)** element behaves identically to a locally mounted volume.
+**Local mounted volumes** are local physical disks, mounted directly
+* mounted on the machine with direct links to the /dev/ location
+* used as temporary storage for infrastructure services (e.g. /var, /tmp,)
+* can be used to store certificates and tickets
+* usually very small and should not be used to store data files or for code development
+
+**Network Attached Storage (NAS)** element behaves similar to a locally mounted volume.
 * functions similar to services such as Dropbox or OneDrive
 * fast and stable access rate 
 * volumes available only on a limited number of computers or servers
-* in general not available to on larger grid computing
+* not available to on larger grid computing
 
 ## Grid accessible storage volumes
 
 At Fermilab, an instance of dCache+Enstore is used for large-scale, distributed storage with capacity for more than 100 PB of storage and O(10000) connections. Whenever possible, these storage elements should be accessed over xrootd (see next section) as the mount points on interactive nodes are slow and unstable. Here are the different dCache volumes:
 
-**Persistent dCache**: the data in the file is actively available for reads at any time
+**Persistent dCache**: the data in the file is actively available for reads at any time and will not be removed until manually deleted by user
 
 **Scratch dCache**: large volume shared across all experiments. When a new file is written to scratch space, old files are removed in order to make room for the newer file.
 
-**Resilient dCache**: handles custom user code for their grid jobs, often in the form of a tarball.
+**Resilient dCache**: handles custom user code for their grid jobs, often in the form of a tarball. Inappropriate to store any other files here.
 
 **Tape-backed dCache**: disk based storage areas that have their contents mirrored to permanent storage on Enstore tape.  
 Files are not available for immediate read on disk, but needs to be 'staged' from tape first. 
