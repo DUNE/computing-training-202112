@@ -67,10 +67,61 @@ More information about `jobsub` is available [here][redmine-wiki-jobsub] and [he
 Most of the time you actually don't need an input tarball, especially if you are just using code from the base release and you don't actually modify any of it. Sometimes, though, we need to run some custom code that isn't in a release. We need a way to efficiently get code into jobs without overwhelming our data transfer systems. We have to make a few minor changes to the scripts you made, generate a tarball, and invoke the proper jobsub options to get that into your job. There are many ways of doing this but by far the best is to use the Rapid Code Distribution Service (RCDS), as shown in our example.  
 
 If you have finished up the LArSoft follow-up and want to use your own code for this next attempt, feel free to tar it up (you don't need anything besides the localProducts* and work directories) and use your own tar ball in lieu of the one in this example. You will have to change the last line with your own submit file.
+
+First, we should make a tarball. Here is what we can do (assuming you are starting from /dune/app/users/username/):
+
+```bash
+cp /dune/app/users/kherner/setupMay2021Tutorial-grid.sh /dune/app/users/username/
+cp /dune/app/users/kherner/may2021tutorial/localProducts_larsoft__e19_prof/setup-grid /dune/app/users/username/may2021tutorial/localProducts_larsoft__e19_prof/setup-grid
+```
+
+Before we continue, let's examine these files a bit. We will source the first one in our job script, and it will set up the environment for us.
+
+~~~
+#!/bin/bash                                                                                                                                                                                                      
+
+DIRECTORY=may2021tutorial
+# we cannot rely on "whoami" in a grid job. We have no idea what the local username will be.
+# Use the GRID_USER environment variable instead (set automatically by jobsub). 
+USERNAME=${GRID_USER}
+
+source /cvmfs/dune.opensciencegrid.org/products/dune/setup_dune.sh
+export WORKDIR=${_CONDOR_JOB_IWD} # if we use the RCDS the our tarball will be placed in $INPUT_TAR_DIR_LOCAL.
+if [ ! -d "$WORKDIR" ]; then
+  export WORKDIR=`echo .`
+fi
+
+source ${INPUT_TAR_DIR_LOCAL}/${DIRECTORY}/localProducts*/setup-grid 
+mrbslp
+~~~
+{: . source}
+
+
+Now let's look at the difference between the setup-grid script and the plain setup script. Assuming you are currently in the /dune/app/users/username directory:
+
+```bash
+diff may2021tutorial/localProducts_larsoft__e19_prof/setup may2021tutorial/localProducts_larsoft__e19_prof/setup-grid
+```
+
+~~~
+< setenv MRB_TOP "/dune/app/users/<username>/may2021tutorial"
+< setenv MRB_TOP_BUILD "/dune/app/users/<username>/may2021tutorial"
+< setenv MRB_SOURCE "/dune/app/users/<username>/may2021tutorial/srcs"
+< setenv MRB_INSTALL "/dune/app/users/<username>/may2021tutorial/localProducts_larsoft__e19_prof"
+---
+> setenv MRB_TOP "${INPUT_TAR_DIR_LOCAL}/may2021tutorial"
+> setenv MRB_TOP_BUILD "${INPUT_TAR_DIR_LOCAL}/may2021tutorial"
+> setenv MRB_SOURCE "${INPUT_TAR_DIR_LOCAL}/may2021tutorial/srcs"
+> setenv MRB_INSTALL "${INPUT_TAR_DIR_LOCAL}/may2021tutorial/localProducts_larsoft__e19_prof"
+~~~
+{: . output}
+
+As you can see, we have switched from the hard-coded directories to directories defined by environment variables; the INPUT_TAR_DIR_LOCAL variable will be set for us (see below).
+
 Then submit another job (in the following we keep the same submit file as above): 
 
 ```bash
-jobsub_submit -G dune -M -N 1 --memory=1800MB --disk=2GB --expected-lifetime=3h --cpu=1 --resource-provides=usage_model=DEDICATED,OPPORTUNISTIC,OFFSITE --tar_file_name=dropbox:///dune/app/users/kherner/May2021tutorial.tar.gz --use-cvmfs-dropbox -l '+SingularityImage=\"/cvmfs/singularity.opensciencegrid.org/fermilab/fnal-wn-sl7:latest\"' --append_condor_requirements='(TARGET.HAS_Singularity==true&&
+jobsub_submit -G dune -M -N 1 --memory=1800MB --disk=2GB --expected-lifetime=3h --cpu=1 --resource-provides=usage_model=DEDICATED,OPPORTUNISTIC,OFFSITE --tar_file_name=dropbox:///dune/app/users/<username>/may2021tutorial.tar.gz --use-cvmfs-dropbox -l '+SingularityImage=\"/cvmfs/singularity.opensciencegrid.org/fermilab/fnal-wn-sl7:latest\"' --append_condor_requirements='(TARGET.HAS_Singularity==true&&
 TARGET.HAS_CVMFS_dune_opensciencegrid_org==true&&
 TARGET.HAS_CVMFS_larsoft_opensciencegrid_org==true&&
 TARGET.CVMFS_dune_opensciencegrid_org_REVISION>=1105&&
@@ -82,15 +133,15 @@ TARGET.HAS_CVMFS_fifeuser4_opensciencegrid_org==true)' file:///dune/app/users/kh
 
 You'll see this is very similar to the previous case, but there are some new options: 
 
-* `--tar_file_name=dropbox://` automatically copies and untars the given tarball into a directory on the worker node, accessed via the _CONDOR_DIR_INPUT environment variable in the job. As of now, only one such tarball can be specified. If you need to copy additional files into your job that are not in the main tarball you can use the -f option (see the jobsub manual for details).  
+* `--tar_file_name=dropbox://` automatically copies and untars the given tarball into a directory on the worker node, accessed via the INPUT_TAR_DIR_LOCAL environment variable in the job. As of now, only one such tarball can be specified. If you need to copy additional files into your job that are not in the main tarball you can use the -f option (see the jobsub manual for details). The value of INPUT_TAR_DIR_LOCAL is by default $CONDOR_DIR_INPUT/name_of_tar_file, so if you have a tar file named e.g. may2021tutorial.tar.gz, it would be $CONDOR_DIR_INPUT/may2021tutorial.
 * `--use-cvmfs-dropbox` stages that tarball through the RCDS (really a collection of special CVMFS repositories). As of April 2021, it is now the default method for tarball transfer and the --use-cvmfs-dropbox option is not needed (though it will not hurt to keep if it your submission for now).  
 * Notice that the `--append_condor_requirements` line is longer now, because we also check for the fifeuser[1-4]. opensciencegrid.org CVMFS repositories.  
 
 Now, there's a very small gotcha when using the RCDS, and that is when your job runs, the files in the unzipped tarball are actually placed in your work area as symlinks from the CVMFS version of the file (which is what you want since the whole point is not to have N different copies of everything). The catch is that if your job script expected to be able to edit one or more of those files within the job, it won't work because the link is to a read-only area. Fortunately there's a very simple trick you can do in your script before trying to edit any such files: 
 
 ~~~
-cp ${CONDOR_DIR_INPUT}/file_I_want_to_edit mytmpfile  # do a cp, not mv
-rm ${CONDOR_DIR_INPUT}file_I_want_to_edit # This really just removes the link
+cp ${INPUT_TAR_DIR_LOCAL}/file_I_want_to_edit mytmpfile  # do a cp, not mv
+rm ${INPUT_TAR_DIR_LOCAL}file_I_want_to_edit # This really just removes the link
 mv mytmpfile file_I_want_to_edit # now it's available as an editable regular file.
 ~~~
 {: .source}
@@ -152,9 +203,9 @@ POMS is the recommended way of submitting large workflows. It offers several adv
 At its core, in POMS one makes a "campaign", which has one or more "stages". In our example there is only a single stage.  
 
 For analysis use: [main POMS page][poms-page-ana]  
-An [example campaign](https://pomsgpvm01.fnal.gov/poms/campaign_stage_info/dune/analysis?campaign_stage_id=9017).
+An [example campaign](https://pomsgpvm01.fnal.gov/poms/campaign_stage_info/dune/analysis?campaign_stage_id=9743).
 
-Typical POMS use centers around a configuration file (often more like a template which can be reused for many campaigns) and various campaign-specific settings for overriding the defaults in the config file. An example config file designed to do more or less what we did in the previous submission is here: `/dune/app/users/kherner/May2021tutorial/work/pomsdemo.cfg`
+Typical POMS use centers around a configuration file (often more like a template which can be reused for many campaigns) and various campaign-specific settings for overriding the defaults in the config file. An example config file designed to do more or less what we did in the previous submission is here: `/dune/app/users/kherner/may2021tutorial/work/pomsdemo.cfg`
 
 You can find more about POMS here: [POMS User Documentation][poms-user-doc]  
 Helpful ideas for structuring your config files are here: [Fife launch Reference][fife-launch-ref]  
