@@ -10,7 +10,9 @@ keypoints:
 - The DUNE Computing Consortium has presented this workshop so as to broaden the use of software tools used for analysis.
 ---
 
-### Three Days of Training
+# Closing Remarks
+
+## Three Days of Training
 
 The instruction in this three day workshop is provided by several experienced physicists and is based on years of collaborative experience. 
 
@@ -22,19 +24,17 @@ Protocols for efficient job submission and monitoring has been proivded.
 
 We are thankful for the instructor's hard work, and for the numerous participants who joined.
 
-###  Next Steps
+##  Next Steps
 
 We invite you to bookmark this site and to revisit the content again, and soon.
 
 Point a colleague to the material.
 
-### Long Term Support
+## Long Term Support
 
 You have made some excellent connections with computing experts and invite your contiued dialog.
 
-A [DUNE Slack channel for this workshop][dune-may2021-slack] will remain, and we encourage your activity in the dialog.
-
-[![Join our Slack Channel](https://img.shields.io/badge/Join_Slack_Account-Computing_Tutorial_May2021-071159.svg)](https://join.slack.com/share/zt-q6y8w1ya-4U3kYPtxWhRR3Qd7wELQuQ)
+A DUNE [Slack channel][dune-may2021-slack] will remain available and we encourage your activity in the dialog.
 
 
 [dune-may2021-slack]: https://join.slack.com/share/zt-q6y8w1ya-4U3kYPtxWhRR3Qd7wELQuQ
