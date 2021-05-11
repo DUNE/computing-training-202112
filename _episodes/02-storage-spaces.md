@@ -32,23 +32,28 @@ There are three types of storage volumes that you will encounter at Fermilab: lo
 
 **Home area**  is similar to the user's local hard drive but network mounted
 * access speed to the volume very high, on top of full POSIX access
-* they NOT safe to store certificate and tickets 
+* they NOT safe to store certificates and tickets 
 * not accessible as an output location from grid worker nodes
 * not for code developement (size of less than 2 GB)
+* You need a valid Kerberos ticket in order to access files in your Home area
+* Periodic snapshots are taken so you can recover deleted files.  /nashome/.snapshot
 
-**Local mounted volumes** are local physical disks, mounted directly
+**Locally mounted volumes** are local physical disks, mounted directly
 * mounted on the machine with direct links to the /dev/ location
 * used as temporary storage for infrastructure services (e.g. /var, /tmp,)
-* can be used to store certificates and tickets
+* can be used to store certificates and tickets.  These are saved there automatically with owner-read permission and other permissions disabled.
 * usually very small and should not be used to store data files or for code development
+* Data on these volumes is not backed up.
 
 **Network Attached Storage (NAS)** element behaves similar to a locally mounted volume.
 * functions similar to services such as Dropbox or OneDrive
 * fast and stable access rate 
 * volumes available only on a limited number of computers or servers
 * not available to on larger grid computing
+* /dune/app has periodic snapshots in /dune/app/.snapshot, but /dune/data and /dune/data2 do not.
 
-## Grid accessible storage volumes
+
+## Grid-accessible storage volumes
 
 At Fermilab, an instance of dCache+Enstore is used for large-scale, distributed storage with capacity for more than 100 PB of storage and O(10000) connections. Whenever possible, these storage elements should be accessed over xrootd (see next section) as the mount points on interactive nodes are slow and unstable. Here are the different dCache volumes:
 
