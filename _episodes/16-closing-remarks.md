@@ -20,7 +20,7 @@ The secure access to Fermilab computing systems and a familiarity with data stor
 
 Data management and event processing tools were described and modeled. 
 
-Protocols for efficient job submission and monitoring has been proivded.
+Protocols for efficient job submission and monitoring has been demonstrated.
 
 We are thankful for the instructor's hard work, and for the numerous participants who joined.
 
@@ -32,7 +32,7 @@ Point a colleague to the material.
 
 ## Long Term Support
 
-You have made some excellent connections with computing experts and invite your contiued dialog.
+You made some excellent connections with computing experts and invite your continued dialog.
 
 A DUNE [Slack channel][dune-may2021-slack] will remain available and we encourage your activity in the dialog.
 
