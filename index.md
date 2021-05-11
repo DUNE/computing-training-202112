@@ -59,6 +59,6 @@ You will need a valid FNAL or CERN account to be able to do the tutorial and be 
 <center><img  alt="" src="fig/Schedule_computing_training_202105.png"/></center>
 
 
-An [asynchronous session]({{site.baseurl}}/asynchronous/) is designed as later day acivities for the first two days of the workshop.
+<!-- An [asynchronous session]({{site.baseurl}}/asynchronous/) is designed as later day acivities for the first two days of the workshop.-->
 
 {% include links.md %}
