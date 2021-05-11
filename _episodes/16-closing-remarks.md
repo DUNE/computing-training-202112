@@ -20,6 +20,8 @@ Data management and event processing tools were described and modeled.
 
 Protocols for efficient job submission and monitoring has been proivded.
 
+We are thankful for the instructor's hard work, and for the numerous participants who joined.
+
 ###  Next Steps
 
 We invite you to bookmark this site and to revisit the content again, and soon.
@@ -30,12 +32,11 @@ Point a colleague to the material.
 
 You have made some excellent connections with computing experts and invite your contiued dialog.
 
-A DUNE Slack channel for this workshop will remain, and we encourage your activity in the dialog.
+A [DUNE Slack channel for this workshop][dune-may2021-slack] will remain, and we encourage your activity in the dialog.
 
-### Gratitude
+[![Join our Slack Channel](https://img.shields.io/badge/Join_Slack_Account-Computing_Tutorial_May2021-071159.svg)](https://join.slack.com/share/zt-q6y8w1ya-4U3kYPtxWhRR3Qd7wELQuQ)
 
-We are thankful for the instructor's hard work, and for the numerous participants who joined.
 
-Watch for future trainings soon.
+[dune-may2021-slack]: https://join.slack.com/share/zt-q6y8w1ya-4U3kYPtxWhRR3Qd7wELQuQ
 
 {%include links.md%} 
