@@ -233,6 +233,11 @@ When you start the training, you will have to source this file:
 source ~/.dune_presetup_202105.sh
 ~~~
 {: .language-bash}
+Then, to setup DUNE, use the created alias:
+~~~
+dune_setup
+~~~
+{: .language-bash}
 
 2) Create a working directory in the `dune/app` and `pnfs/dune` areas (these will be explained during the training):
 ~~~
@@ -322,12 +327,12 @@ Setting up DUNE UPS area... /cvmfs/dune.opensciencegrid.org/products/dune/
 ### 2. Access tutorial datasets
 Normally, the datasets are accessible through the grid resource. But with your CERN account, you may not be part of the DUNE VO yet (more on this during the tutorial). We found a workaround: some datasets have been copied locally for you. You can check them here:
 ~~~
-ls /afs/cern.ch/work/t/tjunk/public/jan2021tutorialfiles/
+ls /afs/cern.ch/work/t/tjunk/public/may2021tutorialfiles/
 ~~~
 {: .language-bash}
 ~~~
 np04_raw_run005387_0019_dl5_reco_12900894_0_20181102T023521.root
-PDSPProd2_protoDUNE_sp_reco_35ms_sce_off_23473772_0_452d9f89-a2a1-4680-ab72-853a3261da5d.root
+PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root
 ~~~
 {: .output}
 
