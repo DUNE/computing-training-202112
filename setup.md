@@ -30,7 +30,7 @@ You must be on the DUNE Collaboration member list and have a valid FNAL or CERN 
 
 
 > ## Note
-> The instructions below are for FNAL accounts. If you do not have a valid FNAL account but a CERN one, go at the bottom of this page to the [Setup on CERN machines](##setup-on-cern-machines).
+> The instructions below are for FNAL accounts. If you do not have a valid FNAL account but a CERN one, go at the bottom of this page to the "Setup on CERN machines".
 {: .challenge}
 
 ## 1. Kerberos business
