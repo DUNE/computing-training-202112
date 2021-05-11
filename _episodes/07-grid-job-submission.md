@@ -47,6 +47,10 @@ Use job id 40351757.0@jobsub01.fnal.gov to retrieve output
 ~~~
 {: .output}
 
+> ## Quiz 
+> What is your job ID?
+> 
+
 Now, let's look at some of these options in more detail.
 
 * `-M` sends mail after the job completes whether it was successful for not. The default is email only on error. To disable all emails, use `--mail_never`.  
@@ -58,15 +62,25 @@ Now, let's look at some of these options in more detail.
 
 ## Job Output
 
-This particular test writes a file to `/pnfs/dune/scratch/users/<username>/job_output_<id number>.log`. Verify that the file exists and is non-zero size after the job completes. You can delete it after that; it just prints out some information about the environment.
+This particular test writes a file to `/pnfs/dune/scratch/users/<username>/job_output_<id number>.log`.
+Verify that the file exists and is non-zero size after the job completes.
+You can delete it after that; it just prints out some information about the environment.
 
 More information about `jobsub` is available [here][redmine-wiki-jobsub] and [here][redmine-wiki-using-the-client].
 
 ## Submit a job using the tarball containing custom code
 
-Most of the time you actually don't need an input tarball, especially if you are just using code from the base release and you don't actually modify any of it. Sometimes, though, we need to run some custom code that isn't in a release. We need a way to efficiently get code into jobs without overwhelming our data transfer systems. We have to make a few minor changes to the scripts you made, generate a tarball, and invoke the proper jobsub options to get that into your job. There are many ways of doing this but by far the best is to use the Rapid Code Distribution Service (RCDS), as shown in our example.  
+First off, a very important point: for running analysis jobs, **you may not actually need to pass an input tarball**, especially if you are just using code from the base release and you don't actually modify any of it.
+All you need to do is set up any required software from CVMFS (e.g. dunetpc and/or protoduneana), and you are ready to go.
+If you're just modifying a fcl file, for example, but no code, it's actually more efficient to copy just the fcl(s) your changing to the scratch directory within the job, and edit them as part of your job script (copies of a fcl file in the current working directory have priority over others by default).
 
-If you have finished up the LArSoft follow-up and want to use your own code for this next attempt, feel free to tar it up (you don't need anything besides the localProducts* and work directories) and use your own tar ball in lieu of the one in this example. You will have to change the last line with your own submit file.
+Sometimes, though, we need to run some custom code that isn't in a release. 
+We need a way to efficiently get code into jobs without overwhelming our data transfer systems.
+We have to make a few minor changes to the scripts you made in the previous tutorial section, generate a tarball, and invoke the proper jobsub options to get that into your job.
+There are many ways of doing this but by far the best is to use the Rapid Code Distribution Service (RCDS), as shown in our example.  
+
+If you have finished up the LArSoft follow-up and want to use your own code for this next attempt, feel free to tar it up (you don't need anything besides the localProducts* and work directories) and use your own tar ball in lieu of the one in this example.
+You will have to change the last line with your own submit file instead of the pre-made one.
 
 First, we should make a tarball. Here is what we can do (assuming you are starting from /dune/app/users/username/):
 
@@ -97,7 +111,8 @@ mrbslp
 {: . source}
 
 
-Now let's look at the difference between the setup-grid script and the plain setup script. Assuming you are currently in the /dune/app/users/username directory:
+Now let's look at the difference between the setup-grid script and the plain setup script.
+Assuming you are currently in the /dune/app/users/username directory:
 
 ```bash
 diff may2021tutorial/localProducts_larsoft__e19_prof/setup may2021tutorial/localProducts_larsoft__e19_prof/setup-grid
@@ -137,7 +152,9 @@ You'll see this is very similar to the previous case, but there are some new opt
 * `--use-cvmfs-dropbox` stages that tarball through the RCDS (really a collection of special CVMFS repositories). As of April 2021, it is now the default method for tarball transfer and the --use-cvmfs-dropbox option is not needed (though it will not hurt to keep if it your submission for now).  
 * Notice that the `--append_condor_requirements` line is longer now, because we also check for the fifeuser[1-4]. opensciencegrid.org CVMFS repositories.  
 
-Now, there's a very small gotcha when using the RCDS, and that is when your job runs, the files in the unzipped tarball are actually placed in your work area as symlinks from the CVMFS version of the file (which is what you want since the whole point is not to have N different copies of everything). The catch is that if your job script expected to be able to edit one or more of those files within the job, it won't work because the link is to a read-only area. Fortunately there's a very simple trick you can do in your script before trying to edit any such files: 
+Now, there's a very small gotcha when using the RCDS, and that is when your job runs, the files in the unzipped tarball are actually placed in your work area as symlinks from the CVMFS version of the file (which is what you want since the whole point is not to have N different copies of everything).
+The catch is that if your job script expected to be able to edit one or more of those files within the job, it won't work because the link is to a read-only area.
+Fortunately there's a very simple trick you can do in your script before trying to edit any such files: 
 
 ~~~
 cp ${INPUT_TAR_DIR_LOCAL}/file_I_want_to_edit mytmpfile  # do a cp, not mv
@@ -146,7 +163,8 @@ mv mytmpfile file_I_want_to_edit # now it's available as an editable regular fil
 ~~~
 {: .source}
 
-You certainly don't want to do this for every file, but for a handful of small text files this is perfectly acceptable and the overall benefits of copying in code via the RCDS far outweigh this small cost. This can get a little complicated when trying to do it for things several directories down, so it's easiest to have such files in the top level of your tar file. 
+You certainly don't want to do this for every file, but for a handful of small text files this is perfectly acceptable and the overall benefits of copying in code via the RCDS far outweigh this small cost. 
+This can get a little complicated when trying to do it for things several directories down, so it's easiest to have such files in the top level of your tar file. 
 
 ## Monitor your jobs
 For all links below, log in with your FNAL Services credentials (FNAL email, not Kerberos password).
@@ -168,7 +186,9 @@ Here's the link for the history page of the example job: [link](https://fifemon.
 
 Feel free to sub in the link for your own jobs.
 
-Once there, click "View Sandbox files (job logs)". In general you want the .out and .err files for stdout and stderr. The .cmd file can sometimes be useful to see exactly what got passed in to your job.
+Once there, click "View Sandbox files (job logs)".
+In general you want the .out and .err files for stdout and stderr.
+The .cmd file can sometimes be useful to see exactly what got passed in to your job.
 
 [Kibana][kibana] can also provide a lot of information.
 
@@ -178,7 +198,15 @@ You can also download the job logs from the command line with jobsub_fetchlog:
 jobsub_fetchlog --jobid=12345678.0@jobsub0N.fnal.gov --unzipdir=some_appropriately_named_directory
 ```
 
-That will download them as a tarball and unzip it into the directory specified by the --unzipdir option. Of course replace 12345678.0@jobsub0N.fnal.gov with your own job ID. 
+That will download them as a tarball and unzip it into the directory specified by the --unzipdir option.
+Of course replace 12345678.0@jobsub0N.fnal.gov with your own job ID. 
+
+> ## Quiz 
+> Download the log of your last submission via jobsub_fetchlog or look it up on the monitoring pages. Then answer the following questions (all should be available in the .out or .err files):
+> 1. On what site did your job run?
+> 2. How much memory did it use?
+> 3. Did it exit abnormally? If so, what was the exit code?
+
 
 ## Brief review of best practices in grid jobs (and a bit on the interactive machines)
 
@@ -205,14 +233,24 @@ At its core, in POMS one makes a "campaign", which has one or more "stages". In 
 For analysis use: [main POMS page][poms-page-ana]  
 An [example campaign](https://pomsgpvm01.fnal.gov/poms/campaign_stage_info/dune/analysis?campaign_stage_id=9743).
 
-Typical POMS use centers around a configuration file (often more like a template which can be reused for many campaigns) and various campaign-specific settings for overriding the defaults in the config file. An example config file designed to do more or less what we did in the previous submission is here: `/dune/app/users/kherner/may2021tutorial/work/pomsdemo.cfg`
+Typical POMS use centers around a configuration file (often more like a template which can be reused for many campaigns) and various campaign-specific settings for overriding the defaults in the config file.
+An example config file designed to do more or less what we did in the previous submission is here: `/dune/app/users/kherner/may2021tutorial/work/pomsdemo.cfg`
 
 You can find more about POMS here: [POMS User Documentation][poms-user-doc]  
 Helpful ideas for structuring your config files are here: [Fife launch Reference][fife-launch-ref]  
 
 When you start using POMS you must upload an x509 proxy to the sever before submitting (you can just scp your proxy file from a dunegpvm machine) and it must be named x509up_voms_dune_Analysis_yourusername when you upload it.
+To upload, look for the User Data item in the left-hand menu on the POMS site, choose Uploaded Files, and follow the instructions.
 
-Finally, here is an example of a campaign that does the same thing as the previous one, using our usual MC reco file from Prod2, but does it via making a SAM dataset using that as the input: [POMS campaign stage information][poms-campaign-stage-info].
+Finally, here is an example of a campaign that does the same thing as the previous one, using our usual MC reco file from Prod2, but does it via making a SAM dataset using that as the input: [POMS campaign stage information](https://pomsgpvm01.fnal.gov/poms/campaign_stage_info/dune/analysis?campaign_stage_id=9753). 
+Of course, before running **any** SAM project, we should prestage our input definition(s):
+
+```bash
+samweb prestage-dataset kherner-may2021tutorial-mc
+```
+{: .source}
+
+replacing the above definition with your own definition as appropriate.
 
 If you are used to using other programs for your work such as project.py, there is a helpful tool called [Project-py][project-py-guide] that you can use to convert existing xml into POMS configs, so you don't need to start from scratch! Then you can just switch to using POMS from that point forward. 
 
