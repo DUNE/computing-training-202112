@@ -3,16 +3,17 @@ title: Expert in the Room - LArSoft How to modify a module
 teaching: 60
 exercises: 0
 questions:
-- How to use mrb
+- How do I check out, modify, and build DUNE code?
 objectives:  
-- Set up your environment
-- Download source code from DUNE's git repository
-- Build it
-- Run an example program
-- Modify the job configuration for the program
-- Modify the example module to make a custom histogram
-- Test the modified module
-- Stretch goal -- run the debugger
+- How to use mrb.
+- Set up your environment.
+- Download source code from DUNE's git repository.
+- Build it.
+- Run an example program.
+- Modify the job configuration for the program.
+- Modify the example module to make a custom histogram.
+- Test the modified module.
+- Stretch goal -- run the debugger.
 keypoints:
 - DUNE's software stack is built out of a tree of UPS products.
 - You don't have to build all of the software to make modifications -- you can check out and build one or more products to achieve your goals.
@@ -24,7 +25,7 @@ keypoints:
 
 ## Set up your environment
 
-You may need to check your login scripts:  .bashrc, .shrc, .profile, .login, etc. for experiment-specific setups for other experiments and even DUNE.  This tutorial assumes you have a "clean" login with minimal or no environment set up.  You can do simple checks to see 
+You may need to check your login scripts:  `.bashrc`, `.shrc`, `.profile`, `.login`, etc. for experiment-specific setups for other experiments and even DUNE.  This tutorial assumes you have a "clean" login with minimal or no environment set up.  You can do simple checks to see 
 
 ~~~
   env | grep -i nova
@@ -557,7 +558,7 @@ Do not store data files on the app disk!   Sometimes the app disk fills up nonet
 
 Segmentation faults:  These do not throw errors that *art* can catch -- they terminate the program immediately.  Use the debugger to find out where they happened and why.
 
-Exceptions that are caught.  The ddt debugger has in its menu a set of standard breakpoints.   You can instruct the debugger to stop any time an exception is thrown.  A common exception is a vector accessed past its size using at(), but often these are hard to track down because they could be anywhere.  Start your program with the debugger, but it is often a good idea to turn off the break-on-exception feature until after the geometry has been read in.  Some of the XML parsing code throws a lot of exceptions that are later caught as part of its normal mode of operation, and if you hit a breakpoint on each of these and push the "go" button with your mouse each time, you could be there all day.  Wait until the initialization is over, press "pause" and then turn on the breakpoints by exception.
+Exceptions that are caught.  The `ddt` debugger has in its menu a set of standard breakpoints.   You can instruct the debugger to stop any time an exception is thrown.  A common exception is a vector accessed past its size using `at()`, but often these are hard to track down because they could be anywhere.  Start your program with the debugger, but it is often a good idea to turn off the break-on-exception feature until after the geometry has been read in.  Some of the XML parsing code throws a lot of exceptions that are later caught as part of its normal mode of operation, and if you hit a breakpoint on each of these and push the "go" button with your mouse each time, you could be there all day.  Wait until the initialization is over, press "pause" and then turn on the breakpoints by exception.
 
 If you miss, start the debugging session over again.  Starting the session over is also a useful technique when you want to know what happened *before* a known error condition occurs.  You may find yourself asking "how did it get in *that* condition?  Set a breakpoint that's earlier in the execution and restart the session.  Keep backing up -- it's kind of like running the program in reverse, but it's very slow.  Sometimes it's the only way.
 
