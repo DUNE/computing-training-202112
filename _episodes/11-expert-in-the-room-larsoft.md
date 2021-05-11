@@ -25,14 +25,14 @@ keypoints:
 
 ## Set up your environment
 
-You may need to check your login scripts:  `.bashrc`, `.shrc`, `.profile`, `.login`, etc. for experiment-specific setups for other experiments and even DUNE.  This tutorial assumes you have a "clean" login with minimal or no environment set up.  You can do simple checks to see 
+You may need to check your login scripts:  `.bashrc`, `.shrc`, `.profile`, `.login`, etc. for experiment-specific setups for other experiments and even DUNE.  This tutorial assumes you have a "clean" login with minimal or no environment set up.  You can do simple checks to see if you have any NOvA setups in your environment, try:
 
 ~~~
   env | grep -i nova
 ~~~
 {: .language-bash}
 
-for example to see if you have any NOvA setups in your environment. Other common conflicting environments come from MINERvA and MicroBooNE, but you could have just about anything. You may have to adjust your login scripts to do experiment-specific setup only when logged in to a particular experiment's computers.  Or you can define aliases that run specific setups when requested, but not automatically on login.
+Other common conflicting environments come from MINERvA and MicroBooNE, but you could have just about anything. You may have to adjust your login scripts to do experiment-specific setup only when logged in to a particular experiment's computers.  Or you can define aliases that run specific setups when requested, but not automatically on login.
 
 
 You will need *three* login sessions.  These have different
@@ -140,7 +140,8 @@ worked on the code some, as this script will wipe it out and start fresh.
 
 This build script will take a few minutes to check code out and compile it.
 
-The `mrb g` command does a `git clone` of the specified repository with an optional tag and destination name.  LArSoft repositories (not used in this example but you may want to modify LArSoft code too someday) are hosted these days on GitHub, while DUNE's repositories, `protoduneana`, `dunetpc`, `duneutil`, and a few others are hosted on Redmine git repositories served by cdcvs.fnal.gov.  mrb g is smart enough to be able to clone the repository from the right server.  It also tests if you have push permissions and uses the ssh URL if you do, otherwise it falls back to a read-only clone over https.  Ask Tom Junk for developer permission for dune code and he can add you to the list.  More information is available here:   https://cdcvs.fnal.gov/redmine/projects/dunetpc/wiki/_Tutorial_
+The `mrb g` command does a `git clone` of the specified repository with an optional tag and destination name.  LArSoft repositories (not used in this example but you may want to modify LArSoft code too someday) are hosted these days on GitHub, while DUNE's repositories, `protoduneana`, `dunetpc`, `duneutil`, and a few others are hosted on Redmine git repositories served by cdcvs.fnal.gov.  mrb g is smart enough to be able to clone the repository from the right server.  It also tests if you have push permissions and uses the ssh URL if you do, otherwise it falls back to a read-only clone over https.  Ask Tom Junk for developer permission for dune code and he can add you to the list.  More information is available [here][dunetpc-wiki].  
+
 During testing, I found that my `~/.ssh/known_hosts` file had an old entry
 for `cdcvs.fnal.gov` in it, and the `mrb g protoduneana` command failed because of
 it.  Solution -- edit `~/.ssh/known_hosts` and delete the entry for
@@ -199,7 +200,7 @@ computer for session #3
 
 We need to locate an input file.  Here are some tips for finding input data:
 
-https://wiki.dunescience.org/wiki/Look_at_ProtoDUNE_SP_data
+[https://wiki.dunescience.org/wiki/Look_at_ProtoDUNE_SP_data][dune-wiki-protodune-sp]
 
 Data and MC files are typically on tape, but can be cached on disk so you don't have to wait possibly a long time for the 
 file to be staged in. Check to see if a sample file is in dCache or only on tape:
@@ -327,7 +328,7 @@ and run it again:
 {: .language-bash}
 
 
-Lots of information on job configuration via FHiCL is available at this link:  https://cdcvs.fnal.gov/redmine/documents/327
+Lots of information on job configuration via FHiCL is available at this [link][redmine-327]
 
 #### Editing the example module and building it
 
@@ -460,11 +461,11 @@ are good examples of places to look for code, for example.
 
 #### Checking out and committing code to the git repository
 
-For protoduneana and dunetpc, this wiki page:  https://cdcvs.fnal.gov/redmine/projects/dunetpc/wiki/_Tutorial_ is quite good.  LArSoft uses GitHub with a pull-request model.  See 
+For protoduneana and dunetpc, this [wiki page][dunetpc-wiki-tutorial] is quite good.  LArSoft uses GitHub with a pull-request model.  See 
 
-https://cdcvs.fnal.gov/redmine/projects/larsoft/wiki/Developing_With_LArSoft
+[https://cdcvs.fnal.gov/redmine/projects/larsoft/wiki/Developing_With_LArSoft][redmine-dev-larsoft]
 
-https://cdcvs.fnal.gov/redmine/projects/larsoft/wiki/Working_with_GitHub
+[https://cdcvs.fnal.gov/redmine/projects/larsoft/wiki/Working_with_GitHub][redmine-working-github]
 
 ## Common errors and recovery
 
@@ -602,8 +603,17 @@ will use your valid Kerberos ticket to generate the necessary certificates and p
 
 #### Link to art/LArSoft tutorial May 2021
 
-https://wiki.dunescience.org/wiki/Presentation_of_LArSoft_May_2021
 
+[https://wiki.dunescience.org/wiki/Presentation_of_LArSoft_May_2021][dune-larsoft-may21]
+
+
+[dunetpc-wiki]:  https://cdcvs.fnal.gov/redmine/projects/dunetpc/wiki/_Tutorial
+[dune-wiki-protodune-sp]: https://wiki.dunescience.org/wiki/Look_at_ProtoDUNE_SP_data
+[redmine-327]:  https://cdcvs.fnal.gov/redmine/documents/327
+[dunetpc-wiki-tutorial]:  https://cdcvs.fnal.gov/redmine/projects/dunetpc/wiki/_Tutorial
+[redmine-dev-larsoft]: https://cdcvs.fnal.gov/redmine/projects/larsoft/wiki/Developing_With_LArSoft
+[redmine-working-github]: https://cdcvs.fnal.gov/redmine/projects/larsoft/wiki/Working_with_GitHub
+[dune-larsoft-may21]: https://wiki.dunescience.org/wiki/Presentation_of_LArSoft_May_2021
 
 
 {%include links.md%} 
