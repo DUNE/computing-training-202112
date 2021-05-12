@@ -48,8 +48,10 @@ Use job id 40351757.0@jobsub01.fnal.gov to retrieve output
 {: .output}
 
 > ## Quiz 
-> What is your job ID?
-> 
+>
+> 1. What is your job ID?
+>
+{: .solution}
 
 Now, let's look at some of these options in more detail.
 
@@ -108,7 +110,7 @@ fi
 source ${INPUT_TAR_DIR_LOCAL}/${DIRECTORY}/localProducts*/setup-grid 
 mrbslp
 ~~~
-{: . source}
+{: .source}
 
 
 Now let's look at the difference between the setup-grid script and the plain setup script.
@@ -202,11 +204,13 @@ That will download them as a tarball and unzip it into the directory specified b
 Of course replace 12345678.0@jobsub0N.fnal.gov with your own job ID. 
 
 > ## Quiz 
+>
 > Download the log of your last submission via jobsub_fetchlog or look it up on the monitoring pages. Then answer the following questions (all should be available in the .out or .err files):
 > 1. On what site did your job run?
 > 2. How much memory did it use?
 > 3. Did it exit abnormally? If so, what was the exit code?
-
+>
+{: .solution}
 
 ## Brief review of best practices in grid jobs (and a bit on the interactive machines)
 
