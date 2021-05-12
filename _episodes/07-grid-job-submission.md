@@ -133,9 +133,12 @@ diff may2021tutorial/localProducts_larsoft__e19_prof/setup may2021tutorial/local
 ~~~
 {: . output}
 
-As you can see, we have switched from the hard-coded directories to directories defined by environment variables; the INPUT_TAR_DIR_LOCAL variable will be set for us (see below).
-
-Then submit another job (in the following we keep the same submit file as above): 
+As you can see, we have switched from the hard-coded directories to directories defined by environment variables; the `INPUT_TAR_DIR_LOCAL` variable will be set for us (see below).
+Now, let's actually create our tar file. Again assuming you are in `/dune/app/users/kherner/may2021tutorial/`:
+```bash
+tar --exclude '.git' -czf may2021tutorial.tar.gz may2021tutorial/localProducts_larsoft__e19_prof may2021tutorial/work setupMay2021Tutorial-grid.sh
+```
+Then submit another job (in the following we keep the same submit file as above):
 
 ```bash
 jobsub_submit -G dune -M -N 1 --memory=1800MB --disk=2GB --expected-lifetime=3h --cpu=1 --resource-provides=usage_model=DEDICATED,OPPORTUNISTIC,OFFSITE --tar_file_name=dropbox:///dune/app/users/<username>/may2021tutorial.tar.gz --use-cvmfs-dropbox -l '+SingularityImage=\"/cvmfs/singularity.opensciencegrid.org/fermilab/fnal-wn-sl7:latest\"' --append_condor_requirements='(TARGET.HAS_Singularity==true&&
