@@ -25,7 +25,7 @@ keypoints:
 DUNE data is stored around the world and the storage elements are not always organized in a way that they can be easily inspected. For this purpose we use the SAM web client.
 
 ### What is SAM?  
-The Sequential Access Model (SAM) is a data handling system developed at Fermilab.  It is designed to tracklocations of files and other file metadata.
+Sequential Access with Metadata (SAM) is a data handling system developed at Fermilab.  It is designed to tracklocations of files and other file metadata.
 
 This lecture will show you how to access data files that have been defined to the DUNE Data Catalog. Execute the following commands after logging in to the DUNE interactive node, and sourcing the main dune setups.
 
