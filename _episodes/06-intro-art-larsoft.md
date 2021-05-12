@@ -38,7 +38,7 @@ The configuration storage is particularly useful if you receive a data file from
 
 ### Getting set up to try the tools
 
-Log in to a `dunegpvm*.fnal.gov` machine and set up your environment (This script is defined in Exercise 5 of [https://dune.github.io/computing-training-202105/setup.html])
+Log in to a `dunegpvm*.fnal.gov` machine and set up your environment (This script is defined in Exercise 5 of [https://dune.github.io/computing-training-202105/setup.html][The setup exercise])
 
 ```bash
 source ~/.dune_presetup_202105.sh
@@ -151,7 +151,7 @@ See the section below on `FCL` files for more information on what you're looking
 
 Try it out:
 ```bash
->count_events root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root
+count_events root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune-sp/full-reconstructed/2021/mc/out1/PDSPProd4/40/57/23/91/PDSPProd4_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_datadriven_41094796_0_20210121T214555Z.root
 ```
 
 #### product_sizes_dumper
