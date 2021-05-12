@@ -13,6 +13,12 @@ keypoints:
 - LArSoft is a set of simulation and reconstruction tools shared among the liquid-argon TPC collaborations.
 ---
 
+## Session Video
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MFHCYC8KfQQ" title="DUNE Computing Tutorial May 2021 Introduction to art and LArSoft" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+
 ## Introduction to *art*
 
 *Art* is the framework used for the offline software used to process LArTPC data from the far detector and the ProtoDUNEs. It was chosen not only because of the features it provides, but also because it allows DUNE to use and share algorithms developed for other LArTPC experiments, such as ArgoNeuT, MicroBooNE and ICARUS. The section below describes LArSoft, a shared software toolkit. Art is also used by the NOvA and mu2e experiments. The primary language for *art* and experiment-specific plug-ins is C++.

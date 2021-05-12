@@ -18,6 +18,12 @@ The goal of the DUNE Computing Consortium is to establish a global computing net
 
 Coordinator: Heidi Schellman (Oregon State University)
 
+## Welcome Session Video
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2Vg4kXcxzCs" title="DUNE Computing Tutorial May 2021 Welcome" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+
 ## Tutorial Instructors
 
 **Organizers:**
@@ -42,11 +48,6 @@ The workshop spans three days.
    file="/fig/Schedule_computing_training_202105.png"
    alt="May 2021 Workshop Schedule" caption="May 2021 Workshop Schedule" %}
 
-## Welcome Session Video
-
-<center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2Vg4kXcxzCs" title="DUNE Computing Tutorial May 2021 Welcome" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
 
 ## Support
 
