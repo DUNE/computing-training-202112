@@ -102,7 +102,7 @@ df -h
 {: .language-bash}
 
 > ## Exercise 1
-> From the output of the `df -h` command, identy:
+> From the output of the `df -h` command, identify:
 > 1. the home area
 > 2. the NAS storage spaces
 > 3. the different dCache volumes
@@ -125,10 +125,14 @@ ifdh cp root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/p
 **Resource:** [idfh commands](https://cdcvs.fnal.gov/redmine/projects/ifdhc/wiki/Ifdh_commands)
 
 > ## Exercise 2
->
-> Coming soon!
->
+> Using the ifdh command, complete the following tasks:
+* create a directory in your dCache scratch area (/pnfs/dune/scratch/users/${USER}/) called "DUNE_tutorial_May2021"
+* copy your ~/.bashrc file to that directory.
+* copy the .bashrc file from your scrtach directory DUNE_tutorial_May2021 dCache to /dev/null
+* remove the directory DUNE_tutorial_May2021 using "ifdh rmdir /pnfs/dune/scratch/users/${USER}/DUNE_tutorial_May2021"
+> Note, if the destination for an ifdh cp command is a directory instead of filename with full path, you have to add the "-D" option to the command line. Also, for a directory to be deleted, it must be empty.
 {: .challenge}
+
 
 ### xrootd 
 The eXtended ROOT daemon is software framework designed for accessing data from various architectures and in a complete scalable way (in size and performance). 
@@ -136,20 +140,29 @@ The eXtended ROOT daemon is software framework designed for accessing data from 
 XRootD is most suitable for read-only data access.
 [XRootD Man pages](https://xrootd.slac.stanford.edu/docs.html)
 
-> ## Exercise 3
-> What are the following commands doing?
->~~~
-> xrdfs root://fndca1.fnal.gov:1094/ ls /pnfs/fnal.gov/usr/dune/scratch/users
-> pnfs2xrootd /pnfs/dune/scratch/users/ 
->~~~
->
-> {: .language-bash}
-{: .challenge}
+
+Issue the following commands and try to understand how the first command enables completing the parameters for the second command.
+
+~~~
+pnfs2xrootd /pnfs/dune/scratch/users/${USER}/
+xrdfs root://fndca1.fnal.gov:1094/ ls /pnfs/fnal.gov/usr/dune/scratch/users/${USER}/DUNE_tutorial_May2021
+~~~
+{: .language-bash}
 
 ## Let's practice
 
-The following sessions of this training will give you the opportunity to understand more while using these tools yourself. This takes some time to learn.  
-Any questions so far? Feel free to ask!
+> ## Exercise 3
+> Using a combination of `ifdh` and `xrootd` commands discussed previously:
+> * Use `ifdh` locateFile to find the directory for this file `PDSPProd4a_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_off_43352322_0_20210427T162252Z.root`
+> * Use `pnfs2xrootd` to get the `xrootd` URI for that file.
+> * Use `xrdcp` to copy that file to `/dev/null`
+> * Using `xrdfs` and the `ls` option, count the number of files in the same directory as `PDSPProd4a_protoDUNE_sp_reco_stage1_p1GeV_35ms_sce_off_43352322_0_20210427T162252Z.root`
+{: .challenge}
+
+Note that redirecting the standard output of a command into the command `wc -l` will count the number of lines in the output text. e.g. `ls -alrth ~/ | wc -l`
+
+
+
 
 ## Useful links to bookmark
 
