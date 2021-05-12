@@ -22,10 +22,11 @@ keypoints:
 - mrb uses git and cmake, though aspects of both are exposed to the user.
 ---
 
-
 ## Set up your environment
 
-You may need to check your login scripts:  `.bashrc`, `.shrc`, `.profile`, `.login`, etc. for experiment-specific setups for other experiments and even DUNE.  This tutorial assumes you have a "clean" login with minimal or no environment set up.  You can do simple checks to see if you have any NOvA setups in your environment, try:
+Note: Microlectures via YouTube links are provided in this lesson.
+
+[YouTube Lecture Part 1](https://youtu.be/0IQL7PmnWBo): You may need to check your login scripts:  `.bashrc`, `.shrc`, `.profile`, `.login`, etc. for experiment-specific setups for other experiments and even DUNE.  This tutorial assumes you have a "clean" login with minimal or no environment set up.  You can do simple checks to see if you have any NOvA setups in your environment, try:
 
 ~~~
   env | grep -i nova
@@ -188,7 +189,7 @@ source setupMay2021Tutorial.sh
 
 ## Run your program
 
-Start up the session for running programs -- log in to a `dunegpvm` interactive 
+[YouTube Lecture Part 2](https://youtu.be/8-M2ZV-zNXs): Start up the session for running programs -- log in to a `dunegpvm` interactive 
 computer for session #3
 
 ~~~
@@ -332,7 +333,7 @@ Lots of information on job configuration via FHiCL is available at this [link][r
 
 #### Editing the example module and building it
 
-Now in session #1, edit `${MRB_SOURCE}/protoduneana/protoduneana/TutorialExamples/ClusterCounter3_module.cc`
+[YouTube Lecture Part 3](https://youtu.be/S29HEzIoGwc): Now in session #1, edit `${MRB_SOURCE}/protoduneana/protoduneana/TutorialExamples/ClusterCounter3_module.cc`
 
 Add
 
@@ -411,7 +412,7 @@ to the example `TTree`.
 
 #### Run your program in the debugger
 
-In session #3 (the running session)
+[YouTube Lecture Part 4](https://youtu.be/xcgVKmpKgfw): In session #3 (the running session)
 
 ~~~
   setup forge_tools
