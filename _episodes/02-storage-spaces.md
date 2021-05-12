@@ -103,17 +103,17 @@ df -h
 
 > ## Exercise 1
 > From the output of the `df -h` command, identy:
-* the home area
-* the NAS storage spaces
-* the different dCache volumes
-{: .challenge}
+> 1. the home area
+> 2. the NAS storage spaces
+> 3. the different dCache volumes
+{: .solution}
 
 
 ### ifdh 
 
 Another useful data handling command you will soon come across is ifdh. This stands for Intensity Frontier Data Handling. It is a tool suite that facilitates selecting the appropriate data transfer method from many possibilities while protecting shared resources from overload. You may see *ifdhc*, where *c* refers to *client*.
 
-Here is an example to copy a file. Refer to the [Mission Setup](../setup.md) for the setting up the `DUNETPC_VERSION`.
+Here is an example to copy a file. Refer to the [Mission Setup]({{ site.baseurl }}/setup.html) for the setting up the `DUNETPC_VERSION`.
 ~~~
 source /cvmfs/dune.opensciencegrid.org/products/dune/setup_dune.sh
 setup dunetpc $DUNETPC_VERSION -q e19:prof
@@ -125,8 +125,10 @@ ifdh cp root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/p
 **Resource:** [idfh commands](https://cdcvs.fnal.gov/redmine/projects/ifdhc/wiki/Ifdh_commands)
 
 > ## Exercise 2
+>
 > Coming soon!
-{: .challenge}
+>
+{: .solution}
 
 ### xrootd 
 The eXtended ROOT daemon is software framework designed for accessing data from various architectures and in a complete scalable way (in size and performance). 
@@ -140,8 +142,9 @@ XRootD is most suitable for read-only data access.
 > xrdfs root://fndca1.fnal.gov:1094/ ls /pnfs/fnal.gov/usr/dune/scratch/users
 > pnfs2xrootd /pnfs/dune/scratch/users/ 
 >~~~
+>
 > {: .language-bash}
-{: .challenge}
+{: .solution}
 
 ## Let's practice
 
