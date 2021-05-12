@@ -38,7 +38,7 @@ The configuration storage is particularly useful if you receive a data file from
 
 ### Getting set up to try the tools
 
-Log in to a `dunegpvm*.fnal.gov` machine and set up your environment (This script is defined in Exercise 5 of [https://dune.github.io/computing-training-202105/setup.html][The setup exercise])
+Log in to a `dunegpvm*.fnal.gov` machine and set up your environment (This script is defined in Exercise 5 of https://dune.github.io/computing-training-202105/setup.html)
 
 ```bash
 source ~/.dune_presetup_202105.sh
