@@ -106,7 +106,7 @@ df -h
 > 1. the home area
 > 2. the NAS storage spaces
 > 3. the different dCache volumes
-{: .solution}
+{: .challenge}
 
 
 ### ifdh 
@@ -128,7 +128,7 @@ ifdh cp root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/p
 >
 > Coming soon!
 >
-{: .solution}
+{: .challenge}
 
 ### xrootd 
 The eXtended ROOT daemon is software framework designed for accessing data from various architectures and in a complete scalable way (in size and performance). 
@@ -144,7 +144,7 @@ XRootD is most suitable for read-only data access.
 >~~~
 >
 > {: .language-bash}
-{: .solution}
+{: .challenge}
 
 ## Let's practice
 
