@@ -42,6 +42,12 @@ The workshop spans three days.
    file="/fig/Schedule_computing_training_202105.png"
    alt="May 2021 Workshop Schedule" caption="May 2021 Workshop Schedule" %}
 
+## Welcome Session Video
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2Vg4kXcxzCs" title="DUNE Computing Tutorial May 2021 Welcome" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+
 ## Support
 
 There will be live documents linked from [Indico][indico-event-link] for each [Zoom][zoom-link] session. You can write questions there, anonymously or not, and experts will reply. The chat on Zoom can quickly saturate so this is a more convenient solution and proved very successful at the previous training. We will collect all questions and release a Q&A after the event.
