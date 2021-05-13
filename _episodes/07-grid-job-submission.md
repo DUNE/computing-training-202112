@@ -263,14 +263,15 @@ If you are used to using other programs for your work such as project.py, there 
 
 ## Further Reading
 Some more background material on these topics (including some examples of why certain things are bad) are on this PDF:  
-[DUNE Computing Tutorial:Advanced topics and best practices][DUNE_computing_tutorial_advanced_topics_20210129]
+[DUNE Computing Tutorial:Advanced topics and best practices][DUNE_computing_tutorial_advanced_topics_20210129]  
+
+[The Glidein-based Workflow Management System]( https://glideinwms.fnal.gov/doc.prd/index.html )
 
 [job-autorelease]: https://cdcvs.fnal.gov/redmine/projects/fife/wiki/Job_autorelease
 [dune-openscience-grid-org]: dune.opensciencegrid.org
 [larsoft-openscience-grid-org]: larsoft.opensciencegrid.org
 [redmine-wiki-jobsub]: https://cdcvs.fnal.gov/redmine/projects/jobsub/wiki
 [redmine-wiki-using-the-client]: https://cdcvs.fnal.gov/redmine/projects/jobsub/wiki/Using_the_Client
-
 [fifemon-dune]: https://fifemon.fnal.gov/monitor/d/000000053/experiment-batch-details?orgId=1&var-experiment=dune
 [fifemon-myjobs]: https://fifemon.fnal.gov/monitor/d/000000116/user-batch-details?orgId=1&var-cluster=fifebatch&var-user=kherner
 [fifemon-whyheld]: https://fifemon.fnal.gov/monitor/d/000000146/why-are-my-jobs-held?orgId=1
@@ -280,6 +281,7 @@ Some more background material on these topics (including some examples of why ce
 [fife-launch-ref]: https://cdcvs.fnal.gov/redmine/projects/fife_utils/wiki/Fife_launch_Reference 
 [poms-campaign-stage-info]: https://pomsgpvm01.fnal.gov/poms/campaign_stage_info/dune/analysis?campaign_stage_id=9023
 [project-py-guide]: https://cdcvs.fnal.gov/redmine/projects/project-py/wiki/Project-py_guide
-[DUNE_computing_tutorial_advanced_topics_20210129]: https://indico.fnal.gov/event/20144/contributions/55932/attachments/34945/42690/DUNE_computing_tutorial_advanced_topics_and_best_practices_20200129.pdf
+[DUNE_computing_tutorial_advanced_topics_20210129]: https://indico.fnal.gov/event/20144/contributions/55932/attachments/34945/42690/DUNE_computing_tutorial_advanced_topics_and_best_practices_20200129.pdf  
+
 
 {%include links.md%}
