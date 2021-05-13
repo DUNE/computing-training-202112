@@ -22,6 +22,8 @@ DUNE simulation, reconstruction and analysis jobs take a lot of memory and CPU t
 
 **Run  with the “prof” build when launching big jobs.**  While both the "debug" and "prof" builds have debugging and profiling information included in the executables and shared libraries, the "prof" build has a high level of compiler optimization turned on while "debug" has optimizations disabled.  Debugging with the "prof" build can be done, but it is more difficult because operations can be reordered and variables put in CPU registers instead of inspectable memory. The “debug” builds are generally much slower, by a factor of four or more.  Often this difference is so stark that the time spent repeatedly waiting for a slow program to chug through the first trigger record in an interactive debugging session is more costly than the inconvenience of not being able to see some of the variables in the debugger.  If you are not debugging, then there really is (almost) no reason to use the “debug” builds.  If your program produces a different result when run with the debug build and the prof build (and it’s not just the random seed), then there is a bug to be investigated.
 
+**Compile your interactive ROOT scripts instead of running them in the interpreter**   At the ROOT prompt, use .L myprogram.C++ (even though its filename is myprogram.C).  Also .x myprogram.C++ will compile and then execute it.  This will force a compile.  .L myprogram.C+ will compile it only if necessary.
+
 **Run gprof or other profilers like valgrind's callgrind:**   You might be surprised at what is actually taking all the time in your program.  There is abundant documentation on the [web][gnu-manuals-gprof], and also the valgrind online documentation.
 There is no reason to profile a "debug" build and there is no need to hand-optimize something the compiler will optimize anyway, and which may even hurt the optimality of the compiler-optimized version.
 
@@ -244,7 +246,9 @@ Use `massif`.  `massif` is a heap checker, a tool provided with `valgrind`; see 
 
 ## Workflow optimization:
 
-**Pre-Stage your Datasets**  It takes a lot of time to wait for a tape (sometimes hours!).  CPUs are accounted by wall-clock time, whether you're using them or not.  So if your jobs are waiting for data, they will run slowly even if you optimized the CPU usage.  Pre-stage your data!
+**Pre-stage your datasets**  It takes a lot of time to wait for a tape (sometimes hours!).  CPUs are accounted by wall-clock time, whether you're using them or not.  So if your jobs are waiting for data, they will run slowly even if you optimized the CPU usage.  Pre-stage your data!
+
+**Run a test job**  If you have a bug, you will save time by not submitting large numbers of jobs that might not work.
 
 **Write out your variables in your own analysis ntuples (TTrees)**  You will likely have to run over the same MC and data events repeatedly, and the faster this is the better. You will have to adjust your cuts, tune your algorithms, estimate systematic uncertainties, train your deep-learning functions, debug your program, and tweak the appearance of your plots.  Ideally, if the data you need to do these operatios is available interctively, you will be able to perform these tasks faster.  Choose a minimal set of variables to put in your ntuples to save on storage space.
 
