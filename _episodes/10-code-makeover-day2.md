@@ -244,6 +244,8 @@ Use `massif`.  `massif` is a heap checker, a tool provided with `valgrind`; see 
 
 ## Workflow optimization:
 
+**Pre-Stage your Datasets**  It takes a lot of time to wait for a tape (sometimes hours!).  CPUs are accounted by wall-clock time, whether you're using them or not.  So if your jobs are waiting for data, they will run slowly even if you optimized the CPU usage.  Pre-stage your data!
+
 **Write out your variables in your own analysis ntuples (TTrees)**  You will likely have to run over the same MC and data events repeatedly, and the faster this is the better. You will have to adjust your cuts, tune your algorithms, estimate systematic uncertainties, train your deep-learning functions, debug your program, and tweak the appearance of your plots.  Ideally, if the data you need to do these operatios is available interctively, you will be able to perform these tasks faster.  Choose a minimal set of variables to put in your ntuples to save on storage space.
 
 **Write out histograms to ROOTfiles and decorate them in a separate script**  You may need to experiment many times with borders, spacing, ticks, fonts, colors, line widths, shading, labels, titles, legends, axis ranges, etc.  Best not to have to re-compute the contents when you're doing this, so save the histograms to a file first and read it in to touch it up for presentation.
