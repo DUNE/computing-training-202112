@@ -242,6 +242,13 @@ Use `massif`.  `massif` is a heap checker, a tool provided with `valgrind`; see 
 
 **Break up very large source files into pieces.**   `g++’s` analysis and optimization steps take an amount of time that grows faster than linearly with the number of source lines.
 
+## Workflow optimization:
+
+**Write out your variables in your own analysis ntuples (TTrees)**  You will likely have to run over the same MC and data events repeatedly, and the faster this is the better. You will have to adjust your cuts, tune your algorithms, estimate systematic uncertainties, train your deep-learning functions, debug your program, and tweak the appearance of your plots.  Ideally, if the data you need to do these operatios is available interctively, you will be able to perform these tasks faster.  Choose a minimal set of variables to put in your ntuples to save on storage space.
+
+**Write out histograms to ROOTfiles and decorate them in a separate script**  You may need to experiment many times with borders, spacing, ticks, fonts, colors, line widths, shading, labels, titles, legends, axis ranges, etc.  Best not to have to re-compute the contents when you're doing this, so save the histograms to a file first and read it in to touch it up for presentation.
+
+
 
 [cpp-lower-bound]: https://en.cppreference.com/w/cpp/algorithm/lower_bound
 [gnu-manuals-gprof]: https://ftp.gnu.org/old-gnu/Manuals/gprof-2.9.1/html_mono/gprof.html
