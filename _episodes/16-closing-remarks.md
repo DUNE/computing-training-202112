@@ -36,9 +36,9 @@ It is anonymous. Send us your impressions, praise, critiques and suggestions! Th
 
 ##  Next Steps
 
-We will post the recordings on indico soon.
+Video recordings of the sessions have been posted within each lesson.
 
-We invite you to bookmark this site and to revisit the content again.
+We invite you to bookmark this training site and to revisit the content regularly.
 
 Point a colleague to the material.
 
