@@ -26,9 +26,15 @@ Protocols for efficient job submission and monitoring has been demonstrated.
 
 We are thankful for the instructor's hard work, and for the numerous participants who joined.
 
+##  Survey time!
+
+Please give us feedback on this training by filling out this [survey](https://forms.gle/F962ejyN31rGRg3D7). It is anonymous. Send us your impressions, praise, critiques and suggestions!
+
 ##  Next Steps
 
-We invite you to bookmark this site and to revisit the content again, and soon.
+We will post the recordings on indico soon.
+
+We invite you to bookmark this site and to revisit the content again.
 
 Point a colleague to the material.
 
