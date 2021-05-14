@@ -18,9 +18,7 @@ Write on the live doc your current error(s) and experts will provide guidance to
 On top of learning why a job failed, we hope it will give you the tools to solve future issues by yourself. 
 
 
-
 *Debugging is an art.*  
-
 
 
 *Confusion is the sweat of learning.*
