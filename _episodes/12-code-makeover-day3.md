@@ -10,6 +10,15 @@ keypoints:
 - Always, always, always prestage input datasets. No exceptions.
 ---
 
+## Video Session
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/x6AkusPlrqE" title="DUNE Computing Tutorial May 2021 Day 3 Code-makover - Submit with POMS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NTuJa-2TuuQ" title="DUNE Computing Tutorial May 2021 Day 3 Code-makover - Submit with POMS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</center>
+
 ## Submit with POMS
 
 This lesson extends from earlier work: [Grid Job Submission and Common Errors]({{ site.baseurl }}/07-grid-job-submission/index.html) 

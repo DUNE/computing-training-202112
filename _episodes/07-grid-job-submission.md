@@ -279,6 +279,8 @@ Some more background material on these topics (including some examples of why ce
 
 [The Glidein-based Workflow Management System]( https://glideinwms.fnal.gov/doc.prd/index.html )
 
+[Introduction to Docker](https://hsf-training.github.io/hsf-training-docker/index.html)
+
 [job-autorelease]: https://cdcvs.fnal.gov/redmine/projects/fife/wiki/Job_autorelease
 [dune-openscience-grid-org]: dune.opensciencegrid.org
 [larsoft-openscience-grid-org]: larsoft.opensciencegrid.org

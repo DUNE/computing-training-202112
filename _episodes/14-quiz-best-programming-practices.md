@@ -26,6 +26,9 @@ At the end of the session, a second slide show will be posted with answers.
 
 Enjoy learning!  
 
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/E8n0saHdr4E" title="DUNE Computing Tutorial May 2021 Day 3 Quiz on Best Programming Practices" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
 
 [indico-timetable]: https://indico.fnal.gov/event/48756/timetable/#all
 [sc-etherpad]: https://pad.carpentries.org/

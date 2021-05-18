@@ -22,9 +22,15 @@ keypoints:
 - mrb uses git and cmake, though aspects of both are exposed to the user.
 ---
 
+## Video Session
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s3DOtHEhl2c" title="DUNE Computing Tutorial May 2021 Day 3 Expert in the Room, LArSoft" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+
 ## Set up your environment
 
-Note: Microlectures via YouTube links are provided in this lesson.
+Note: Pre-recorded microlectures via YouTube links are provided in this lesson, its link preceeding the corresponding text.
 
 [YouTube Lecture Part 1](https://youtu.be/0IQL7PmnWBo): You may need to check your login scripts:  `.bashrc`, `.shrc`, `.profile`, `.login`, etc. for experiment-specific setups for other experiments and even DUNE.  This tutorial assumes you have a "clean" login with minimal or no environment set up.  You can do simple checks to see if you have any NOvA setups in your environment, try:
 
