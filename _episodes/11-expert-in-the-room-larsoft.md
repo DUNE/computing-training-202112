@@ -614,10 +614,10 @@ will use your valid Kerberos ticket to generate the necessary certificates and p
 [https://wiki.dunescience.org/wiki/Presentation_of_LArSoft_May_2021][dune-larsoft-may21]
 
 
-[dunetpc-wiki]:  https://cdcvs.fnal.gov/redmine/projects/dunetpc/wiki/_Tutorial
+[dunetpc-wiki]:  https://cdcvs.fnal.gov/redmine/projects/dunetpc/wiki/_Tutorial_
 [dune-wiki-protodune-sp]: https://wiki.dunescience.org/wiki/Look_at_ProtoDUNE_SP_data
 [redmine-327]:  https://cdcvs.fnal.gov/redmine/documents/327
-[dunetpc-wiki-tutorial]:  https://cdcvs.fnal.gov/redmine/projects/dunetpc/wiki/_Tutorial
+[dunetpc-wiki-tutorial]:  https://cdcvs.fnal.gov/redmine/projects/dunetpc/wiki/_Tutorial_
 [redmine-dev-larsoft]: https://cdcvs.fnal.gov/redmine/projects/larsoft/wiki/Developing_With_LArSoft
 [redmine-working-github]: https://cdcvs.fnal.gov/redmine/projects/larsoft/wiki/Working_with_GitHub
 [dune-larsoft-may21]: https://wiki.dunescience.org/wiki/Presentation_of_LArSoft_May_2021
