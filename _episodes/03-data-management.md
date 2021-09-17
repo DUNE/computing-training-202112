@@ -212,6 +212,12 @@ Also the PYTHONPATH describes where Python modules will be loaded from.
 > * show all the dependencies of dunetpc by using "ups depend dunetpc $DUNETPC_VERSION -q e19:prof"
 {: .challenge}
 
+### UPS Docmentation Links
+
+ [UPS reference manual](http://www.fnal.gov/docs/products/ups/ReferenceManual/)
+ [UPS documentation](https://cdcvs.fnal.gov/redmine/projects/ups/wiki)
+ [UPS qualifiers](https://cdcvs.fnal.gov/redmine/projects/cet-is-public/wiki/AboutQualifiers)
+
 ## mrb
 **What is mrb and why do we need it?**  
 Early on, the LArSoft team chose git and cmake as the software version manager and the build language, respectively, to keep up with industry standards and to take advantage of their new features. When we clone a git repository to a local copy and check out the code, we end up building it all. We would like LArSoft and DUNE code to be more modular, or at least the builds should reflect some of the inherent modularity of the code.
