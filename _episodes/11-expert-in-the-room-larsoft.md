@@ -69,6 +69,8 @@ if [ ! -d "$WORKDIR" ]; then
 fi
 
 source /cvmfs/dune.opensciencegrid.org/products/dune/setup_dune.sh
+unsetup mrb
+setup mrb -o
 
 cd ${WORKDIR}
 touch ${DIRECTORY}
@@ -94,6 +96,8 @@ DIRECTORY=may2021tutorial
 USERNAME=`whoami`
 
 source /cvmfs/dune.opensciencegrid.org/products/dune/setup_dune.sh
+unsetup mrb
+setup mrb -o
 export WORKDIR=/dune/app/users/${USERNAME}
 if [ ! -d "$WORKDIR" ]; then
   export WORKDIR=`echo ~`
