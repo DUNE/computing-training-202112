@@ -53,7 +53,7 @@ Start up session #1, editing code, on one of the dunegpvm*.fnal.gov
 interactive nodes.  These scripts have also been tested on the
 lxplus.cern.ch interactive nodes. Create two scripts in your home directory:
 
-Modification as of September 27, 2021:  Due to an incompatible version of mrb that was rolled out on September 21, 2021 and made current, in order to use the older version of dunetpc in this tutorial, we must also use the older version of mrb.  Two lines, unsetup mrb and setup mrb -o have been added to the setup scripts.  Versions of dunetpc and larsoft v09_31_00 and newer will need the new (current) mrb, and older verisons will use the older version.
+Modification as of September 27, 2021:  Due to an incompatible version of mrb that was rolled out on September 21, 2021 and made current, in order to use the older version of dunetpc in this tutorial, we must also use the older version of mrb.  Two lines, unsetup mrb and setup mrb -o have been added to the setup scripts.  Versions of protoduneana, dunetpc and larsoft v09_31_00 and newer will need the new (current) mrb, and older verisons will use the older version.
 
 `newDevMay2021Tutorial.sh` should have these contents:
 
