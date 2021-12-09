@@ -42,7 +42,7 @@ Coordinator: Heidi Schellman (Oregon State University)
 
 ## Schedule
 
-The workshop spans three days.
+The workshop is a one half-day version of the workshop that normally spans three days.
 
 {%include figure.html url="" max-width="75%"
    file="/fig/Schedule_computing_training_202105.png"

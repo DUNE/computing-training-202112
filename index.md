@@ -8,14 +8,14 @@ country: "us"
 language: "en"
 latitude: "45"
 longitude: "-1"
-humandate: "May 12-14, 2021"
+humandate: "December 10, 2021"
 humantime: "8:00 am - 12:30 pm"
-startdate: "2021-05-12"
-enddate: "2021-05-14"
+startdate: "2021-12-10"
+enddate: "2021-12-10"
 instructor: ["Claire David", "Michael Kirby"]
 helper: ["mentor1", "mentor2"]
 email: ["claire.david@cern.ch","mkirby@fnal.gov"]
-collaborative_notes: "2021-04-12-dune"
+collaborative_notes: "2021-12-10-dune"
 eventbrite:
 ---
 
@@ -55,7 +55,7 @@ You will need a valid FNAL or CERN account to be able to do the tutorial and be 
 
 <h2 id="schedule">Schedule by Day</h2>
 
-<!-- {% include custom_schedule3.html %} -->
+<!--{% include custom_schedule3.html %}-->
 <center><img  alt="" src="fig/Schedule_computing_training_202105.png"/></center>
 
 
