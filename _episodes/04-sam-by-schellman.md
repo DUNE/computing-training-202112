@@ -42,7 +42,6 @@ For example, at the time of the original design, the main storage medium was 8mm
 The first 3 goals relate to content and characteristics while the last 3 relate to data storage and processing tools.  
  
 ### Specifics
- 
 
 1.     The current SAM implementation uses the file as the basic unit of information.   **Metadata** is associated with the file name.  Filenames must be unique in the system. This prevents duplication of data in a sample, as a second copy cannot be cataloged. This makes renaming a file very unwise. A very common practice is to include some of the metadata in the filename, both to make it easier to identify and to ensure uniqueness.    
  
@@ -127,10 +126,13 @@ First of all, it really is nice to have filenames and dataset names that tell yo
 D0 also appended processing information to filenames as they moved through the system to assure that files run through different sequences had unique identifiers.
  
 Example: A Monte Carlo simulation file generated with version v3 and then reconstructed with v5 might look like
- 
+
+~~~
 SIM_MC_020000_0000_simv3.root would be a parent of RECO_MC_020000_0000_simv3_recov5.root
-Data files are all children of the raw data while simulation files sometimes have more
-complicated ancestry, with both unique generated events and overlay events from data as parents.
+~~~
+{: .output}
+
+Data files are all children of the raw data while simulation files sometimes have more complicated ancestry, with both unique generated events and overlay events from data as parents.
  
 ## Setting up SAM metadata (For admins)
  
@@ -366,7 +368,7 @@ np04_raw_run005141_0009_dl1_reco1_18126423_0_20210318T102429Z.root
 
 samweb allows you to select on a lot of parameters 
 
-Useful ProtoDUNE samweb parameters can be found  [here](https://dune-data.fnal.gov) and [here]()https://wiki.dunescience.org/wiki/ProtoDUNE-SP_datasets);
+Useful ProtoDUNE samweb parameters can be found  [here](https://dune-data.fnal.gov) and [here](https://wiki.dunescience.org/wiki/ProtoDUNE-SP_datasets);
 these list some official dataset definitions.
 
 You can make your own samweb dataset definitions: First, make certain a definition does not already exist that satisfies your needs by checking the official pages above. 
@@ -423,8 +425,7 @@ ONLINE_AND_NEARLINE_size: 270720752891
 
 No `ONLINE_NEARLINE` means you need to prestage that file. Unfortunately, prestaging requires a definition. Let's find some for run 5141.  Your physics group should already have some defined.
 
-The official Protodune dataset definitions are at: 
-https://wiki.dunescience.org/wiki/ProtoDUNE-SP_datasets
+The official Protodune dataset definitions are [here](https://wiki.dunescience.org/wiki/ProtoDUNE-SP_datasets).
 
 ```bash
 samweb describe-definition PDSPProd4a_MC_1GeV_reco1_sce_datadriven_v1_00
@@ -463,8 +464,7 @@ Event count:	50250
 samweb prestage-dataset --def=PDSPProd4a_MC_1GeV_reco1_sce_datadriven_v1_00 --parallel=10
 ``` 
 
-would prestage all of the reconstructed data for run 5141 and you can check on the status by going to 
-http://samweb.fnal.gov:8480/station_monitor/dune/stations/dune/projects and scrolling down to see your prestage link. 
+would prestage all of the reconstructed data for run 5141 and you can check on the status by going [here](http://samweb.fnal.gov:8480/station_monitor/dune/stations/dune/projects) and scrolling down to see your prestage link. 
 
 At CERN
 
