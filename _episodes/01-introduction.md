@@ -54,8 +54,11 @@ The workshop is a one half-day version of the workshop that normally spans three
 
 The slides for the introduction of this tutorial can be found [here][intro-slides].
 
-See also the [live document for the data management session][live-doc-data-management].
+## Live Docs
 
+Live (on-the-fly) documentation for the first and second portions of the tutorial can be found as:
+- [Live document for the first tutorial session][live-doc-tutorial1]
+- [Live document for the second tutorial session][live-doc-tutorial2]
 
 ## Support
 
@@ -68,7 +71,7 @@ You can join DUNE's Slack: `dunescience.slack.com`. We created a special channel
 [slack-join-link]: https://join.slack.com/share/zt-q6y8w1ya-4U3kYPtxWhRR3Qd7wELQuQ 
 [zoom-link]: https://fnal.zoom.us/j/92485343519
 [intro-slides]: https://docs.google.com/presentation/d/1bwMKMVJ4MDGlf1pq3nmGZ6h8y3gyOOUBhRVLwfTc5Gw/edit?usp=sharing
-[live-doc-data-management]: https://docs.google.com/document/d/12CjFzfyZ-cbrI0AaD-cwgGcrfW14QKCPaiMfKnQyDC8/edit?usp=sharing 
-
+[live-doc-tutorial1]: https://docs.google.com/document/d/12CjFzfyZ-cbrI0AaD-cwgGcrfW14QKCPaiMfKnQyDC8/edit?usp=sharing 
+[live-doc-tutorial2]: https://docs.google.com/document/d/1-WyLpobW7dwZZ4D2IZa79k1ry1dv2AdsyxrG5aByfT4/edit
 
 {%include links.md%} 
