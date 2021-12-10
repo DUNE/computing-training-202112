@@ -37,7 +37,7 @@ setup jobsub_client
 Having done that, let us submit a prepared script:
 
 ~~~
-jobsub_submit -G dune -M -N 1 --memory=1000MB --disk=1GB --cpu=1 --expected-lifetime=1h --resource-provides=usage_model=DEDICATED,OPPORTUNISTIC,OFFSITE -l '+SingularityImage=\"/cvmfs/singularity.opensciencegrid.org/fermilab/fnal-wn-sl7:latest\"' --append_condor_requirements='(TARGET.HAS_Singularity==true&&TARGET.HAS_CVMFS_dune_opensciencegrid_org==true&&TARGET.HAS_CVMFS_larsoft_opensciencegrid_org==true&&TARGET.CVMFS_dune_opensciencegrid_org_REVISION>=1105)' file:///dune/app/users/kherner/submission_test_singularity.sh
+jobsub_submit -G dune -M -N 1 --memory=1000MB --disk=1GB --cpu=1 --expected-lifetime=1h --resource-provides=usage_model=DEDICATED,OPPORTUNISTIC,OFFSITE -l '+SingularityImage=\"/cvmfs/singularity.opensciencegrid.org/fermilab/fnal-wn-sl7:latest\"' --append_condor_requirements='(TARGET.HAS_CVMFS_dune_opensciencegrid_org==true&&TARGET.HAS_CVMFS_larsoft_opensciencegrid_org==true&&TARGET.CVMFS_dune_opensciencegrid_org_REVISION>=1105)' file:///dune/app/users/kherner/submission_test_singularity.sh
 ~~~
 {: .source}
 
@@ -95,7 +95,7 @@ First, we should make a tarball. Here is what we can do (assuming you are starti
 
 ```bash
 cp /dune/app/users/kherner/setupMay2021Tutorial-grid.sh /dune/app/users/username/
-cp /dune/app/users/kherner/may2021tutorial/localProducts_larsoft__e19_prof/setup-grid /dune/app/users/username/may2021tutorial/localProducts_larsoft__e19_prof/setup-grid
+cp /dune/app/users/kherner/dec2021tutorial/localProducts_larsoft__e19_prof/setup-grid /dune/app/users/username/dec2021tutorial/localProducts_larsoft__e19_prof/setup-grid
 ```
 
 Before we continue, let's examine these files a bit. We will source the first one in our job script, and it will set up the environment for us.
@@ -148,14 +148,14 @@ tar --exclude '.git' -czf may2021tutorial.tar.gz may2021tutorial/localProducts_l
 Then submit another job (in the following we keep the same submit file as above):
 
 ```bash
-jobsub_submit -G dune -M -N 1 --memory=1800MB --disk=2GB --expected-lifetime=3h --cpu=1 --resource-provides=usage_model=DEDICATED,OPPORTUNISTIC,OFFSITE --tar_file_name=dropbox:///dune/app/users/<username>/may2021tutorial.tar.gz --use-cvmfs-dropbox -l '+SingularityImage=\"/cvmfs/singularity.opensciencegrid.org/fermilab/fnal-wn-sl7:latest\"' --append_condor_requirements='(TARGET.HAS_Singularity==true&&
+jobsub_submit -G dune -M -N 1 --memory=1800MB --disk=2GB --expected-lifetime=3h --cpu=1 --resource-provides=usage_model=DEDICATED,OPPORTUNISTIC,OFFSITE --tar_file_name=dropbox:///dune/app/users/<username>/dec2021tutorial.tar.gz --use-cvmfs-dropbox -l '+SingularityImage=\"/cvmfs/singularity.opensciencegrid.org/fermilab/fnal-wn-sl7:latest\"' --append_condor_requirements='(TARGET.HAS_Singularity==true&&
 TARGET.HAS_CVMFS_dune_opensciencegrid_org==true&&
 TARGET.HAS_CVMFS_larsoft_opensciencegrid_org==true&&
 TARGET.CVMFS_dune_opensciencegrid_org_REVISION>=1105&&
 TARGET.HAS_CVMFS_fifeuser1_opensciencegrid_org==true&&
 TARGET.HAS_CVMFS_fifeuser2_opensciencegrid_org==true&&
 TARGET.HAS_CVMFS_fifeuser3_opensciencegrid_org==true&&
-TARGET.HAS_CVMFS_fifeuser4_opensciencegrid_org==true)' file:///dune/app/users/kherner/run_May2021tutorial.sh
+TARGET.HAS_CVMFS_fifeuser4_opensciencegrid_org==true)' file:///dune/app/users/kherner/run_dec2021tutorial.sh
 ```
 
 You'll see this is very similar to the previous case, but there are some new options: 
