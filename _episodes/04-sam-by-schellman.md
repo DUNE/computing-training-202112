@@ -1,12 +1,12 @@
 ---
-title: Sam by Schellman
+title: SAM by Schellman
 teaching: 5
 exercises: 0
 questions:  
 - What event information can be queried for a given data file?
 objectives:  
-- Learn about the utility of Sam
-- Practice selected Sam commands
+- Learn about the utility of SAM
+- Practice selected SAM commands
 keypoints:
 - SAM is a data catalog originally designed for the D0 and CDF experiments at FNAL and is now used widely by HEP experiments.
 ---
@@ -21,7 +21,7 @@ SAM is a data catalog originally designed for the D0 and CDF high energy physics
  
 The most important objects cataloged in SAM are individual **files** and collections of files called **datasets**.
  
-Data files themselves are not stored in SAM, their metadata is, and that metadata allows you to search for and find the actual physical files.  Sam also provides mechanisms for initiating and tracking file delivery through **projects**. 
+Data files themselves are not stored in SAM, their metadata is, and that metadata allows you to search for and find the actual physical files.  SAM also provides mechanisms for initiating and tracking file delivery through **projects**. 
  
 ### General considerations
  
@@ -257,7 +257,7 @@ np04_raw_run005141_0015_dl10.root
 ## Merging and splitting (for experts)
  
 Parentage works pretty well if one is merging files but splitting them can become problematic as it makes the parentage structure pretty complex.
-Sam will let you merge files with different attributes if you don’t check carefully. Generally, it is a good idea not to merge files from different data tiers and certainly not from different data_types. Merging across major processing versions should also be avoided.
+SAM will let you merge files with different attributes if you don’t check carefully. Generally, it is a good idea not to merge files from different data tiers and certainly not from different data_types. Merging across major processing versions should also be avoided.
  
 ### Example: Execute samweb Commands
  
