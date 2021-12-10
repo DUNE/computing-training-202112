@@ -260,9 +260,13 @@ An example config file designed to do more or less what we did in the previous s
 You can find more about POMS here: [POMS User Documentation][poms-user-doc]  
 Helpful ideas for structuring your config files are here: [Fife launch Reference][fife-launch-ref]  
 
-When you start using POMS you must upload an x509 proxy to the sever before submitting (you can just scp your proxy file from a dunegpvm machine) and it must be named x509up_voms_dune_Analysis_yourusername when you upload it.
-To upload, look for the User Data item in the left-hand menu on the POMS site, choose Uploaded Files, and follow the instructions.
+When you start using POMS you must upload an x509 proxy to the sever before submitting. The best way to do that is to set up the poms_client UPS product and then use the upload_file command after you have generated your proxy:
 
+```bash
+kx509
+voms-proxy-init -rfc -noregen -voms dune:/dune/Role=Analysis -valid 120:00
+upload_file --experiment dune --proxy
+```
 Finally, here is an example of a campaign that does the same thing as the previous one, using our usual MC reco file from Prod2, but does it via making a SAM dataset using that as the input: [POMS campaign stage information](https://pomsgpvm01.fnal.gov/poms/campaign_stage_info/dune/analysis?campaign_stage_id=9753). 
 Of course, before running **any** SAM project, we should prestage our input definition(s):
 
