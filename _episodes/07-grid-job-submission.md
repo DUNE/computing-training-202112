@@ -267,7 +267,7 @@ kx509
 voms-proxy-init -rfc -noregen -voms dune:/dune/Role=Analysis -valid 120:00
 upload_file --experiment dune --proxy
 ```
-Finally, here is an example of a campaign that does the same thing as the previous one, using our usual MC reco file from Prod2, but does it via making a SAM dataset using that as the input: [POMS campaign stage information](https://pomsgpvm01.fnal.gov/poms/campaign_stage_info/dune/analysis?campaign_stage_id=9753). 
+Finally, here is an example of a campaign that does the same thing as the previous one, using our usual MC reco file from Prod2, but does it via making a SAM dataset using that as the input: [POMS campaign stage information](https://pomsgpvm01.fnal.gov/poms/campaign_stage_info/dune/analysis?campaign_stage_id=12559). 
 Of course, before running **any** SAM project, we should prestage our input definition(s):
 
 ```bash
