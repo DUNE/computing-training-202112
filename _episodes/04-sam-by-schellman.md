@@ -100,7 +100,7 @@ export  PATH=$HOME/sam-web-client/bin:${PATH}
 export  PYTHONPATH=$HOME/sam-web-client/python:${PYTHONPATH}
 export SAM_EXPERIMENT=dune
 ~~~
-{: .output}
+{: .language-bash}
  
 ## Projects
  
@@ -114,14 +114,13 @@ See running projects [here](http://samweb.fnal.gov:8480/station_monitor/dune/sta
  
 ## Accessing the database in read mode
 
-Checking the database does not require special privileges but storing files and
-running projects modifies the database and requires authentication to the right experimental group.   kx509 authentication and membership in the experiment VO are needed. 
+Checking the database does not require special privileges but storing files and running projects modifies the database and requires authentication to the right experimental group.   `kx509` authentication and membership in the experiment VO are needed. 
  
 Administrative actions like adding new values are restricted to a small set of superusers for each experiment. 
  
-Suggestions for configuring SAM (for admins)
+### Suggestions for configuring SAM (for admins)
  
-First of all, it really is nice to have filenames and dataset names that tell you what’s in the box, although not required. The D0 and MINERvA conventions have been to use “_” underscores between useful key strings. As a result, D0 and MINERvA tried not to use “_” in metadata entries to allow cleaner parsing. “-“ is used if needed in the metadata.
+First of all, it really is nice to have filenames and dataset names that tell you what’s in the box, although not required. The D0 and MINERvA conventions have been to use “_” underscores between useful key strings. As a result, D0 and MINERvA tried not to use “\_” in metadata entries to allow cleaner parsing. “-“ is used if needed in the metadata.
  
 D0 also appended processing information to filenames as they moved through the system to assure that files run through different sequences had unique identifiers.
  
@@ -140,9 +139,9 @@ This needs to be done once, and very carefully, early in the experiment. It can 
  
 You need to define data_tiers. These represent the different types of data that you produced through your processing chain. Examples would be `raw`, `pedsup`, `calibrated`, `reconstructed`, `thumbnail`, `mc-generated`, `mc-geant`, `mc-overlaid`.
  
-run_type can be used to support multiple DAQ instances. 
+`run_type` can be used to support multiple DAQ instances. 
  
-data_stream is often used for trigger subsamples that you may wish to split data into (for example pedestal vs data runs).
+`data_stream` is often used for trigger subsamples that you may wish to split data into (for example pedestal vs data runs).
  
 Generally, you want to store data from a given data_tier with other data from that tier to facilitate fast sequential access. 
  
@@ -151,7 +150,6 @@ Generally, you want to store data from a given data_tier with other data from th
 It is useful, but not required to also define applications which are triads of “appfamily”, “appname” and “version”. Those are used to figure out what changed X to Y. There are also places to store the machine the application ran on and the start and end time for the job.
 
 The query:
-
 ~~~
 samweb list-files "data_tier raw and not isparentof: (data_tier reconstructed and appname reco and version 7)"
 ~~~
@@ -159,9 +157,9 @@ samweb list-files "data_tier raw and not isparentof: (data_tier reconstructed an
 
 Should, in principle, list raw data files not yet processed by version 7 of reco to produce files of tier reconstructed. You would use this to find lost files in your reconstruction after a power outage.
  
-It is good practice to also store the name of the head application configuration file for processing but this does not have a standard “value”
+It is good practice to also store the name of the head application configuration file for processing but this does not have a standard “value.”
  
-Example metadata from DUNE
+### Example metadata from DUNE
 
 Here are some examples of querying sam to get file information
  
@@ -261,13 +259,11 @@ np04_raw_run005141_0015_dl10.root
 Parentage works pretty well if one is merging files but splitting them can become problematic as it makes the parentage structure pretty complex.
 Sam will let you merge files with different attributes if you don’t check carefully. Generally, it is a good idea not to merge files from different data tiers and certainly not from different data_types. Merging across major processing versions should also be avoided.
  
-## Example: Execute samweb Commands
+### Example: Execute samweb Commands
  
 There is documentation at [here](https://cdcvs.fnal.gov/redmine/projects/sam/wiki/User_Guide_for_SAM) and [here](https://cdcvs.fnal.gov/redmine/projects/sam-main/wiki/Updated_dimensions_syntax).
 
-This exercise will start you accessing data files that have been defined to the DUNE Data Catalog. Execute the following commands after logging in to the DUNE interactive node, creating the directories above - 
-
-Once per session
+This exercise will start you accessing data files that have been defined to the DUNE Data Catalog. Execute the following commands after logging in to the DUNE interactive node, creating the directories above - Once per session
 
 ```bash
 setup sam_web_client #(or set up your standalone version)
@@ -282,9 +278,7 @@ Then if curious about a file:
 ```bash 
 samweb locate-file np04_raw_run005141_0001_dl7.root
 ``` 
-
 this will give you output that looks like 
-
 ~~~
 rucio:protodune-sp
 enstore:/pnfs/dune/tape_backed/dunepro/protodune/np04/beam/detector/None/raw/06/60/59/05(596@vr0072m8)
@@ -296,11 +290,9 @@ cern-eos:/eos/experiment/neutplatform/protodune/rawdata/np04/detector/None/raw/0
 which are the locations of the file on disk and tape. We can use this to copy the file from tape to our local disk. 
 Better yet, you can use xrootd to access the file without copying it if it is staged to disk.
 Find the xrootd uri via 
-
 ```bash
 samweb get-file-access-url np04_raw_run005141_0001_dl7.root --schema=root
 ``` 
-
 ~~~
 root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune/np04/beam/detector/None/raw/06/60/59/05 /np04_raw_run005141_0001_dl7.root
 root://castorpublic.cern.ch//castor/cern.ch/neutplatform/protodune/rawdata/np04/detector/None/raw/06/60/59/05/np04_raw_run005141_0001_dl7.root
@@ -328,10 +320,9 @@ root://eospublic.cern.ch//eos/experiment/neutplatform/protodune/rawdata/np04/det
 
 To get SAM metadata for a file for which you know the name: 
 
-~~~
+```bash 
 samweb  get-metadata np04_raw_run005141_0001_dl7.root 
-~~~
-{: .output}
+``` 
 
 add the `--json` option to get output in json format
 
@@ -377,10 +368,9 @@ Then check to see what you will get:
 ```bash
 samweb list-files "data_tier full-reconstructed and DUNE.campaign PDSPProd4  and data_stream cosmics and run_type protodune-sp and detector.hv_value 180" –summary
 ``` 
-~~~
+```
 samweb create-definition $USER-PDSPProd4_good_cosmics "data_tier full-reconstructed and DUNE.campaign PDSPProd4  and data_stream cosmics and run_type protodune-sp and detector.hv_value 180"
-~~~
-{: .output}
+``` 
 
 Note that the `username` appears in the definition name - to prevent users from getting confused with official samples, your user name is required in the definition name. 
 prestaging
