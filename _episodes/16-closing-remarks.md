@@ -37,7 +37,7 @@ We are thankful for the instructor's hard work, and for the numerous participant
 
 Please give us feedback on this training by filling out our survey:
 
-<!--[S U R V E Y](https://forms.gle/F962ejyN31rGRg3D7)-->
+[S U R V E Y](https://forms.gle/FHLtSGDgB9oxbPYT9)
 
 It is anonymous. Send us your impressions, praise, critiques and suggestions! Thank you very much.
 
