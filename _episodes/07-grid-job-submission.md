@@ -77,7 +77,7 @@ You can delete it after that; it just prints out some information about the envi
 
 More information about `jobsub` is available [here][redmine-wiki-jobsub] and [here][redmine-wiki-using-the-client].
 
-## Submit a job using the tarball containing custom code
+## Submit a job using the tarball containing custom code (left as an exercise)
 
 First off, a very important point: for running analysis jobs, **you may not actually need to pass an input tarball**, especially if you are just using code from the base release and you don't actually modify any of it.
 All you need to do is set up any required software from CVMFS (e.g. dunetpc and/or protoduneana), and you are ready to go.
