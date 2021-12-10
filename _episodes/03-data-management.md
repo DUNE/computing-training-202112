@@ -32,7 +32,7 @@ keypoints:
 DUNE data is stored around the world and the storage elements are not always organized in a way that they can be easily inspected. For this purpose we use the SAM web client.
 
 ### What is SAM?  
-Sequential Access with Metadata (SAM) is a data handling system developed at Fermilab.  It is designed to tracklocations of files and other file metadata.
+Sequential Access with Metadata (SAM) is a data handling system developed at Fermilab.  It is designed to track locations and metadata of files. Metadata being information about the file itself as opposed to the data contained in the file.
 
 This lecture will show you how to access data files that have been defined to the DUNE Data Catalog. Execute the following commands after logging in to the DUNE interactive node, and sourcing the main dune setups.
 
@@ -45,10 +45,10 @@ export SAM_EXPERIMENT=dune
 ### What is Rucio?
 Rucio is the next-generation Data Replica service and is part of DUNE's new Distributed Data Management (DDM) system that is currently in deployment. 
 Rucio has two functions:
-1. A rule-based system to get files to Rucio Storage Elements around the world and keep them there.
-2. To return the "nearest" replica of any data file for use either in interactive or batch file use.  It is expected that most DUNE users will not be regularly using direct Rucio commands, but other wrapper scripts that calls them indirectly.
+1. A rule-based system to get files to Rucio Storage Elements (RSEs) around the world and keep them there for the lifeimte of the file.
+2. To return the "nearest" replica of any data file for use either in interactive or batch file use.  It is expected that most DUNE users will not be regularly using direct Rucio commands, but other wrapper scripts that call them indirectly.
 
-As of the date of this May 2021 tutorial:
+As of the date of this Dec 2021 tutorial:
 - The Rucio client is not installed as a part of the standard DUNE client software
 - Most DUNE users are not yet enabled to use it.  But when we do, some of the commands will look like this:
 
@@ -62,7 +62,7 @@ rucio list-rses
 
 ## Finding data
 
-If you know a given file and want to locate it, e.g.:
+If you know the full filename and want to locate it, e.g.:
 ~~~
 samweb locate-file np04_raw_run005758_0001_dl3.root
 ~~~
