@@ -64,11 +64,12 @@ Live (on-the-fly) documentation for the first and second portions of the tutoria
 
 There will be live documents linked from [Indico][indico-event-link] for each [Zoom][zoom-link] session. You can write questions there, anonymously or not, and experts will reply. The chat on Zoom can quickly saturate so this is a more convenient solution and proved very successful at the previous training. We will collect all questions and release a Q&A after the event.
 
-You can join DUNE's Slack: `dunescience.slack.com`. We created a special channel `computing_training_may2021` for technical support, join [here][slack-join-link].
+You can join DUNE's Slack: `dunescience.slack.com`. We created a special [channel][slack-computing-training-doc2021] `computing_training_dec2021` for technical support, join [here][slack-join-link].
 
 
 [indico-event-link]: https://indico.fnal.gov/event/51991/
 [slack-join-link]: https://join.slack.com/share/zt-q6y8w1ya-4U3kYPtxWhRR3Qd7wELQuQ 
+[slack-computing-training-dec2021]: https://dunescience.slack.com/archives/C02QCE2NCGL
 [zoom-link]: https://fnal.zoom.us/j/92485343519
 [intro-slides]: https://docs.google.com/presentation/d/1bwMKMVJ4MDGlf1pq3nmGZ6h8y3gyOOUBhRVLwfTc5Gw/edit?usp=sharing
 [live-doc-tutorial1]: https://docs.google.com/document/d/12CjFzfyZ-cbrI0AaD-cwgGcrfW14QKCPaiMfKnQyDC8/edit?usp=sharing 
