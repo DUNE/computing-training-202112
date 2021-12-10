@@ -50,6 +50,12 @@ The workshop is a one half-day version of the workshop that normally spans three
    file="/fig/Schedule_computing_training_202105.png"
    alt="May 2021 Workshop Schedule" caption="May 2021 Workshop Schedule" %}-->
 
+## Opening Slides
+
+The slides for the introduction of this tutorial can be found [here][intro-slides].
+
+See also the [live document for the data management session][live-doc-data-management].
+
 
 ## Support
 
@@ -61,6 +67,8 @@ You can join DUNE's Slack: `dunescience.slack.com`. We created a special channel
 [indico-event-link]: https://indico.fnal.gov/event/51991/
 [slack-join-link]: https://join.slack.com/share/zt-q6y8w1ya-4U3kYPtxWhRR3Qd7wELQuQ 
 [zoom-link]: https://fnal.zoom.us/j/92485343519
+[intro-slides]: https://docs.google.com/presentation/d/1bwMKMVJ4MDGlf1pq3nmGZ6h8y3gyOOUBhRVLwfTc5Gw/edit?usp=sharing
+[live-doc-data-management]: https://docs.google.com/document/d/12CjFzfyZ-cbrI0AaD-cwgGcrfW14QKCPaiMfKnQyDC8/edit?usp=sharing 
 
 
 {%include links.md%} 
