@@ -53,9 +53,9 @@ Point a colleague to the material.
 
 You made some excellent connections with computing experts and invite your continued dialog.
 
-A DUNE [Slack channel][dune-may2021-slack] will remain available and we encourage your activity in the dialog.
+A DUNE [Slack channel][dune-dec2021-slack] (#computing-training-dec2021) will remain available and we encourage your activity in the dialog.
 
 
-[dune-may2021-slack]: https://join.slack.com/share/zt-q6y8w1ya-4U3kYPtxWhRR3Qd7wELQuQ
+[dune-dec2021-slack]:  https://dunescience.slack.com/archives/C02QCE2NCGL
 
 {%include links.md%} 
