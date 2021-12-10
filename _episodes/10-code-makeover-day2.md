@@ -1,6 +1,6 @@
 ---
 title: Code-makeover on how to code for better efficiency
-teaching: 90
+teaching: 15
 exercises: 0
 questions:
 - How to write the most efficient code?
@@ -12,11 +12,12 @@ keypoints:
 
 ## DUNE Computing Training May 2021
 
+<!--
 ## Session Video
 
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/k74QnmovOzA" title="DUNE Computing Tutorial May 2021 Code-makeover on how to code for better efficiency" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
+</center>-->
 
 ### Code Make-over
 

@@ -1,6 +1,6 @@
 ---
 title: Quiz on Storage Spaces and Data Management  
-teaching: 30  
+teaching: 5  
 exercises: 0  
 questions:  
 - Do you understand the storage spaces and data management principles?  
@@ -12,28 +12,23 @@ keypoints:
 
 ## Quiz Time
 
-Arrive on time at 10:30AM CST.
+If time allows...
 
-You will be assigned to breakout rooms, in teams of 6. You will have a couple of minutes to introduce yourself.
-
+<!--
 The questions will be available on Indico at 10:35AM CST. Refresh the [timetable][indico-timetable] and you will see the slideshow.
 
 Discuss solutions to each of the questions. Consider using Software Carpentry's [Etherpad][sc-etherpad] for shared dialog.
+-->
 
-You will have 20 minutes.
-
-At the end of the session, a second slide show will be posted with answers.
-
-Enjoy learning!  
-
+<!--
 ## Session Video
 
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/U_Ws8st1fQY" title="DUNE Computing Tutorial May 2021 Quiz on storage systems and data management" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
+</center>-->
 
 
-[indico-timetable]: https://indico.fnal.gov/event/48756/timetable/#all
+<!--[indico-timetable]: https://indico.fnal.gov/event/48756/timetable/#all-->
 [sc-etherpad]: https://pad.carpentries.org/
 
 

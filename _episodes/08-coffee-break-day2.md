@@ -1,6 +1,6 @@
 ---
 title: Coffee Break
-teaching: 30
+teaching: 5
 exercises: 0
 questions:
 - How to take a good break?
@@ -13,12 +13,7 @@ keypoints:
 - Networking with colleagues is essential.
 ---
 
-## Coffee Time
+## Coffee Time Placeholder
 
-We hope that you will utilize the coffee break time to relax. Of course if you want to wrap on the project at hand, use this extra time. Feel free to ask questions in the live documents.
-
-We want to offer the possibility to exchange with the other participants. To this end, several breakout rooms will be opened during the breaks. Enjoy some social time and meet your new colleagues!
-
-Both the main room and breakout rooms will be available during the coffee breaks.
 
 {%include links.md%}

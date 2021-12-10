@@ -1,6 +1,6 @@
 ---
 title: Workshop Welcome and Introduction 
-teaching: 15
+teaching: 5
 exercises: 0
 questions:
 - What should I expect in participating in this workshop?
@@ -18,11 +18,13 @@ The goal of the DUNE Computing Consortium is to establish a global computing net
 
 Coordinator: Heidi Schellman (Oregon State University)
 
+
+<!--
 ## Welcome Session Video
 
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/2Vg4kXcxzCs" title="DUNE Computing Tutorial May 2021 Welcome" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
+</center>-->
 
 ## Tutorial Instructors
 
@@ -44,9 +46,9 @@ Coordinator: Heidi Schellman (Oregon State University)
 
 The workshop is a one half-day version of the workshop that normally spans three days.
 
-{%include figure.html url="" max-width="75%"
+<!--{%include figure.html url="" max-width="75%"
    file="/fig/Schedule_computing_training_202105.png"
-   alt="May 2021 Workshop Schedule" caption="May 2021 Workshop Schedule" %}
+   alt="May 2021 Workshop Schedule" caption="May 2021 Workshop Schedule" %}-->
 
 
 ## Support
@@ -56,9 +58,9 @@ There will be live documents linked from [Indico][indico-event-link] for each [Z
 You can join DUNE's Slack: `dunescience.slack.com`. We created a special channel `computing_training_may2021` for technical support, join [here][slack-join-link].
 
 
-[indico-event-link]: https://indico.fnal.gov/event/48756/
+[indico-event-link]: https://indico.fnal.gov/event/51991/
 [slack-join-link]: https://join.slack.com/share/zt-q6y8w1ya-4U3kYPtxWhRR3Qd7wELQuQ 
-[zoom-link]: https://fnal.zoom.us/j/99381838849
+[zoom-link]: https://fnal.zoom.us/j/92485343519
 
 
 {%include links.md%} 

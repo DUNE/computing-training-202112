@@ -1,6 +1,6 @@
 ---
 title: Closing Remarks
-teaching: 15
+teaching: 5
 exercises: 0
 questions:
 - Are you fortified with enough information to start your event analysis?
@@ -12,15 +12,16 @@ keypoints:
 
 # Closing Remarks
 
+<!--
 ## Video Session
 
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CVLChHWiSZI" title="DUNE Computing Tutorial May 2021 Day 3 Quiz Expert in the Room Grid and Batch System" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
+</center>-->
 
-## Three Days of Training
+## Three Days of Training Collapsed into One Half Day
 
-The instruction in this three day workshop is provided by several experienced physicists and is based on years of collaborative experience. 
+The instruction in this half day workshop is provided by several experienced physicists and is based on years of collaborative experience. 
 
 The secure access to Fermilab computing systems and a familiarity with data storage are key components.
 
@@ -34,9 +35,9 @@ We are thankful for the instructor's hard work, and for the numerous participant
 
 ##  Survey time!
 
-Please give us feedback on this training by filling out this 
+Please give us feedback on this training by filling out our survey:
 
-[S U R V E Y](https://forms.gle/F962ejyN31rGRg3D7)
+<!--[S U R V E Y](https://forms.gle/F962ejyN31rGRg3D7)-->
 
 It is anonymous. Send us your impressions, praise, critiques and suggestions! Thank you very much.
 

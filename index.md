@@ -9,7 +9,7 @@ language: "en"
 latitude: "45"
 longitude: "-1"
 humandate: "December 10, 2021"
-humantime: "8:00 am - 12:30 pm"
+humantime: "9:00 am - 1:00 pm"
 startdate: "2021-12-10"
 enddate: "2021-12-10"
 instructor: ["Claire David", "Michael Kirby"]
@@ -19,9 +19,9 @@ collaborative_notes: "2021-12-10-dune"
 eventbrite:
 ---
 
-This tutorial will teach you the basics of DUNE Computing. It is split into four parts that you can attend independently (we advise newcomers to follow the whole event though).
+The aim of this tutorial is to provide participants an expedited opportunity to learn the basics of DUNE Computing.   A three half-day version  of this tutorial was offered in [May 2021](https://dune.github.io/computing-training-202112/) and may prove to be a reference. 
 
-Each part will have a little introduction followed by hands-on sessions in breakout rooms. Here mentors will answer your questions and provide technical support.
+Here our schedule spans two parts, and advise your complete attention throughout.
 
 <!-- this is an html comment -->
 
@@ -53,10 +53,10 @@ By the end of this workshop, participants will know how to:
 You will need a valid FNAL or CERN account to be able to do the tutorial and be on the DUNE Collaboration member list. If you do not, contact your team leader.
 
 
-<h2 id="schedule">Schedule by Day</h2>
+<h2 id="schedule">Schedule for Friday, December 12, 2021, 9:00 am - 1:30 pm (CDT)</h2>
 
 <!--{% include custom_schedule3.html %}-->
-<center><img  alt="" src="fig/Schedule_computing_training_202105.png"/></center>
+<!--<center><img  alt="" src="fig/Schedule_computing_training_202105.png"/></center>-->
 
 
 <!-- An [asynchronous session]({{site.baseurl}}/asynchronous/) is designed as later day acivities for the first two days of the workshop.-->

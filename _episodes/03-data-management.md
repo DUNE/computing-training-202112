@@ -20,11 +20,12 @@ keypoints:
 - CVMFS distributes software and related files without installing them on the target computer (using a VM, Virtual Machine).
 ---
 
+<!--
 ## Session Video
 
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rzqfwLw-j8I" title="DUNE Computing Tutorial May 2021 Data Management" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
+</center>-->
 
 ## Introduction
 

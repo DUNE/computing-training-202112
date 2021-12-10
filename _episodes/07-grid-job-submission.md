@@ -1,6 +1,6 @@
 ---
 title: Grid Job Submission and Common Errors
-teaching: 120
+teaching: 45
 exercises: 0
 questions:
 - How to submit grid jobs?
@@ -17,11 +17,12 @@ keypoints:
 - Always, always, always prestage input datasets. No exceptions.
 ---
 
+<!--
 ## Video Session Part 1 of 2
 
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1tpUd3c3Irc" title="DUNE Computing Tutorial May 2021 Day 2 Grid Job Submission and Common Errors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
+</center>-->
 
 ## Submit a job
 
@@ -177,11 +178,12 @@ mv mytmpfile file_I_want_to_edit # now it's available as an editable regular fil
 You certainly don't want to do this for every file, but for a handful of small text files this is perfectly acceptable and the overall benefits of copying in code via the RCDS far outweigh this small cost. 
 This can get a little complicated when trying to do it for things several directories down, so it's easiest to have such files in the top level of your tar file. 
 
+<!--
 ## Video Session Part 2 of 2
 
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/L3dx-NQJvp8" title="DUNE Computing Tutorial May 2021 Day 2 Grid Job Submission and Common Errors Part 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
+</center>-->
 
 ## Monitor your jobs
 For all links below, log in with your FNAL Services credentials (FNAL email, not Kerberos password).

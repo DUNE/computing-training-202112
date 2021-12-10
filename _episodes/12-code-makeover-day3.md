@@ -1,6 +1,6 @@
 ---
 title: Code-makeover - Submit with POMS
-teaching: 60
+teaching: 15
 exercises: 0
 questions:
 - How to submit grid jobs with POMS?
@@ -10,6 +10,7 @@ keypoints:
 - Always, always, always prestage input datasets. No exceptions.
 ---
 
+<!--
 ## Video Session
 
 <center>
@@ -17,7 +18,7 @@ keypoints:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NTuJa-2TuuQ" title="DUNE Computing Tutorial May 2021 Day 3 Code-makover - Submit with POMS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-</center>
+</center>-->
 
 ## Submit with POMS
 

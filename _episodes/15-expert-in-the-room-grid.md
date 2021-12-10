@@ -1,6 +1,6 @@
 ---
 title: Expert in the Room Grid and Batch System
-teaching: 75
+teaching: 5
 exercises: 0
 questions:
 - How to become a grid and batch yoda master?
@@ -11,11 +11,12 @@ keypoints:
 - Debugging requires a methodical and inquisitive mindset, gained through experience and good bookkeeping (write down how to you solved past issues!)
 ---
 
+<!--
 ## Video Session
 
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F2qHx-tu4nY" title="DUNE Computing Tutorial May 2021 Day 3 Quiz Expert in the Room Grid and Batch System" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
+</center> -->
 
 ## Debug Session
 

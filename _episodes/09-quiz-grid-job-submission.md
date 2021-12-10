@@ -1,6 +1,6 @@
 ---
 title: Quiz on Grid Job Submission
-teaching: 30
+teaching: 5
 exercises: 0
 questions:
 questions:
@@ -13,26 +13,20 @@ keypoints:
 
 ## Quiz Time
 
-Arrive on time at 10:30AM CST.
+If time allows...
 
-You will be assigned to breakout rooms, in teams of 6. You will have a couple of minutes to introduce yourself.
-
+<!--
 The questions will be available on Indico at 10:35AM CST. Refresh the [timetable][indico-timetable] and you will see the slideshow.
 
 Discuss solutions to each of the questions. Consider using Software Carpentry's [Etherpad][sc-etherpad] for shared dialog.
 
-You will have 20 minutes.
-
-At the end of the session, a second slide show will be posted with answers.
-
-Enjoy learning!  
 
 ## Video Session
 
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/khGvlKB__cQ" title="DUNE Computing Tutorial May 2021 Day 2 Grid Job Quiz " frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </center>
-
+-->
 
 [indico-timetable]: https://indico.fnal.gov/event/48756/timetable/#all
 [sc-etherpad]: https://pad.carpentries.org/
