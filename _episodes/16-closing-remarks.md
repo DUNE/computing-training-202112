@@ -27,8 +27,6 @@ The secure access to Fermilab computing systems and a familiarity with data stor
 
 Data management and event processing tools were described and modeled. 
 
-LArSoft was introduced, with an example of workflow so analyzers can know how to make their own module. 
-
 Protocols for efficient job submission and monitoring has been demonstrated.
 
 We are thankful for the instructor's hard work, and for the numerous participants who joined.
