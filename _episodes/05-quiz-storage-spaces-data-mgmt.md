@@ -12,7 +12,7 @@ keypoints:
 
 ## Quiz Time
 
-If time allows...
+See the [quiz for storage spaces and data management here][quiz202112].
 
 <!--
 The questions will be available on Indico at 10:35AM CST. Refresh the [timetable][indico-timetable] and you will see the slideshow.
@@ -30,6 +30,6 @@ Discuss solutions to each of the questions. Consider using Software Carpentry's 
 
 <!--[indico-timetable]: https://indico.fnal.gov/event/48756/timetable/#all-->
 [sc-etherpad]: https://pad.carpentries.org/
-
+[quiz202112]: https://indico.fnal.gov/event/51991/contributions/229324/attachments/150209/193665/Quiz_storage_spaces_and_data_management.pdf
 
 {%include links.md%} 
