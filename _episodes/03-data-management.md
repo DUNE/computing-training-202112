@@ -277,10 +277,9 @@ np04_raw_run005141_0015_dl10_reco_12736632_0_20181028T182951.root
 To find files used to produce this file (parents):
 
 ```bash
-$ samweb file-lineage parents
+$ samweb file-lineage parents np04_raw_run005141_0015_dl10_reco_12736632_0_20181028T182951.root
 ``` 
-~~~
-np04_raw_run005141_0015_dl10_reco_12736632_0_20181028T182951.root 
+~~~ 
 np04_raw_run005141_0015_dl10.root
 ~~~
 {: .output}
@@ -313,6 +312,8 @@ gsiftp://eospublicftp.cern.ch/eos/experiment/neutplatform/protodune/rawdata/np04
 gsiftp://fndca1.fnal.gov:2811/pnfs/fnal.gov/usr/dune/tape_backed/dunepro/protodune/np04/beam/output/detector/full-reconstructed/07/35/27/71/np04_raw_run005141_0015_dl10_reco_12736632_0_20181028T182951.root
 ~~~
 {: .output}
+
+Here we have shown the gridftp transfer URIs, but in general it is better to stream data with xrootd and so you should add "--schema=root" to the samweb command. This is shown in the next section.
 
 ## Accessing data for use in your analysis
 To access data without copying it, XRootD is the tool to use. However it will work only if the file is staged to the disk.
@@ -393,10 +394,10 @@ You can make your own samweb dataset definitions: First, make certain a definiti
 
 Then check to see what you will get:
 ```bash
-samweb list-files --summary "data_tier full-reconstructed and DUNE.campaign PDSPProd4  and data_stream cosmics and run_type protodune-sp and detector.hv_value 180" –summary
+samweb list-files --summary "data_tier full-reconstructed and DUNE.campaign PDSPProd4  and data_stream physics and run_type protodune-sp and detector.hv_value 180" –summary
 ``` 
 ```
-samweb create-definition $USER-PDSPProd4_good_cosmics "data_tier full-reconstructed and DUNE.campaign PDSPProd4  and data_stream cosmics and run_type protodune-sp and detector.hv_value 180"
+samweb create-definition $USER-PDSPProd4_good_physics "data_tier full-reconstructed and DUNE.campaign PDSPProd4  and data_stream physics and run_type protodune-sp and detector.hv_value 180"
 ``` 
 
 Note that the `username` appears in the definition name - to prevent users from getting confused with official samples, your user name is required in the definition name. 
