@@ -41,7 +41,7 @@ There are three types of storage volumes that you will encounter at Fermilab: lo
 **Home area**  is similar to the user's local hard drive but network mounted
 * access speed to the volume very high, on top of full POSIX access
 * example: /nashome/k/kirby
-* they NOT safe to store certificates and tickets 
+* they are NOT safe to store certificates and tickets 
 * not accessible from grid worker nodes
 * not for code developement (size of less than 2 GB)
 * You need a valid Kerberos ticket in order to access files in your home area
