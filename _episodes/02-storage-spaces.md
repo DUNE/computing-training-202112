@@ -10,7 +10,8 @@ objectives:
 - Displaying volume information (total size, available size, mount point, device location)
 - Differentiating the commands to handle data between grid accessible and interactive volumes
 keypoints:
-- Home directories are centrally managed by Computing Division and meant to store setup scripts or certificates.
+- Home directories are centrally managed by Computing Division and meant to store setup scripts and text files.
+- Home directories are NOT for storage of certificates or tokens.
 - Network attached storage (NAS) /dune/app is primarily for code development.
 - The NAS /dune/data is for store ntuples and small datasets.
 - dCache volumes (tape, resilient, scratch, persistent) offer large storage with various retention lifetime.
