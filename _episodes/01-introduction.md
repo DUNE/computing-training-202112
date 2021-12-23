@@ -50,9 +50,19 @@ The workshop is a one half-day version of the workshop that normally spans three
    file="/fig/Schedule_computing_training_202105.png"
    alt="May 2021 Workshop Schedule" caption="May 2021 Workshop Schedule" %}-->
 
+
+## Session Video
+
+The introduction from the December 2021 training was captured on video, and is provided here.
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fmdtiTpT8mE" title="DUNE Computing Tutorial December 2021 Introduction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+
+
 ## Opening Slides
 
-The slides for the introduction of this tutorial can be found [here][intro-slides].
+The slides for the introduction of this tutorial can be found [here][intro-slides], or as a PDF on the [Indico site][computing-training-intro].
 
 ## Live Docs
 
@@ -66,13 +76,13 @@ There will be live documents linked from [Indico][indico-event-link] for each [Z
 
 You can join DUNE's Slack: `dunescience.slack.com`. We created a special [channel][slack-computing-training-doc2021] `computing_training_dec2021` for technical support, join [here][slack-join-link].
 
-
-[indico-event-link]: https://indico.fnal.gov/event/51991/
-[slack-join-link]: https://join.slack.com/share/zt-q6y8w1ya-4U3kYPtxWhRR3Qd7wELQuQ 
-[slack-computing-training-dec2021]: https://dunescience.slack.com/archives/C02QCE2NCGL
-[zoom-link]: https://fnal.zoom.us/j/92485343519
-[intro-slides]: https://docs.google.com/presentation/d/1bwMKMVJ4MDGlf1pq3nmGZ6h8y3gyOOUBhRVLwfTc5Gw/edit?usp=sharing
-[live-doc-tutorial1]: https://docs.google.com/document/d/12CjFzfyZ-cbrI0AaD-cwgGcrfW14QKCPaiMfKnQyDC8/edit?usp=sharing 
-[live-doc-tutorial2]: https://docs.google.com/document/d/1-WyLpobW7dwZZ4D2IZa79k1ry1dv2AdsyxrG5aByfT4/edit
+[indico-event-link]: https://indico.fnal.gov/event/51991/  
+[slack-join-link]: https://join.slack.com/share/zt-q6y8w1ya-4U3kYPtxWhRR3Qd7wELQuQ   
+[slack-computing-training-dec2021]: https://dunescience.slack.com/archives/C02QCE2NCGL  
+[zoom-link]: https://fnal.zoom.us/j/92485343519  
+[intro-slides]: https://docs.google.com/presentation/d/1bwMKMVJ4MDGlf1pq3nmGZ6h8y3gyOOUBhRVLwfTc5Gw/edit?usp=sharing  
+[live-doc-tutorial1]: https://docs.google.com/document/d/12CjFzfyZ-cbrI0AaD-cwgGcrfW14QKCPaiMfKnQyDC8/edit?usp=sharing  
+[live-doc-tutorial2]: https://docs.google.com/document/d/1-WyLpobW7dwZZ4D2IZa79k1ry1dv2AdsyxrG5aByfT4/edit  
+[computing-training-intro]: https://indico.fnal.gov/event/51991/contributions/229324/attachments/150209/193645/20211210_DavidC_DUNE_computing_training_intro.pdf  
 
 {%include links.md%} 

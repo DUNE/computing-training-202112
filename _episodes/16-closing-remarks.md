@@ -12,12 +12,13 @@ keypoints:
 
 # Closing Remarks
 
-<!--
 ## Video Session
 
+The closing remarks for this training were captured on video, and provided here.
+
 <center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CVLChHWiSZI" title="DUNE Computing Tutorial May 2021 Day 3 Quiz Expert in the Room Grid and Batch System" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>-->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GVLMpUc2Cfw" title="DUNE Computing Tutorial December 2021 Closing Remarks" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
 
 ## Three Days of Training Collapsed into One Half Day
 

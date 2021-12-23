@@ -12,8 +12,8 @@ keypoints:
 ---
 
 ## Notes on the SAM data catalog system
- 
-H. Schellman 1-28-2020 - updated Dec 2021
+
+These notes are provided as an ancilliary resource on the topic of DUNE data mananagement by Dr. Heidi Schellman 1-28-2020, and updated Dec. 2021
  
 ## Introduction
 

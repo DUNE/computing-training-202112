@@ -1,6 +1,6 @@
 ---
 title: Grid Job Submission and Common Errors
-teaching: 45
+teaching: 75
 exercises: 0
 questions:
 - How to submit grid jobs?
@@ -17,12 +17,12 @@ keypoints:
 - Always, always, always prestage input datasets. No exceptions.
 ---
 
-<!--
-## Video Session Part 1 of 2
+## Video Session 
 
+The grid job submission portion from the December 2021 training was captured on video, and is provided here.
 <center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1tpUd3c3Irc" title="DUNE Computing Tutorial May 2021 Day 2 Grid Job Submission and Common Errors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>-->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xRowkvR9zVg" title="DUNE Computing Tutorial December 2021 Grid Job Submission and Common Errors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
 
 ## Submit a job
 
