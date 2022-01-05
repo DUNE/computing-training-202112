@@ -69,7 +69,7 @@ There are three types of storage volumes that you will encounter at Fermilab: lo
 
 At Fermilab, an instance of dCache+Enstore is used for large-scale, distributed storage with capacity for more than 100 PB of storage and O(10000) connections. Whenever possible, these storage elements should be accessed over xrootd (see next section) as the mount points on interactive nodes are slow and unstable. Here are the different dCache volumes:
 
-**Persistent dCache**: the data in the file is actively available for reads at any time and will not be removed until manually deleted by user. Quotas will be established in the near future.
+**Persistent dCache**: DO NOT USE THIS VOLUME TO DISTRUBUTE CODE TARBALLS!!! the data in the file is actively available for reads at any time and will not be removed until manually deleted by user. Quotas will be established in the near future.
 
 **Scratch dCache**: large volume shared across all experiments. When a new file is written to scratch space, older files are removed in order to make room for the newer file. Removal is based on Least Recently Used policy.
 
