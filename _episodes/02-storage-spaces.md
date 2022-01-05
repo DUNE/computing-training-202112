@@ -69,7 +69,7 @@ There are three types of storage volumes that you will encounter at Fermilab: lo
 
 At Fermilab, an instance of dCache+Enstore is used for large-scale, distributed storage with capacity for more than 100 PB of storage and O(10000) connections. Whenever possible, these storage elements should be accessed over xrootd (see next section) as the mount points on interactive nodes are slow and unstable. Here are the different dCache volumes:
 
-**Persistent dCache**: DO NOT USE THIS VOLUME TO DISTRUBUTE CODE TARBALLS!!! the data in the file is actively available for reads at any time and will not be removed until manually deleted by user. Quotas will be established in the near future.
+**Persistent dCache**: DO NOT USE THIS VOLUME TO DISTRIBUTE CODE TARBALLS!!! the data in the file is actively available for reads at any time and will not be removed until manually deleted by user. Quotas will be established in the near future.
 
 **Scratch dCache**: large volume shared across all experiments. When a new file is written to scratch space, older files are removed in order to make room for the newer file. Removal is based on Least Recently Used policy.
 
@@ -86,7 +86,7 @@ In the following table, \<exp\> stands for the experiment (uboone, nova, dune, e
 |-------------+------------------+----------+-------------+----------------+------------+--------------+-----------|
 |    | Quota/Space | Retention Policy | Tape Backed? | Retention Lifetime on disk |	Use for	| Path | Grid Accessible |
 |-------------+------------------+----------+-------------+----------------+------------+--------------+-----------|
-| Persistent dCache	| No/~100 TB/exp | Managed by Experiment| No| Until manually deleted | immutable files w/ long lifetime	| /pnfs/\<exp\>/persistent	| Yes |
+| Persistent dCache	| No/~100 TB/exp | Managed by Experiment| No| Until manually deleted | immutable files w/ long lifetime NO CODE TARBALLS!!!	| /pnfs/\<exp\>/persistent	| Yes |
 |-------------+------------------+----------+-------------+----------------+------------+--------------+-----------|
 | Scratch dCache | No/no limit | LRU eviction - least recently used file deleted | No | Varies, ~30 days (*NOT* guaranteed) | immutable files w/ short lifetime | /pnfs/\<exp\>/scratch	| Yes |
 |-------------+------------------+----------+-------------+----------------+------------+--------------+-----------|
